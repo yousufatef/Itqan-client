@@ -1,0 +1,384 @@
+/* luca-stay Design System — typography (Figma Foundations / Font Scale) */
+/* Font: Nunito — loaded via index.html                                  */
+/* Font: Vazirmatn — loaded via index.html (Google Fonts, Arabic)        */
+
+:root {
+  --font-family-nunito: 'Nunito', system-ui, -apple-system, sans-serif;
+  --font-family-vazirmatn: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+
+  /* Base: 16px · Scale: 1.125 (Major Second) */
+
+  /* Display — Bold */
+  --type-display-lg-size: 4.5rem; /* 72px */
+  --type-display-lg-line-height: 5.375rem; /* 86px */
+  --type-display-lg-letter-spacing: -0.025em; /* -2.5% */
+
+  --type-display-md-size: 3.75rem; /* 60px */
+  --type-display-md-line-height: 4.5rem; /* 72px */
+  --type-display-md-letter-spacing: -0.025em;
+
+  --type-display-sm-size: 3rem; /* 48px */
+  --type-display-sm-line-height: 3.625rem; /* 58px */
+  --type-display-sm-letter-spacing: -0.025em;
+
+  /* Heading — Bold */
+  --type-heading-xl-size: 2rem; /* 32px */
+  --type-heading-xl-line-height: 2.625rem; /* 42px */
+  --type-heading-xl-letter-spacing: -0.02em; /* -2% */
+
+  --type-heading-lg-size: 1.75rem; /* 28px */
+  --type-heading-lg-line-height: 2.25rem; /* 36px */
+  --type-heading-lg-letter-spacing: -0.02em;
+
+  --type-heading-md-size: 1.5rem; /* 24px */
+  --type-heading-md-line-height: 1.9375rem; /* 31px */
+  --type-heading-md-letter-spacing: -0.015em; /* -1.5% */
+
+  --type-heading-sm-size: 1.25rem; /* 20px */
+  --type-heading-sm-line-height: 1.625rem; /* 26px */
+  --type-heading-sm-letter-spacing: -0.015em;
+
+  /* Body */
+  --type-body-lg-size: 1.125rem; /* 18px */
+  --type-body-lg-line-height: 1.6875rem; /* 27px */
+
+  --type-body-md-size: 1rem; /* 16px */
+  --type-body-md-line-height: 1.3125rem; /* 21px */
+
+  --type-body-sm-size: 0.875rem; /* 14px */
+  --type-body-sm-line-height: 1.3125rem; /* 21px */
+
+  --type-body-xs-size: 0.75rem; /* 12px */
+  --type-body-xs-line-height: 1.125rem; /* 18px — 1.5 × 12px */
+
+  /* Link */
+  --type-link-lg-size: 1.125rem;
+  --type-link-lg-line-height: 1.6875rem;
+
+  --type-link-md-size: 1rem;
+  --type-link-md-line-height: 1.5rem; /* 24px */
+
+  --type-link-sm-size: 0.875rem;
+  --type-link-sm-line-height: 1.3125rem;
+}
+
+/* Tablet typography tokens */
+@media (max-width: 64rem) {
+  :root {
+    /* Display */
+    --type-display-lg-size: 3.75rem; /* 60px */
+    --type-display-lg-line-height: 4.5rem; /* 72px */
+
+    --type-display-md-size: 3rem; /* 48px */
+    --type-display-md-line-height: 3.625rem; /* 58px */
+
+    --type-display-sm-size: 2.5rem; /* 40px */
+    --type-display-sm-line-height: 3rem; /* 48px */
+
+    /* Heading */
+    --type-heading-xl-size: 1.75rem; /* 28px */
+    --type-heading-xl-line-height: 2.25rem; /* 36px */
+
+    --type-heading-lg-size: 1.5rem; /* 24px */
+    --type-heading-lg-line-height: 2rem; /* 32px */
+
+    --type-heading-md-size: 1.25rem; /* 20px */
+    --type-heading-md-line-height: 1.75rem; /* 28px */
+
+    --type-heading-sm-size: 1.125rem; /* 18px */
+    --type-heading-sm-line-height: 1.625rem; /* 26px */
+
+    /* Body + Link */
+    --type-body-lg-size: 1rem; /* 16px */
+    --type-body-lg-line-height: 1.5rem; /* 24px */
+
+    --type-body-md-size: 0.9375rem; /* 15px */
+    --type-body-md-line-height: 1.375rem; /* 22px */
+
+    --type-body-sm-size: 0.875rem; /* 14px */
+    --type-body-sm-line-height: 1.3125rem; /* 21px */
+
+    --type-body-xs-size: 0.75rem; /* 12px */
+    --type-body-xs-line-height: 1.125rem; /* 18px */
+
+    --type-link-lg-size: 1rem; /* 16px */
+    --type-link-lg-line-height: 1.5rem; /* 24px */
+
+    --type-link-md-size: 0.9375rem; /* 15px */
+    --type-link-md-line-height: 1.375rem; /* 22px */
+
+    --type-link-sm-size: 0.875rem; /* 14px */
+    --type-link-sm-line-height: 1.3125rem; /* 21px */
+  }
+}
+
+/* Mobile typography tokens */
+@media (max-width: 40rem) {
+  :root {
+    /* Display */
+    --type-display-lg-size: 3rem; /* 48px */
+    --type-display-lg-line-height: 3.625rem; /* 58px */
+
+    --type-display-md-size: 2.5rem; /* 40px */
+    --type-display-md-line-height: 3rem; /* 48px */
+
+    --type-display-sm-size: 2rem; /* 32px */
+    --type-display-sm-line-height: 2.5rem; /* 40px */
+
+    /* Heading */
+    --type-heading-xl-size: 1.5rem; /* 24px */
+    --type-heading-xl-line-height: 2rem; /* 32px */
+
+    --type-heading-lg-size: 1.375rem; /* 22px */
+    --type-heading-lg-line-height: 1.875rem; /* 30px */
+
+    --type-heading-md-size: 1.25rem; /* 20px */
+    --type-heading-md-line-height: 1.75rem; /* 28px */
+
+    --type-heading-sm-size: 1.125rem; /* 18px */
+    --type-heading-sm-line-height: 1.625rem; /* 26px */
+
+    /* Body + Link */
+    --type-body-lg-size: 1rem; /* 16px */
+    --type-body-lg-line-height: 1.5rem; /* 24px */
+
+    --type-body-md-size: 0.875rem; /* 14px */
+    --type-body-md-line-height: 1.3125rem; /* 21px */
+
+    --type-body-sm-size: 0.8125rem; /* 13px */
+    --type-body-sm-line-height: 1.25rem; /* 20px */
+
+    --type-body-xs-size: 0.75rem; /* 12px */
+    --type-body-xs-line-height: 1.125rem; /* 18px */
+
+    --type-link-lg-size: 1rem; /* 16px */
+    --type-link-lg-line-height: 1.5rem; /* 24px */
+
+    --type-link-md-size: 0.875rem; /* 14px */
+    --type-link-md-line-height: 1.3125rem; /* 21px */
+
+    --type-link-sm-size: 0.8125rem; /* 13px */
+    --type-link-sm-line-height: 1.25rem; /* 20px */
+  }
+}
+
+/* Tailwind font-size utilities (size + line-height + tracking) */
+@theme inline {
+  --font-sans: var(--font-family-nunito);
+  --font-heading: var(--font-family-nunito);
+  --font-arabic: var(--font-family-vazirmatn);
+
+  --text-display-lg: var(--type-display-lg-size);
+  --text-display-lg--line-height: var(--type-display-lg-line-height);
+  --text-display-lg--letter-spacing: var(--type-display-lg-letter-spacing);
+
+  --text-display-md: var(--type-display-md-size);
+  --text-display-md--line-height: var(--type-display-md-line-height);
+  --text-display-md--letter-spacing: var(--type-display-md-letter-spacing);
+
+  --text-display-sm: var(--type-display-sm-size);
+  --text-display-sm--line-height: var(--type-display-sm-line-height);
+  --text-display-sm--letter-spacing: var(--type-display-sm-letter-spacing);
+
+  --text-heading-xl: var(--type-heading-xl-size);
+  --text-heading-xl--line-height: var(--type-heading-xl-line-height);
+  --text-heading-xl--letter-spacing: var(--type-heading-xl-letter-spacing);
+
+  --text-heading-lg: var(--type-heading-lg-size);
+  --text-heading-lg--line-height: var(--type-heading-lg-line-height);
+  --text-heading-lg--letter-spacing: var(--type-heading-lg-letter-spacing);
+
+  --text-heading-md: var(--type-heading-md-size);
+  --text-heading-md--line-height: var(--type-heading-md-line-height);
+  --text-heading-md--letter-spacing: var(--type-heading-md-letter-spacing);
+
+  --text-heading-sm: var(--type-heading-sm-size);
+  --text-heading-sm--line-height: var(--type-heading-sm-line-height);
+  --text-heading-sm--letter-spacing: var(--type-heading-sm-letter-spacing);
+
+  --text-body-lg: var(--type-body-lg-size);
+  --text-body-lg--line-height: var(--type-body-lg-line-height);
+
+  --text-body-md: var(--type-body-md-size);
+  --text-body-md--line-height: var(--type-body-md-line-height);
+
+  --text-body-sm: var(--type-body-sm-size);
+  --text-body-sm--line-height: var(--type-body-sm-line-height);
+
+  --text-body-xs: var(--type-body-xs-size);
+  --text-body-xs--line-height: var(--type-body-xs-line-height);
+
+  --text-link-lg: var(--type-link-lg-size);
+  --text-link-lg--line-height: var(--type-link-lg-line-height);
+
+  --text-link-md: var(--type-link-md-size);
+  --text-link-md--line-height: var(--type-link-md-line-height);
+
+  --text-link-sm: var(--type-link-sm-size);
+  --text-link-sm--line-height: var(--type-link-sm-line-height);
+}
+
+/* Full typography presets (font + size + weight + spacing) */
+@utility type-display-lg {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-display-lg-size);
+  line-height: var(--type-display-lg-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-display-lg-letter-spacing);
+}
+
+@utility type-display-md {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-display-md-size);
+  line-height: var(--type-display-md-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-display-md-letter-spacing);
+}
+
+@utility type-display-sm {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-display-sm-size);
+  line-height: var(--type-display-sm-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-display-sm-letter-spacing);
+}
+
+@utility type-heading-xl {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-heading-xl-size);
+  line-height: var(--type-heading-xl-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-heading-xl-letter-spacing);
+}
+
+@utility type-heading-lg {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-heading-lg-size);
+  line-height: var(--type-heading-lg-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-heading-lg-letter-spacing);
+}
+
+@utility type-heading-md {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-heading-md-size);
+  line-height: var(--type-heading-md-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-heading-md-letter-spacing);
+}
+
+@utility type-heading-sm {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-heading-sm-size);
+  line-height: var(--type-heading-sm-line-height);
+  font-weight: 700;
+  letter-spacing: var(--type-heading-sm-letter-spacing);
+}
+
+@utility type-body-lg {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-lg-line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-body-lg-semibold {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-lg-line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-body-md {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-md-size);
+  line-height: var(--type-body-md-line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-body-md-semibold {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-md-size);
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-body-sm {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-body-sm-semibold {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-body-xs {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-xs-size);
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-body-xs-semibold {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-body-xs-size);
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-link-lg {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-link-lg-size);
+  line-height: var(--type-link-lg-line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-decoration-line: underline;
+  text-underline-offset: 0.15em;
+}
+
+@utility type-link-md {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-link-md-size);
+  line-height: var(--type-link-md-line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+
+  text-underline-offset: 0.15em;
+}
+
+@utility type-link-sm {
+  font-family: var(--font-family-nunito);
+  font-size: var(--type-link-sm-size);
+  line-height: var(--type-link-sm-line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-decoration-line: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* ─── Arabic / RTL font override ──────────────────────────────────────────── */
+/* When a parent (or html) carries dir="rtl", switch every element that uses   */
+/* a type-* utility to Vazirmatn. No utility classes need to change.           */
+
+[dir='rtl'],
+[dir='rtl'] * {
+  font-family: var(--font-family-vazirmatn);
+}
+
+/* Explicit helper class when you need Vazirmatn without a dir attribute */
+.font-arabic {
+  font-family: var(--font-family-vazirmatn) !important;
+}

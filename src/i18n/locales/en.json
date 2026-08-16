@@ -1,0 +1,2190 @@
+{
+  "common": {
+    "optional": "(Optional)",
+    "submit": "Submit",
+    "filters": {
+      "sortBy": "Sort by"
+    },
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "helloWorld": "Hello World",
+    "ExitWithoutSaving": "Exit Without Saving",
+    "AnyDiscardedUnsavedChanges": "Any unsaved changes will be discarded when you exit.",
+    "N/A": "N/A",
+    "exit": "Exit",
+    "cancel": "Cancel",
+    "back": "Back",
+    "previous": "Previous",
+    "next": "Next",
+    "active": "Active",
+    "create": "Create",
+    "inactive": "Inactive",
+    "refetch": "Refetch",
+    "loading": "Loading...",
+    "somethingWentWrong": "Something went wrong",
+    "blockForm": {
+      "heading": "Basic Information",
+      "labels": {
+        "titleEn": "Title (EN) *",
+        "titleAr": "Title (AR) *",
+        "descriptionEn": "Description (EN) *",
+        "descriptionAr": "Description (AR) *"
+      },
+      "placeholders": {
+        "titleEn": "Enter title in English",
+        "titleAr": "أدخل العنوان بالعربية",
+        "descriptionEn": "Enter a brief description in English...",
+        "descriptionAr": "أدخل وصفًا موجزًا بالعربية..."
+      }
+    },
+    "delete": "Delete",
+    "edit": "Edit",
+    "copied": "Copied",
+    "save": "Save",
+    "addImages": "Add images",
+    "addLater": "Add later",
+    "close": "Close",
+    "viewApartment": "View Apartment",
+    "publish": "Publish",
+    "saveEdits": "Save Edits",
+    "uploadImage": "Upload Image"
+  },
+  "table": {
+    "name": "Name",
+    "user": "User",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNumber": "Phone Number",
+    "mobile": "Mobile Number",
+    "address": "Address",
+    "more": "More",
+    "date": "Date",
+    "creationDate": "Creation Date",
+    "joiningDate": "Joining date",
+    "accountStatus": "Account Status",
+    "kycStatus": "KYC Status",
+    "role": "Role",
+    "status": "Status",
+    "showing": "Showing {{from}} to {{to}} of {{total}} entries"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signInHint": "Use your account to continue."
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundHint": "The page you requested does not exist.",
+    "backHome": "Back home",
+    "unexpectedTitle": "Something went wrong",
+    "unexpectedHint": "An unexpected error occurred. Please try reloading the page or contact support if the issue persists.",
+    "tryAgain": "Try again",
+    "showDetails": "Show error details",
+    "hideDetails": "Hide error details",
+    "copied": "Copied to clipboard",
+    "copyError": "Copy error details"
+  },
+  "warns": {
+    "actionCantBeUndone": "This action cannot be undone."
+  },
+  "pages": {
+    "login": {
+      "title": "Welcome Back!",
+      "description": "Please enter your details to log-in",
+      "forgetPassword": "Forget Password",
+      "confirmPassword": "confirm your new password",
+      "titlePassword": "Create a New Password",
+      "descriptionPassword": "Enter a new password below.",
+      "backToLogin": "Back to Log in"
+    },
+    "errors": {
+      "somethingWrong": "Something went wrong",
+      "description": "An unexpected error occurred. Try reloading the page.",
+      "goBack": "Try Again",
+      "accessDenied": "Access Denied",
+      "accessDeniedDescription": "You do not have permission to access this page."
+    },
+    "resetPassword": {
+      "title": "Forgot Password",
+      "description": "Enter the email address associated with your account to receive a password reset link."
+    },
+    "verifyEmail": {
+      "title": "OTP Sent",
+      "description": "We've sent a One-Time Password (OTP) to {{email}}. Please check your inbox and enter the OTP below to reset your password."
+    },
+    "passwordChanged": {
+      "title": "Password Changed",
+      "description": "Your password has been changed successfully. Please log in again using your new password.",
+      "login": "Login"
+    },
+    "blogs": {
+      "filter": "Filter",
+      "search": "Search for blogs by name",
+      "headerTitle": "Blogs",
+      "create": "Create Blog",
+      "publish_blog": "Publish Blog",
+      "draft_blog": "Draft Blog",
+      "publish": "Publish",
+      "draft": "Draft",
+      "cancel": "Cancel",
+      "save": "Save",
+      "publish_blog_desc": "Are you sure you want to publish this Blog?",
+      "draft_blog_desc": "Are you sure you want to draft this Blog?",
+      "delete_blog": "Delete Blog",
+      "delete_blog_desc": "Are you sure you want to delete this Blog from Blogs List?",
+      "delete": "Delete",
+      "delete_section": "Delete {{section}}?",
+      "delete_section_desc": "This section has content that will be permanently removed. This action cannot be undone.",
+      "blog_details": "Blog Details",
+      "blog_details_subtitle": "Create blog content and preview how it will appear in the luca-stay app.",
+      "save_draft": "Save as Draft",
+      "live_preview": "Live App Preview",
+      "live_preview_subtitle": "Preview how this blog will appear to users.",
+      "edit_blog_subtitle": "Edit blog content and preview how it will appear in the luca-stay app.",
+      "unpublish_blog": "Unpublish Blog\t",
+      "unpublish_blog_desc": "Are you sure you want to unpublish this Blog?",
+      "unpublish": "Unpublish",
+      "empty": {
+        "title": "No blogs match your filters.",
+        "description": "Start by creating your first blog post."
+      }
+    },
+    "policy": {
+      "headerTitle": "Privacy Policy",
+      "create": "Create Policy",
+      "details_subtitle": "Manage the policy that explains how user data is collected, used, and protected.",
+      "save_changes": "Save Changes",
+      "discard_changes": "Discard Changes"
+    },
+    "about": {
+      "live_preview": "About luca-stay",
+      "live_preview_subtitle": "Your About page preview will appear here as you add content.",
+      "headerTitle": "About luca-stay",
+      "details_subtitle": "Manage the content displayed on the About page in the luca-stay app."
+    },
+    "priceRecord": {
+      "filter": "Search by source name, record ID, or creator"
+    }
+  },
+  "forms": {
+    "cover": "Cover image is required",
+    "errors": {
+      "location": {
+        "required": "Please select a location from the map"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Invalid Format"
+      },
+      "otp": "OTP must be 4 digits.",
+      "emailMissing": "Email is missing",
+      "passwordsMustMatch": "New password and confirm password must match",
+      "password": {
+        "required": "Password is required",
+        "min": "Password must be at least 8 characters",
+        "mismatch": "Passwords do not match"
+      },
+      "fullname": {
+        "required": "Full name is required",
+        "min": "Full name must be at least 2 characters",
+        "max": "Full name must not exceed 100 characters",
+        "invalid": "Full name can only contain letters"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "invalid": "Invalid phone number format",
+        "min": "Phone number must be at least 11 digits"
+      },
+      "role": {
+        "required": "Role is required"
+      }
+    },
+    "labels": {
+      "email": "Email",
+      "password": "Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "confirmNewPassword": "Confirm New Password",
+      "blog_title_en": "Blog Title En *",
+      "blog_title_ar": "Blog Title Ar *",
+      "blog_description_en": "Blog Description En *",
+      "blog_description_ar": "Blog Description Ar *",
+      "blog_cover_image": "Drag and drop cover image here, or click to upload",
+      "upload_document": "Drag and drop document here, or click to upload",
+      "max_size": "Max",
+      "basic_info": "Basic Information",
+      "article_section": "Article Section",
+      "title_en": "Title En *",
+      "title_ar": "Title Ar *",
+      "description_en": "Description En *",
+      "description_ar": "Description Ar *",
+      "file_not_accepted": "File not accepted",
+      "current_file": "Current File",
+      "current_image": "Current image",
+      "existing_file": "Existing file",
+      "remove_file": "Remove file",
+      "uploaded": "Uploaded"
+    },
+    "time": {
+      "hour": "Hours",
+      "minute": "Minutes",
+      "period": "AM or PM"
+    },
+    "placeholders": {
+      "email": "Enter your email address",
+      "password": "Enter your password",
+      "newpassword": "Enter your new password",
+      "blog_title": "e.g. Beginner's Guide to Gold Investment",
+      "blog_content_placeholder": "Your blog preview will appear here.",
+      "policy_content_placeholder": "Your Privacy Policy preview will appear here as you add content."
+    },
+    "buttonLabels": {
+      "signin": "Log in",
+      "resetLink": "Send Reset Link",
+      "didNotGetCode": "Didn't get the code?",
+      "resendAgain": "Resend",
+      "resendEmail": "Resend Email",
+      "verifyOtp": "Verify OTP",
+      "resetPassword": "Reset Password",
+      "add_section": "Add section"
+    },
+    "messages": {
+      "otpResent": "OTP sent again"
+    },
+    "passwordRules": {
+      "length": "8-32 characters long",
+      "lowercase": "1 lowercase character (a-z)",
+      "uppercase": "1 Uppercase character (A-Z)",
+      "number": "1 number",
+      "specialCharacter": "1 Special Character",
+      "title": "Your password must contain"
+    },
+    "fields": {
+      "blog_content": "Blog Content",
+      "policy_content": "Privacy Policy"
+    }
+  },
+  "passwordChangeSuccess": "Your password has been reset successfully. Please log in again.",
+  "validation": {
+    "fieldRequired": "Field is required.",
+    "fieldMin": "Field must be at least {{min}} characters.",
+    "fieldMax": "Field must not exceed {{max}} characters.",
+    "fieldEnglishOnly": "Field must contain English characters only.",
+    "fieldArabicOnly": "Field must contain Arabic characters only.",
+    "fieldNumbersOnly": "Field cannot contain only numbers.",
+    "passwordEmpty": "Password cannot be empty.",
+    "passwordLength": "Password must be between 8 and 20 characters.",
+    "passwordUppercase": "Password must contain at least one uppercase letter.",
+    "passwordLowercase": "Password must contain at least one lowercase letter.",
+    "passwordDigit": "Password must contain at least one digit.",
+    "passwordSpecialCharacter": "Password must contain at least one special character."
+  },
+  "sidebar": {
+    "sections": {
+      "main": "Main",
+      "settings": "Settings"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "reservations": "Reservations",
+      "services": "Services",
+      "properties": "Properties",
+      "financial": "Financial",
+      "devices": "Devices",
+      "settings": "Settings",
+      "home": "Home",
+      "users": "Users",
+      "transactions": "Transactions",
+      "cms": "CMS",
+      "activityLog": "Activity log",
+      "contacts": "Contact Messages",
+      "suspensions": "Suspension Reasons",
+      "pricing": "Pricing Monitoring",
+      "pricingNav": "Pricing Monitoring & Control"
+    },
+    "reservations": {
+      "apartments": "Apartments",
+      "offices": "Offices",
+      "settings": "Settings"
+    },
+    "services": {
+      "service": "Service",
+      "serviceRequest": "Service Request",
+      "packages": "Packages",
+      "items": "Items"
+    },
+    "properties": {
+      "buildings": "Buildings",
+      "apartments": "Apartments",
+      "offices": "Offices",
+      "amenities": "Amenities"
+    },
+    "financial": {
+      "invoices": "Invoices",
+      "taxes": "Taxes",
+      "promoCode": "Promo Code"
+    },
+    "cms": {
+      "blogs": "Blogs",
+      "faqs": "FAQs",
+      "onboarding": "Onboarding",
+      "about": "About luca-stay",
+      "policy": "Privacy Policy"
+    },
+    "settings": {
+      "admins": "Admins",
+      "roles": "Roles & Permissions",
+      "rolesManagement": "Roles Management",
+      "cities": "Cities",
+      "smartGuide": "Smart Guide"
+    },
+    "userMenu": {
+      "logOut": "Log Out",
+      "logoutTitle": "Log out?",
+      "logoutDescription": "You will be signed out and redirected to the login page.",
+      "logoutConfirm": "Log Out",
+      "logoutCancel": "Cancel"
+    },
+    "toggleMenu": "Open menu"
+  },
+  "emptyStates": {
+    "underDevelopment": {
+      "title": "Under Development",
+      "description": "This page is currently under development. Check back soon for updates.",
+      "status": "Work in progress"
+    }
+  },
+  "admin": {
+    "title": "Admin Users",
+    "addNew": "Add new admin",
+    "searchPlaceholder": "Search for users by name, Id, email, phone number",
+    "filterPlaceholder": "Sort by: Name (A-Z)",
+    "emptyMessaege": "No admins match your filters.",
+    "roleSummary": "Role Summary",
+    "adminAbleTo": "Admin will be able to",
+    "selectRoleToPreviewPermissions": "Select role to preview permissions",
+    "role": "Role",
+    "addAdminSubTitle": "Create a new admin account and assign role-based access permissions.",
+    "addAdminUser": "Add Admin User",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "editAdminUser": "Edit Admin User",
+    "deleteAdminUser": "Delete Admin User",
+    "adminInformation": "Admin Information",
+    "noPermissionsAssignedToThisRole": "No permissions assigned to this role",
+    "form": {
+      "lable": {
+        "fullName": "Full Name",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "phoneNumber": "Phone Number",
+        "role": "Role",
+        "userRole": "User Role",
+        "password": "Password",
+        "confirmPassword": "Confirm Password"
+      },
+      "placeholders": {
+        "fullName": "Full Name",
+        "firstName": "Enter first name",
+        "lastName": "Enter last name",
+        "email": "Email",
+        "phone": "Enter Phone",
+        "phoneNumber": "Phone Number",
+        "role": "Select admin role",
+        "userRole": "Select User Role",
+        "password": "Password",
+        "confirmPassword": "Confirm Password"
+      }
+    },
+    "buttons": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "sendLink": "Send Link",
+      "resendLink": "Resend Link",
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "update": "Update",
+      "create": "Create",
+      "save": "Save"
+    }
+  },
+  "roles": {
+    "title": "Roles & Permissions",
+    "subtitle": "Manage admin roles and control access to system features and actions across the platform.",
+    "create": "Create new role",
+    "addRole": "Add Role",
+    "editRole": "Edit Role",
+    "table": {
+      "roleName": "Role Name",
+      "users": "Users",
+      "description": "Description",
+      "permissionsNumber": "Permissions Number",
+      "createdBy": "Created By",
+      "searchPlaceholder": "Search for roles",
+      "sortAsc": "Ascending",
+      "sortDesc": "Descending",
+      "sortPlaceholder": "Sort by: Name (A-Z)",
+      "clear": "Clear",
+      "emptyMessage": "No roles match your filters."
+    },
+    "form": {
+      "title": "Role Details",
+      "subtitle": "Define a role and assign permissions to control access to platform features and administrative actions.",
+      "update": "Update",
+      "create": "Create",
+      "cancel": "Cancel",
+      "save": "Save",
+      "roleInfo": "Role Information",
+      "roleInfoDesc": "Define the role name and description to identify its purpose and responsibilities.",
+      "roleTitleEn": "Role Title En",
+      "roleTitleAr": "Role Title Ar",
+      "roleNameEn": "Role Name En",
+      "roleNameIt": "Role Name It",
+      "placeholderEn": "e.g. Content Manager",
+      "placeholderAr": "e.g. Content Manager",
+      "placeholderNameEn": "Name En",
+      "placeholderNameIt": "Name It",
+      "permissions": "Permissions",
+      "permissionsDesc": "Select the modules and actions this role can access.",
+      "modulesPermissions": "Modules Permissions"
+    },
+    "permissionModule": {
+      "selectAll": "Select All",
+      "fullAccess": "Full access",
+      "view": "View",
+      "create": "Create",
+      "update": "Update",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteTitle": "Delete Role",
+      "deleteDesc1": "Are you sure you want to delete role",
+      "deleteDesc2": "Role",
+      "deleteDesc3": "from Roles List?",
+      "cancel": "Cancel",
+      "deleting": "Deleting...",
+      "deleteSuccess": "Role deleted successfully",
+      "deleteFailed": "Failed to delete role",
+      "alreadyDeleted": "Role not found, it could be deleted by another admin, refreshing the list..."
+    }
+  },
+  "rolesManagement": {
+    "title": "Roles Management",
+    "subtitle": "Manage roles, admin users, and guest profiles from one place.",
+    "tabs": {
+      "roles": "Roles Management",
+      "users": "Users Management",
+      "guests": "Guests Management"
+    },
+    "guests": {
+      "addNew": "Add guest",
+      "guestFallback": "Guest",
+      "searchPlaceholder": "Search for guests by name, email, or phone number",
+      "emptyMessage": "No guests match your filters.",
+      "table": {
+        "name": "Guest name",
+        "phone": "Phone number",
+        "email": "Email"
+      },
+      "actions": {
+        "edit": "Edit guest",
+        "delete": "Delete",
+        "deleteTitle": "Delete guest",
+        "deleteDesc1": "Are you sure you want to delete",
+        "deleteDesc2": "from the guests list?",
+        "cancel": "Cancel",
+        "deleteSuccess": "Guest deleted successfully",
+        "deleteFailed": "Failed to delete guest"
+      }
+    }
+  },
+  "suspendReasons": {
+    "title": "Suspension Reasons",
+    "subtitle": "Manage the reasons admins can use when suspending user accounts.",
+    "create": "Create new reason",
+    "table": {
+      "reasonName": "Reason Name",
+      "suspensionType": "Suspension Type",
+      "filterPlaceholder": "Filter by suspension type",
+      "clearFilters": "Clear filters",
+      "searchPlaceholder": "Search for suspension reasons",
+      "emptyMessage": "No suspension reasons found."
+    },
+    "types": {
+      "Temporary": "Temporary",
+      "Permanent": "Permanent"
+    },
+    "form": {
+      "createTitle": "Create Suspension Reason",
+      "editTitle": "Edit Suspension Reason",
+      "subtitle": "Define the suspension reason details and whether it applies temporarily or permanently.",
+      "create": "Create",
+      "update": "Update",
+      "cancel": "Cancel",
+      "reasonInfo": "Reason Information",
+      "reasonInfoDesc": "Add the bilingual reason name and description shown to admins.",
+      "titleEn": "Reason Title En",
+      "titleAr": "Reason Title Ar",
+      "descEn": "Description En",
+      "descAr": "Description Ar",
+      "titleEnPlaceholder": "e.g. Policy violation",
+      "titleArPlaceholder": "e.g. Policy violation",
+      "descEnPlaceholder": "Write a short description",
+      "descArPlaceholder": "Write a short description",
+      "reasonType": "Reason Type",
+      "reasonTypeDesc": "Choose whether this reason creates a temporary or permanent suspension."
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteTitle": "Delete Suspension Reason",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "from Suspension Reasons List?",
+      "cancel": "Cancel",
+      "deleteSuccess": "Suspension reason deleted successfully",
+      "alreadyDeleted": "Suspension reason not found, it could be deleted by another admin, refreshing the list..."
+    }
+  },
+  "toaster": {
+    "connectionLost": "You are currently offline. Please check your internet connection.",
+    "connectionRestored": "Back online! Your connection has been restored."
+  },
+  "users": {
+    "title": "User Management",
+    "searchPlaceholder": "Search for users by name, email, phone number",
+    "filterPlaceholder": "Sort by: Name (A-Z)",
+    "emptyMessage": "No users match your filters.",
+    "filters": {
+      "title": "Filter",
+      "oneFilter": "1 filter",
+      "manyFilters": "{{count}} filters",
+      "clear": "Clear filters",
+      "reset": "Reset",
+      "apply": "Apply",
+      "accountStatus": "Account Status",
+      "kycStatus": "KYC Status",
+      "joiningDate": "Joining Date",
+      "accountStatuses": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "suspended": "Suspended"
+      },
+      "kycStatuses": {
+        "approved": "Verified",
+        "pending": "Pending",
+        "rejected": "Rejected",
+        "none": "Not Submitted"
+      },
+      "joiningDateOptions": {
+        "last7Days": "Last 7 Days",
+        "last30Days": "Last 30 Days",
+        "last90Days": "Last 90 Days"
+      }
+    },
+    "buttons": {
+      "clear": "Clear",
+      "sendResetLink": "Send reset link"
+    },
+    "actions": {
+      "openMenu": "Open row actions",
+      "reactivateAccount": "Reactivate account",
+      "reactivateAccountDescription": "Reactivating this account will immediately restore the user's access to the platform.",
+      "suspendAccount": "Suspend account",
+      "resetPassword": "Reset password",
+      "resetPasswordDescription": "Resetting the password will require the user to verify their identity and create a new password before accessing the platform.",
+      "viewActivityLog": "View activity log"
+    },
+    "details": {
+      "overview": "Overview",
+      "activity": "Activity",
+      "basicInformation": "Basic Information",
+      "fullName": "Full name",
+      "email": "Email",
+      "mobileNumber": "Mobile number",
+      "joiningDate": "Joining date",
+      "lastActive": "Last active",
+      "noActivityYet": "No activity yet",
+      "userActivity": "User Activity",
+      "noActivityFound": "No activity found",
+      "noActivityDescription": "User activity will appear here once it is available.",
+      "loadMore": "Load more",
+      "notAvailable": "N/A",
+      "metadata": {
+        "device": "Device",
+        "location": "Location"
+      },
+      "activityTypes": {
+        "AccountCreated": "Account created",
+        "UserLogin": "Logged in",
+        "PinChanged": "PIN changed",
+        "PasswordChanged": "Password changed",
+        "UserViewed": "Viewed user"
+      }
+    },
+    "resetPassword": {
+      "internalNote": "Internal note",
+      "placeholderNote": "Add reason for Resetting password.",
+      "instructionsTitle": "After confirmation:",
+      "instruction1": "User is logged out from all active sessions",
+      "instruction2": "User receives a link to reset their password",
+      "instruction3": "User must create a new password before next login",
+      "instruction4": "Previous password becomes invalid immediately"
+    }
+  },
+  "contacts": {
+    "title": "Contact Messages",
+    "subtitle": "View and manage contact messages received from users.",
+    "table": {
+      "user": "User",
+      "email": "Email",
+      "phone": "Mobile Number",
+      "date": "Submitted On",
+      "message": "Message",
+      "emptyMessage": "No contact messages available.",
+      "searchPlaceholder": "Search for Messages by user name or phone number."
+    },
+    "sheet": {
+      "registeredUser": "Registered User",
+      "guest": "Guest",
+      "senderInformation": "Sender Information",
+      "fullName": "Full name",
+      "email": "Email",
+      "mobileNumber": "Mobile number",
+      "message": "Message",
+      "submittedOn": "Submitted On"
+    }
+  },
+  "faqs": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Your FAQs will appear here as you add questions and answers.",
+    "addNew": "Add Question",
+    "edit": "Edit",
+    "question": "Question",
+    "answer": "Answer",
+    "live_preview": "Live App Preview",
+    "live_preview_subtitle": "Preview how this faq will appear to users.",
+    "emptyMessageContent": "FAQs Content",
+    "emptyMessagePlaceholder": "No FAQs available.",
+    "emptyStateTitle": "No FAQs added yet",
+    "emptyStateDescription": "Add your first frequently asked question to help users find answers quickly.",
+    "table": {
+      "question": "Question",
+      "questions": "Questions",
+      "answer": "Answer",
+      "answers": "Answers"
+    },
+    "form": {
+      "questionEn": "Question En",
+      "questionAr": "Question Ar",
+      "answerEn": "Answer En",
+      "answerAr": "Answer Ar",
+      "errors": {
+        "questionRequired": "Question is required",
+        "answerRequired": "Answer is required",
+        "minRequired": "At least one faq item is required",
+        "maxRequired": "Maximum 100 faq sections are allowed"
+      }
+    },
+    "buttons": {
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "save": "Save Changes"
+    }
+  },
+  "tabs": {
+    "overview": "Overview",
+    "sources": "Price Sources",
+    "records": "luca-stay Price Records"
+  },
+  "pricing": {
+    "createRecord": "Create Price Record",
+    "overview": {
+      "subtitle": "Monitor pricing sources, review price history, and investigate sync issues across local and global pricing providers.",
+      "snapshotTitle": "Current Pricing Snapshot",
+      "snapshotDescription": "Final customer prices after luca-stay applies margin to the active source.",
+      "customerBuyPrice": "Customer Buy Price",
+      "customerSellPrice": "Customer Sell Price",
+      "priceUnit": "EGP/g",
+      "usedSource": "Used source",
+      "sourcePrice": "Source price",
+      "luca-stayAdjustment": "luca-stay adjustment",
+      "lastSync": "last Sync {{date}} • {{time}}",
+      "today": "Today",
+      "todayAt": "Today • {{time}}",
+      "priceChange": "Buy {{buy}} • Sell {{sell}}",
+      "syncActivityPrices": "Buy {{buy}} / Sell {{sell}}",
+      "syncActivityChanges": "Buy {{buy}} - Sell {{sell}}",
+      "priceMovement": "Price Movement",
+      "lastSuccessfulSync": "Last Successful Sync",
+      "lessThanOneMinute": "Less than a minute ago",
+      "minutesAgo": "{{count}} minutes ago",
+      "minutesAgo_one": "{{count}} minute ago",
+      "minutesAgo_other": "{{count}} minutes ago",
+      "hoursAgo": "{{count}} hours ago",
+      "hoursAgo_one": "{{count}} hour ago",
+      "hoursAgo_other": "{{count}} hours ago",
+      "sourceHealth": "Source Health",
+      "sourceHealthCount": "{{synced}} of {{total}}",
+      "sourceHealthSyncedSuffix": "sources synced",
+      "noFailedSources": "No failed sources",
+      "failedSources": "{{sources}} failed to sync",
+      "failedSourcesSeparator": " · ",
+      "recentSyncActivity": "Recent Sync Activity",
+      "table": {
+        "syncTime": "Sync Time",
+        "source": "Source",
+        "syncStatus": "Sync Status",
+        "priceMovement": "Price Movement",
+        "success": "Success",
+        "failed": "Failed",
+        "pending": "Pending",
+        "localSource": "Local source",
+        "globalSource": "Global source",
+        "emptyMessage": "No sync activity found."
+      },
+      "mock": {
+        "localGoldMarket": "Local Gold Market",
+        "globalGoldIndex": "Global Gold Index",
+        "changedNow": "Changed now",
+        "buySellMovement": "Buy +12 • Sell +9",
+        "buySellMovementSmall": "Buy +7 • Sell +5",
+        "buySellMovementFlat": "Buy +0 • Sell +0",
+        "twoMinutesAgo": "2 minutes ago",
+        "todayAt": "Today • {{time}}",
+        "sourcesSynced": "{{synced}} of {{total}} sources synced",
+        "noFailedSources": "No failed sources"
+      }
+    },
+    "sources": {
+      "subtitle": "View and manage all pricing sources used to fetch gold prices."
+    },
+    "records": {
+      "subtitle": "Track historical price records and sync status across all providers."
+    },
+    "table": {
+      "templateName": "Template Name",
+      "source": "Source",
+      "creationTime": "Creation Time",
+      "sourcePrice": "Source Price",
+      "luca-stayPrice": "luca-stay Prices",
+      "templateRecords": "Template Records "
+    }
+  },
+  "priceRecord": {
+    "searchPlaceholder": "Search by source name, record ID, or creator",
+    "filter": "Filter",
+    "table": {
+      "emptyMessage": "No price records match your filters."
+    },
+    "active": "Active",
+    "inactive": "Inactive",
+    "actions": {
+      "setAsDefault": "Set as Defult",
+      "viewDetails": "View Details",
+      "activityLog": "Activity Logs",
+      "pricLog": "Price Logs",
+      "status": "Disable Active Pricing",
+      "changeActiveStatus": "Disable Active Pricing?",
+      "changeActiveStatusDesc": "Final prices will be hidden from users and new quotes will be blocked.",
+      "keepStatus": "Keep Pricing Active",
+      "changeStatus": "Yes, Disable Pricing"
+    }
+  },
+  "sources": {
+    "filters": {
+      "title": "Filter",
+      "clear": "Clear",
+      "syncStatus": "Sync Status",
+      "sourceName": "Source Name",
+      "reset": "Reset",
+      "apply": "Apply",
+      "manyFilters": "Many Filters"
+    },
+    "searchPlaceholder": "Search by source name, Sync ID, or type",
+    "table": {
+      "sourceName": "Source",
+      "syncStatus": "Sync Status",
+      "syncId": "Sync ID",
+      "syncTime": "Sync Time",
+      "buyPrice": "Buy Price",
+      "sellPrice": "Sell Price",
+      "priceMovement": "Price Movement"
+    },
+    "details": {
+      "sourceInformation": "Source Information",
+      "sourceName": "Source Name",
+      "sourceType": "Source Type",
+      "currency": "Currency",
+      "priceUnit": "Price unit ",
+      "latestSourcePrice": "Latest Source Price",
+      "buyPrice": "Buy Price",
+      "sellPrice": "Sell Price",
+      "sourceSyncLog": "Source Sync Log",
+      "syncId": "Sync ID",
+      "syncTime": "Sync Time",
+      "syncHealth": "Sync Health",
+      "priceMovement": "Price Movement",
+      "noSyncFound": "no record found",
+      "success": "Success",
+      "failed": "Failed"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome Back {{name}} !",
+    "guest": "there",
+    "subtitle": "Here's what you need today!",
+    "create": "Create",
+    "viewAll": "View All",
+    "reservationsOverview": "Reservations Overview",
+    "emptyReservations": "No reservations to show.",
+    "dateRange": {
+      "last7Days": "Last 7 Days",
+      "thisWeek": "This Week",
+      "thisMonth": "This Month",
+      "thisYear": "This Year"
+    },
+    "createActions": {
+      "reservation": "Reservation",
+      "property": "Property",
+      "guest": "Guest"
+    },
+    "stats": {
+      "revenue": "Revenue",
+      "reservations": "Reservations",
+      "properties": "Properties",
+      "guests": "Guests"
+    },
+    "performance": {
+      "title": "Performance Overview",
+      "occupancy": "Occupancy",
+      "reservations": "Reservations"
+    },
+    "operations": {
+      "title": "Operations",
+      "checkIns": "Check-ins",
+      "checkOuts": "Check-outs",
+      "serviceRequests": "Services Requests",
+      "cancelledBookings": "Cancelled Bookings",
+      "arrivalsTomorrow": "Arrivals Tomorrow"
+    },
+    "table": {
+      "guestName": "Guest Name",
+      "apartment": "Apartment",
+      "building": "Building",
+      "startsAt": "Starts at",
+      "endsAt": "Ends at",
+      "totalAmount": "Total Amount",
+      "payment": "Payment",
+      "status": "Status",
+      "view": "View reservation"
+    },
+    "payment": {
+      "paid": "Paid",
+      "pending": "Pending",
+      "failed": "Failed"
+    },
+    "status": {
+      "upcoming": "Upcoming",
+      "checkedIn": "Checked in",
+      "stay": "Stay",
+      "checkedOut": "Checked out",
+      "cancelled": "Cancelled"
+    }
+  },
+  "amenities": {
+    "page": {
+      "title": "Amenities",
+      "subtitle": "Define and categorize the different amenities and amenity types available within the hotel property."
+    },
+    "tabs": {
+      "amenities": "Amenities",
+      "amenityTypes": "Amenity Types"
+    },
+    "actions": {
+      "createAmenity": "Add Amenity",
+      "createAmenityType": "Add Amenity Type",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteTitle": "Delete Amenity",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "cancel": "Cancel"
+    },
+    "form": {
+      "createTitle": "Create Amenity Type",
+      "editTitle": "Edit Amenity Type",
+      "create": "Create",
+      "update": "Update",
+      "icon": "Icon",
+      "nameEn": "Name (EN)",
+      "nameEnPlaceholder": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "nameItPlaceholder": "Name (IT)",
+      "typeNameEn": "Type Name (EN)",
+      "typeNameEnPlaceholder": "Type Name (EN)",
+      "typeNameIt": "Type Name (IT)",
+      "typeNameItPlaceholder": "Type Name (IT)",
+      "errors": {
+        "iconRequired": "Icon is required"
+      }
+    },
+    "amenityForm": {
+      "createTitle": "Create Amenity",
+      "editTitle": "Edit Amenity",
+      "create": "Create",
+      "update": "Update",
+      "nameEn": "Name (EN)",
+      "nameEnPlaceholder": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "nameItPlaceholder": "Name (IT)",
+      "amenityType": "Amenity Type",
+      "amenityTypePlaceholder": "Select amenity type",
+      "relatedProperty": "Related Property",
+      "relatedPropertyPlaceholder": "Select property type",
+      "startTime": "Start time",
+      "errors": {
+        "amenityTypeRequired": "Amenity type is required",
+        "typeRequired": "Related property is required"
+      }
+    },
+    "table": {
+      "icon": "Icon",
+      "nameEn": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "actions": "Actions"
+    },
+    "amenityTable": {
+      "nameEn": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "amenityType": "Amenity Type",
+      "actions": "Actions",
+      "search": "Search by amenity name",
+      "empty": "No amenities found."
+    },
+    "search": {
+      "placeholder": "Search by amenity type name"
+    }
+  },
+  "amenityTypes": {
+    "actions": {
+      "deleteTitle": "Delete Amenity Type",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    }
+  },
+  "editReservation": {
+    "title": "Edit Guest & Stay Reservation",
+    "success": "Reservation updated successfully.",
+    "error": "Unable to update reservation. Please try again.",
+    "actions": {
+      "save": "Save Edits"
+    }
+  },
+  "createReservation": {
+    "title": "Add a New Reservation",
+    "success": "Reservation created successfully.",
+    "error": "Unable to create reservation. Please try again.",
+    "actions": {
+      "back": "Back",
+      "next": "Next",
+      "confirm": "Confirm Reservation",
+      "selectPeriod": "Select period"
+    },
+    "steps": {
+      "dates": {
+        "label": "Date Selection",
+        "title": "Select Check-in & Check-out Dates",
+        "description": "Please select the guest's check-in and check-out dates to continue with the booking.",
+        "building": "Building",
+        "buildingPlaceholder": "Select building",
+        "rangePlaceholder": "Select dates",
+        "loadingApartments": "Loading available apartments..."
+      },
+      "apartment": {
+        "label": "Apartment Selection",
+        "title": "Choose an Apartment",
+        "description": "Choose an available apartment from the selected Date to proceed with the booking.",
+        "searchPlaceholder": "Search an apartment",
+        "buildingPlaceholder": "Select Building",
+        "allBuildings": "All buildings",
+        "guestNumberPlaceholder": "Guest Number",
+        "resultsCount": "Apartments Results ({{count}})",
+        "empty": "No available apartments for these dates.",
+        "guests": "Max {{count}} guests",
+        "beds": "{{count}} beds",
+        "pricePerNight": "{{price}} / night"
+      },
+      "guests": {
+        "label": "Assign Guests",
+        "title": "Assign Guests to the Room",
+        "description": "Search for an existing guest or add a new one. You can assign multiple guests based on the room's capacity.",
+        "capacity": "Room Capacity : Maximum {{count}} guests allowed",
+        "selectPlaceholder": "Select Guests",
+        "addNewGuest": "Add New Guest",
+        "searchPlaceholder": "Search a guest",
+        "empty": "No guests found.",
+        "loadMore": "Load more",
+        "selectedCount": "{{count}} of {{max}} guests selected"
+      },
+      "review": {
+        "label": "Review & Complete",
+        "title": "Review & Confirm Reservation",
+        "description": "Check the reservation details before finalizing. You can go back to make changes if needed.",
+        "sections": {
+          "date": "Date",
+          "apartment": "Apartment",
+          "guests": "Guests"
+        },
+        "checkIn": "Check in",
+        "checkOut": "Check out",
+        "building": "Building",
+        "apartment": "Apartment",
+        "total": "Total",
+        "totalHint": "Price calculated for {{count}} guest(s), including taxes.",
+        "edit": "Edit section"
+      }
+    },
+    "addGuest": {
+      "title": "Add New Guest",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "firstNamePlaceholder": "First Name",
+      "lastNamePlaceholder": "Last Name",
+      "emailPlaceholder": "doniahassan@gmail.com",
+      "phonePlaceholder": "+358 40 412 3997",
+      "submit": "Add",
+      "editTitle": "Edit Guest",
+      "editSubmit": "Save",
+      "success": "Guest created successfully.",
+      "error": "Unable to create guest.",
+      "editSuccess": "Guest updated successfully.",
+      "editError": "Unable to update guest.",
+      "validation": {
+        "firstName": "First name is required.",
+        "lastName": "Last name is required.",
+        "email": "Enter a valid email address.",
+        "phone": "Phone number is required."
+      }
+    }
+  },
+  "apartmentReservations": {
+    "title": "Apartments Reservations",
+    "subtitle": "Easily manage check-ins, check-outs, and upcoming reservations in a single view.",
+    "makeReservation": "Make A Reservation",
+    "filter": "Filter",
+    "export": "Export",
+    "sync": {
+      "action": "Sync",
+      "syncing": "Syncing...",
+      "syncingMessage": "Syncing Reservations.... We're checking for the latest bookings. This may take a few seconds",
+      "successMessage": "Reservations Synced Successfully",
+      "error": "Unable to sync reservations. Please try again."
+    },
+    "apartments": "Apartments",
+    "selectBuilding": "Select building",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "prevYear": "Previous year",
+    "nextYear": "Next year",
+    "selectMonthYear": "Select month and year",
+    "prevDays": "Previous days",
+    "nextDays": "Next days",
+    "emptyApartments": "No apartments in this building.",
+    "view": {
+      "calendar": "Calendar view",
+      "list": "List view"
+    },
+    "status": {
+      "upcoming": "Upcoming",
+      "checkedIn": "Checked in",
+      "stay": "Stay",
+      "checkedOut": "Checked out",
+      "cancelled": "Cancelled",
+      "blocked": "Blocked"
+    },
+    "statusUpdate": {
+      "success": "Reservation status updated successfully.",
+      "error": "Unable to update reservation status. Please try again."
+    },
+    "payment": {
+      "paid": "Paid",
+      "pending": "Pending",
+      "unpaid": "Unpaid"
+    },
+    "card": {
+      "blockedAria": "Blocked dates",
+      "openDetails": "Open reservation for {{name}}"
+    },
+    "table": {
+      "searchPlaceholder": "Search...",
+      "guestName": "Guest Name",
+      "apartment": "Apartment",
+      "building": "Building",
+      "startsAt": "Starts at",
+      "endsAt": "Ends at",
+      "totalAmount": "Total Amount",
+      "payment": "Payment",
+      "status": "Status",
+      "actions": "Actions",
+      "view": "View reservation",
+      "empty": "No reservations found.",
+      "showing": "Showing {{from}} to {{to}} of {{total}} entries"
+    },
+    "filters": {
+      "title": "Filter",
+      "close": "Close filters",
+      "status": "Status",
+      "building": "Building",
+      "selectBuilding": "Select Building",
+      "dateRange": "Date range",
+      "pickDateRange": "Pick a date range",
+      "reset": "Reset",
+      "apply": "Apply"
+    }
+  },
+  "reservationDetails": {
+    "title": "Reservation Details",
+    "subtitle": "Review guest, apartment, and booking information.",
+    "back": "Back to calendar",
+    "notFound": "Reservation not found.",
+    "mockNotice": "Showing mock reservation data ({{total}} bookings available).",
+    "breadcrumbs": {
+      "aria": "Breadcrumb",
+      "apartments": "Apartments",
+      "details": "Reservation Details"
+    },
+    "tabs": {
+      "details": "Details",
+      "doorsControl": "Doors Control",
+      "wifiAccess": "WIFI Access",
+      "controlDevices": "Control Devices",
+      "reservationReminder": "Reservation Reminder"
+    },
+    "guestStay": {
+      "title": "Guest & Stay",
+      "edit": "Edit"
+    },
+    "payment": {
+      "title": "Payment",
+      "amount": "Amount",
+      "status": "Statuses"
+    },
+    "status": {
+      "upcoming": "Upcoming",
+      "checkIn": "Check-in",
+      "checkedOut": "Checked out",
+      "blocked": "Blocked"
+    },
+    "guests": {
+      "title": "Guests ({{count}})",
+      "subtitle": "Manage guests for this reservation",
+      "add": "Add Guest",
+      "edit": "Edit guest",
+      "delete": "Delete guest",
+      "empty": "No guests added yet.",
+      "table": {
+        "name": "Guest Name",
+        "phone": "Phone Number",
+        "email": "Email",
+        "date": "Date",
+        "actions": "Actions"
+      }
+    },
+    "copy": "Copy Link",
+    "copyFailed": "Could not copy to clipboard",
+    "retry": "Try again",
+    "doorsControl": {
+      "title": "Doors Access Control",
+      "subtitle": "Generate, view, and download the QR code your guest will use to access the property.",
+      "download": "Download QR",
+      "generate": "Generate QR Code",
+      "qrAlt": "Reservation door QR code",
+      "reservationId": "Reservation ID: {{id}}",
+      "qrString": "QR code string",
+      "emptyTitle": "No access QR code",
+      "emptySubtitle": "Generate a QR code to allow your guest to access the apartment.",
+      "loadError": "Unable to load the door QR code for this reservation."
+    },
+    "controlDevices": {
+      "title": "Smart Control Link",
+      "subtitle": "Guest link to open smart device controls for this stay.",
+      "link": "Control link",
+      "open": "Open link",
+      "loadError": "Unable to generate the smart control link for this reservation."
+    },
+    "wifiAccess": {
+      "title": "Guest Wi-Fi Access",
+      "subtitle": "Share the voucher code so your guest can connect easily during their stay.",
+      "network": "Network name",
+      "password": "Voucher code",
+      "code": "Code",
+      "copy": "Copy",
+      "regenerate": "Regenerate",
+      "emptyTitle": "No WiFi details available",
+      "emptySubtitle": "The voucher code will appear here once the guest has checked in."
+    },
+    "reservationReminder": {
+      "title": "Reservation Reminder",
+      "subtitle": "Remind the guest about their reservation and upcoming stay details.",
+      "phoneNumber": "Phone number",
+      "send": "Send Reminder",
+      "sending": "Sending...",
+      "ended": "Reservation ended",
+      "notStarted": "Not started yet",
+      "cooldown": "Send after ({{time}})"
+    },
+    "fields": {
+      "id": "Reservation ID",
+      "guest": "Guest",
+      "guestFallback": "Guest",
+      "apartment": "Apartment",
+      "building": "Building",
+      "dates": "Stay dates",
+      "price": "Total amount",
+      "status": "Status",
+      "payment": "Payment",
+      "notAvailable": "—"
+    }
+  },
+  "buildings": {
+    "title": "Buildings",
+    "subtitle": "Define and categorize the different buildings and building types available within the hotel property.",
+    "createBtn": "Create Building",
+    "tabs": {
+      "buildings": "Buildings",
+      "deviceConfigurations": "Building Device Configurations"
+    },
+    "searchPlaceholder": "Search by building's name",
+    "export": "Export",
+    "table": {
+      "nameEn": "Building Name (EN)",
+      "nameIt": "Building Name (IT)",
+      "type": "Type",
+      "location": "Location",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actions": {
+      "deleteTitle": "Delete Building",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "form": {
+      "titleCreate": "Create Building",
+      "titleEdit": "Edit Building",
+      "submitCreate": "Create",
+      "submitUpdate": "Update",
+      "nameEn": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "type": "Type",
+      "typePlaceholder": "Select building type",
+      "contactNumber": "Contact Number",
+      "contactNumberPlaceholder": "(+39) 123 456-798",
+      "address": "Address",
+      "addressPlaceholder": "Search address...",
+      "types": {
+        "workspace": "Workspace",
+        "room": "Room"
+      }
+    }
+  },
+  "taxes": {
+    "title": "Taxes",
+    "subtitle": "Manage taxes and tax types.",
+    "createBtn": "Add Tax",
+    "searchPlaceholder": "Search by tax name",
+    "tabs": {
+      "taxes": "Taxes",
+      "taxTypes": "Tax Types"
+    },
+    "table": {
+      "nameEn": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "type": "Type",
+      "taxRate": "Tax Rate",
+      "status": "Status",
+      "actions": "Actions",
+      "empty": "No taxes found.",
+      "search": "Search by tax name"
+    },
+    "actions": {
+      "deleteTitle": "Delete Tax",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "form": {
+      "titleCreate": "Add Tax",
+      "titleEdit": "Edit Tax",
+      "submitCreate": "Create",
+      "submitUpdate": "Update",
+      "nameEn": "Name (EN)",
+      "nameEnPlaceholder": "Enter tax name in English",
+      "nameIt": "Name (IT)",
+      "nameItPlaceholder": "Enter tax name in Italian",
+      "taxType": "Tax Type",
+      "taxTypePlaceholder": "Select tax type",
+      "calculationType": "Calculation Type",
+      "calculationTypePlaceholder": "Select calculation type",
+      "percentage": "Percentage (%)",
+      "fixed": "Fixed Price",
+      "taxRate": "Tax Rate",
+      "taxRatePlaceholder": "Enter tax rate",
+      "errors": {
+        "rate": {
+          "invalid": "Rate must be a valid number",
+          "min": "Rate must be at least 0",
+          "maxPercentage": "Percentage rate cannot exceed 100%",
+          "maxFixed": "Fixed price cannot exceed 4 digits (9999.99)",
+          "maxDecimals": "Rate can have at most 2 decimal places"
+        },
+        "taxTypeRequired": "Tax type is required",
+        "calculationTypeRequired": "Calculation type is required"
+      },
+      "messages": {
+        "successCreate": "Tax added successfully",
+        "successUpdate": "Tax updated successfully",
+        "successDelete": "Tax deleted successfully"
+      }
+    },
+    "messages": {
+      "successCreate": "Tax added successfully",
+      "successUpdate": "Tax updated successfully",
+      "successdelete": "Tax deleted successfully"
+    }
+  },
+  "promoCode": {
+    "title": "Promo Code",
+    "subtitle": "Manage promo codes, discounts, usage limits, and validity periods across your properties.",
+    "createBtn": "Add Promo Code"
+  },
+  "promo": {
+    "searchPlaceholder": "Search by promo code name",
+    "form": {
+      "percentage": "Percentage (%)",
+      "fixed": "Fixed Price (€)",
+      "titleEdit": "Edit Promo Code",
+      "titleCreate": "Add Promo Code",
+      "submitUpdate": "Save",
+      "submitCreate": "Save",
+      "nameEn": "Code Name En",
+      "nameEnPlaceholder": "Promo En",
+      "nameIt": "Code Name It",
+      "nameItPlaceholder": "Promo It",
+      "code": "Code (Public)",
+      "codePlaceholder": "Enter code for user to use at checkout",
+      "discountType": "Discount Type",
+      "discountTypePlaceholder": "Select type",
+      "discountValue": "Discount",
+      "discountValuePlaceholder": "%",
+      "startDate": "Validity Start Date",
+      "endDate": "Validity End Date",
+      "maxUsesPerUser": "Max Uses",
+      "maxUsesPerUserPlaceholder": "1 time",
+      "errors": {
+        "codeMin": "Code must be at least 3 characters",
+        "codeMax": "Code must not exceed 20 characters",
+        "codeInvalid": "Code can only contain uppercase letters, numbers, underscores and dashes",
+        "discountTypeInvalid": "Discount type must be a valid integer",
+        "discountInvalid": "Discount value must be a valid number",
+        "maxUsesInvalid": "Max uses must be a valid number",
+        "maxUsesInteger": "Max uses must be an integer",
+        "maxUsesMin": "Max uses must be at least 1",
+        "maxUsesMax": "Max uses cannot exceed 1000",
+        "startDateRequired": "Start date is required",
+        "endDateRequired": "End date is required",
+        "percentageRange": "Percentage must be between 0 and 100",
+        "fixedRange": "Fixed price must be between 0 and 990",
+        "endDateBeforeStart": "End date cannot be before start date"
+      }
+    },
+    "table": {
+      "nameEn": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "code": "Promo Code",
+      "discount": "Discount",
+      "maxUses": "Max Uses",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "status": "Status"
+    },
+    "actions": {
+      "deleteTitle": "Delete Promo Code",
+      "deleteDesc1": "Are you sure you want to delete this promo code?",
+      "deleteSuccess": "Promo code deleted successfully"
+    }
+  },
+  "taxesType": {
+    "title": "Tax Types",
+    "searchPlaceholder": "Search by tax type name",
+    "createBtn": "Add Tax Type",
+    "table": {
+      "nameEn": "Name (EN)",
+      "nameIt": "Name (IT)",
+      "actions": "Actions",
+      "empty": "No tax types found."
+    },
+    "actions": {
+      "deleteTitle": "Delete Tax Type",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "form": {
+      "titleCreate": "Add Tax Type",
+      "titleEdit": "Edit Tax Type",
+      "submitCreate": "Create",
+      "submitUpdate": "Update",
+      "nameEn": "Name (EN)",
+      "nameEnPlaceholder": "Enter name in English",
+      "nameIt": "Name (IT)",
+      "nameItPlaceholder": "Enter name in Italian"
+    }
+  },
+  "devices": {
+    "controlLinks": "Control Links",
+    "page": {
+      "title": "Devices",
+      "subtitle": "Manage smart devices and control links."
+    },
+    "actions": {
+      "createDevice": "Add Device",
+      "createNewLink": "New Control Link",
+      "deleteTitle": "Delete Device",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "searchPlaceholder": "Search by apartment's name",
+    "table": {
+      "apartment": "Apartment",
+      "Building": "Building",
+      "AvailableFrom": "Available From",
+      "AvailableUntil": "Available Until",
+      "status": "Status",
+      "actions": "Actions",
+      "empty": "No devices found."
+    },
+    "form": {
+      "editTitle": "Edit Device",
+      "createTitle": "Add Device",
+      "nameEn": "Name (EN)",
+      "nameEnPlaceholder": "Enter English name",
+      "nameIt": "Name (IT)",
+      "nameItPlaceholder": "Enter Italian name",
+      "type": "Device Type",
+      "typePlaceholder": "Select device type"
+    },
+    "controlLink": {
+      "editTitle": "Edit Control Link",
+      "createTitle": "Add Control Link",
+      "submitEdit": "Update",
+      "submitCreate": "Create",
+      "deleteTitle": "Delete Control Link",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "buildingRequired": "Building is required",
+      "apartmentRequired": "Apartment is required",
+      "startDateRequired": "Start date is required",
+      "startTimeRequired": "Start time is required",
+      "endDateRequired": "End date is required",
+      "endTimeRequired": "End time is required"
+    },
+    "schema": {
+      "nameEnRequired": "Device name in English is required",
+      "nameItRequired": "Device name in Italian is required",
+      "typeRequired": "Device type is required"
+    },
+    "tabs": {
+      "devices": "Devices",
+      "controlDevices": "Control Devices"
+    },
+    "devices": {
+      "tabs": {
+        "devices": "Devices",
+        "controlDevices": "Control Devices"
+      },
+      "actions": {
+        "createDevice": "Create Device",
+        "createNewLink": "Create New Link",
+        "deleteDesc1": "Are you sure you want to delete this device ?",
+        "deleteTitle": "Delete Device"
+      },
+      "page": {
+        "title": "Devices",
+        "subtitle": "Create and manage device control links for scheduled access."
+      },
+      "searchPlaceholder": "Search by apartment’s name",
+      "table": {
+        "status": "Status",
+        "apartment": "Apartment",
+        "Building": "Building",
+        "AvailableFrom": "Available From",
+        "AvailableUntil": "Available Until"
+      },
+      "controlLink": {
+        "deleteTitle": "Delete Link",
+        "deleteDesc1": "Are you sure you want to delete this link ?",
+        "editTitle": "Edit Control Links",
+        "createTitle": "Create Control Links",
+        "submitEdit": "Edit Link",
+        "submitCreate": "Create Link",
+        "building": "Select Building",
+        "apartment": "Select Apartment",
+        "startDate": "Start date",
+        "startDatePlaceholder": "Enter Date From",
+        "startTime": "Start time",
+        "startTimePlaceholder": "-- : -- AM",
+        "endDate": "End date",
+        "endDatePlaceholder": "Enter Date From",
+        "endTime": "End time",
+        "buildingRequired": "Building is required",
+        "apartmentRequired": "Apartment is required",
+        "startDateRequired": "Start date is required",
+        "startTimeRequired": "Start time is required",
+        "endDateRequired": "End date is required",
+        "endTimeRequired": "End time is required"
+      },
+      "form": {
+        "editTitle": "Edit Device",
+        "createTitle": "Create Device",
+        "nameEn": "Name En",
+        "nameEnPlaceholder": "Enter device name en",
+        "nameIt": "Name It",
+        "nameItPlaceholder": "Enter device name it",
+        "type": "Type",
+        "typePlaceholder": "Enter device type"
+      },
+      "controlLinks": "Control Links",
+      "schema": {
+        "nameEnRequired": "Name En is required",
+        "nameItRequired": "Name It is required",
+        "typeRequired": "Type is required"
+      }
+    },
+    "reservations": {
+      "page": {
+        "settingTitle": "Setting",
+        "settingSubtitle": "Easily manage check-ins and check-outs time and the blocking"
+      },
+      "globalTimeSettings": "Global Time",
+      "form": {
+        "checkInTime": "Check-In Time",
+        "checkOutTime": "Check-Out Time",
+        "cancel": "Cancel",
+        "blockApartment": "Block Apartment",
+        "save": "Save Change",
+        "apartmentLabel": "Apartment",
+        "apartmentPlaceholder": "Choose an apartment",
+        "blockPeriodLabel": "Block Period",
+        "blockPeriodPlaceholder": "Pick a date range"
+      },
+      "ApartmentBlockSettings": "Apartment Block",
+      "schema": {
+        "checkInTimeRequired": "Check-In Time is required",
+        "checkOutTimeRequired": "Check-Out Time is required"
+      }
+    },
+    "apartments": {
+      "schema": {
+        "apartmentRequired": "Apartment is required",
+        "blockPeriodRequired": "Block period is required"
+      }
+    },
+    "items": {
+      "title": "Items",
+      "subtitle": "Define and categorize the different types of items available in packages.",
+      "createBtn": "Create Item",
+      "table": {
+        "image": "Image",
+        "nameEn": "Item Name (EN)",
+        "nameIt": "Item Name (IT)",
+        "price": "Price",
+        "actions": "Actions"
+      },
+      "searchPlaceholder": "Search by item’s name",
+      "export": "Export",
+      "form": {
+        "titleCreate": "Create Item",
+        "titleEdit": "Edit Item",
+        "submitCreate": "Create",
+        "submitUpdate": "Save edits"
+      },
+      "actions": {
+        "deleteTitle": "Delete Item",
+        "deleteDesc1": "Are you sure you want to delete this Item?"
+      }
+    },
+    "item": {
+      "form": {
+        "nameEn": "Item Name (EN)",
+        "nameEnPlaceholder": "Name En",
+        "nameIt": "Item Name (IT)",
+        "nameItPlaceholder": "Name It",
+        "price": "Item Price",
+        "pricePlaceholder": "Enter price"
+      }
+    },
+    "searchPlaceholderr": "Search by device name"
+  },
+  "apartments": {
+    "dialogs": {
+      "addImages": {
+        "title": "Add Apartment Images",
+        "description": "Upload property images. The first image will be used as the cover.",
+        "invalidFile": "File type not accepted.",
+        "invalidFileType": "File type not accepted. Please upload an image.",
+        "uploadImages": "Upload Images",
+        "cover": "Cover",
+        "image": "Image"
+      },
+      "uploading": {
+        "title": "Uploading images...",
+        "description": "Please don't close this window while your images are being uploaded."
+      },
+      "success": {
+        "title": "Images uploaded successfully",
+        "description": "Your property images have been added and are ready to be shown in the mobile app.",
+        "imagesUploaded": "{{count}} images uploaded",
+        "imagesUploaded_one": "{{count}} image uploaded",
+        "imagesUploaded_other": "{{count}} images uploaded"
+      }
+    },
+    "messages": {
+      "imagesAssignedError": "Failed to assign images",
+      "imagesAssignedSuccess": "Images assigned successfully"
+    },
+    "images": {
+      "title": "Images",
+      "cover": "Cover",
+      "noImagesUploadedYet": "No images uploaded yet"
+    },
+    "title": "Apartments",
+    "subtitle": "Manage and configure the apartments available within the property.",
+    "createBtn": "Create Apartment",
+    "searchPlaceholder": "Search by apartment's name",
+    "export": "Export",
+    "tabs": {
+      "published": "Published",
+      "draft": "Draft"
+    },
+    "table": {
+      "nameEn": "Apartment Name (EN)",
+      "nameIt": "Apartment Name (IT)",
+      "building": "Building",
+      "pricePerNight": "Price / Night",
+      "actions": "Actions",
+      "status": "Status"
+    },
+    "actions": {
+      "deleteTitle": "Delete Apartment",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone.",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "publishTitle": "Publish Apartment",
+      "publishDesc1": "Are you sure you want to publish",
+      "publishDesc2": "This will make the apartment visible to guests.",
+      "publish": "Publish",
+      "addDevice": "Add device",
+      "addImages": "Add images"
+    },
+    "form": {
+      "addApartment": "Add Apartment",
+      "editApartment": "Edit Apartment",
+      "confirmReservation": "Confirm Reservation",
+      "chooseFeatures": "Choose the apartment features",
+      "chooseFeaturesDesc": "Choose the amenities provided by your property, including facilities, services, and conveniences available to guests",
+      "nameEn": "Apartment Name (EN)",
+      "nameEnPlaceholder": "Enter name in English",
+      "nameIt": "Apartment Name (IT)",
+      "nameItPlaceholder": "Enter name in Italian",
+      "descriptionEn": "Description (EN)",
+      "descriptionEnPlaceholder": "Enter description in English",
+      "descriptionIt": "Description (IT)",
+      "descriptionItPlaceholder": "Enter description in Italian",
+      "maxAvailable": "Max Available",
+      "maxAvailablePlaceholder": "e.g. 5",
+      "pricePerNight": "Price Per Night",
+      "pricePerNightPlaceholder": "e.g. 120",
+      "building": "Building",
+      "buildingPlaceholder": "Select a building",
+      "bathrooms": "Number of Bathrooms",
+      "beds": "Number of Beds",
+      "rooms": "Number of Rooms",
+      "children": "Number of Children",
+      "steps": {
+        "basicInfo": "Basic Information",
+        "basicInfoDesc": "Please fill in the apartment's essential details to continue with the add apartment",
+        "basicInfoTitle": "Apartment Information",
+        "details": "Apartment Details",
+        "detailsDesc": "Enter the essential characteristics of your property to help guests understand the accommodation",
+        "detailsTitle": "Apartment Specifications",
+        "amenities": "Amenities",
+        "amenitiesDesc": "Choose the amenities provided by your property, including facilities, services, and conveniences available to guests",
+        "review": "Review & Complete",
+        "reviewDesc": "Check the apartment details before finalizing. You can go back to make changes if needed.",
+        "reviewTitle": "Review & Confirm Apartment"
+      },
+      "success": {
+        "savedAsDraft": "Apartment saved as draft",
+        "savedAsDraftDesc": "Your apartment has been saved as a draft. You can continue adding images, devices, or other details now, or come back later to finish and publish it.",
+        "later": "Later",
+        "addDevices": "Add Devices",
+        "addImages": "Add Images"
+      }
+    },
+    "schema": {
+      "apartmentRequired": "Apartment is required",
+      "blockPeriodRequired": "Block period is required"
+    },
+    "devices": {
+      "title": "Devices",
+      "addDevice": "Add Device",
+      "addTitle": "Add Devices",
+      "addSubtitle": "Select the devices available in the apartment",
+      "addSubmit": "Add Devices",
+      "editTitle": "Edit Device",
+      "editSubmit": "Save Edits",
+      "noDevicesYet": "No devices added yet",
+      "deviceNameEn": "Device Name (EN)",
+      "deviceNameIt": "Device Name (IT)",
+      "deviceType": "Device Type",
+      "link": "Link",
+      "url": "URL",
+      "urlPlaceholder": "URL",
+      "device": "Devices",
+      "devicePlaceholder": "Select Device",
+      "names": "Device Names",
+      "namePlaceholder": "Name",
+      "reorderName": "Reorder device name",
+      "addName": "Add Device Name",
+      "fetchError": "Failed to fetch devices",
+      "addSuccess": "Device added successfully",
+      "addError": "Failed to add device",
+      "updateSuccess": "Device updated successfully",
+      "updateError": "Failed to update device",
+      "deleteTitle": "Delete Device",
+      "deleteDesc1": "Are you sure you want to delete",
+      "deleteDesc2": "This action cannot be undone."
+    }
+  },
+  "properties": {
+    "apartments": {
+      "title": "Apartments",
+      "details": "Apartment Details"
+    }
+  },
+  "reservations": {
+    "page": {
+      "settingTitle": "Setting",
+      "settingSubtitle": "Easily manage check-ins and check-outs time and the blocking"
+    },
+    "globalTimeSettings": "Global Time",
+    "form": {
+      "checkInTime": "Check-In Time",
+      "checkOutTime": "Check-Out Time",
+      "cancel": "Cancel",
+      "blockApartment": "Block Apartment",
+      "save": "Save Change",
+      "apartmentLabel": "Apartment",
+      "apartmentPlaceholder": "Choose an apartment",
+      "blockPeriodLabel": "Block Period",
+      "blockPeriodPlaceholder": "Pick a date range"
+    },
+    "ApartmentBlockSettings": "Apartment Block",
+    "schema": {
+      "checkInTimeRequired": "Check-In Time is required",
+      "checkOutTimeRequired": "Check-Out Time is required",
+      "ApartmentBlockSettings": "Apartment Block Settings",
+      "globalTimeSettings": "Global Time Settings",
+      "page": {
+        "settingTitle": "Reservation Settings",
+        "settingSubtitle": "Configure check-in/out times and apartment blocking rules."
+      },
+      "form": {
+        "apartmentLabel": "Apartment",
+        "apartmentPlaceholder": "Select apartment",
+        "blockPeriodLabel": "Block Period",
+        "blockPeriodPlaceholder": "Select block period",
+        "cancel": "Cancel",
+        "blockApartment": "Block Apartment",
+        "checkInTime": "Check-In Time",
+        "checkOutTime": "Check-Out Time",
+        "save": "Save"
+      },
+      "schema": {
+        "checkInTimeRequired": "Check-in time is required",
+        "checkOutTimeRequired": "Check-out time is required"
+      }
+    },
+    "apartments": {
+      "schema": {
+        "apartmentRequired": "Apartment is required",
+        "blockPeriodRequired": "Block period is required"
+      }
+    }
+  },
+  "items": {
+    "title": "Items",
+    "subtitle": "Define and categorize the different types of items available in packages.",
+    "createBtn": "Create Item",
+    "table": {
+      "image": "Image",
+      "nameEn": "Item Name (EN)",
+      "nameIt": "Item Name (IT)",
+      "price": "Price",
+      "actions": "Actions"
+    },
+    "searchPlaceholder": "Search by item's name",
+    "export": "Export",
+    "form": {
+      "titleCreate": "Create Item",
+      "titleEdit": "Edit Item",
+      "submitCreate": "Create",
+      "submitUpdate": "Save edits"
+    },
+    "validation": {
+      "ImageRequired": "An image is required",
+      "PriceRequired": "Price is required",
+      "PriceInvalid": "Enter a valid price with up to two decimal places",
+      "PriceNegative": "Price cannot be negative"
+    },
+    "actions": {
+      "deleteTitle": "Delete Item",
+      "deleteDesc1": "Are you sure you want to delete this item?",
+      "createSuccess": "Item created successfully",
+      "updateSuccess": "Item updated successfully",
+      "deleteSuccess": "Item deleted successfully",
+      "subtitle": "Manage items available in your services.",
+      "createBtn": "Add Item",
+      "searchPlaceholder": "Search by item name",
+      "export": "Export",
+      "table": {
+        "image": "Image",
+        "nameEn": "Name (EN)",
+        "nameIt": "Name (IT)",
+        "price": "Price",
+        "actions": "Actions",
+        "empty": "No items found."
+      },
+      "actions": {
+        "deleteTitle": "Delete Item",
+        "deleteDesc1": "Are you sure you want to delete",
+        "deleteDesc2": "This action cannot be undone.",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      },
+      "form": {
+        "titleCreate": "Add Item",
+        "titleEdit": "Edit Item",
+        "submitCreate": "Create",
+        "submitUpdate": "Update"
+      }
+    },
+    "item": {
+      "form": {
+        "nameEn": "Name (EN)",
+        "nameEnPlaceholder": "Enter item name in English",
+        "nameIt": "Name (IT)",
+        "nameItPlaceholder": "Enter item name in Italian",
+        "price": "Price",
+        "pricePlaceholder": "Enter item price"
+      }
+    },
+    "devices": {
+      "controlLinks": "Control Links",
+      "searchPlaceholder": "Search by device name",
+      "page": {
+        "title": "Devices",
+        "subtitle": "Manage smart devices and control links."
+      },
+      "tabs": {
+        "devices": "Devices",
+        "controlDevices": "Control Devices"
+      },
+      "actions": {
+        "createDevice": "Add Device",
+        "createNewLink": "New Control Link",
+        "deleteTitle": "Delete Device",
+        "deleteDesc1": "Are you sure you want to delete",
+        "deleteDesc2": "This action cannot be undone.",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      },
+      "table": {
+        "apartment": "Apartment",
+        "Building": "Building",
+        "AvailableFrom": "Available From",
+        "AvailableUntil": "Available Until",
+        "status": "Status",
+        "actions": "Actions",
+        "empty": "No devices found."
+      },
+      "form": {
+        "editTitle": "Edit Device",
+        "createTitle": "Add Device",
+        "nameEn": "Name (EN)",
+        "nameEnPlaceholder": "Enter device name in English",
+        "nameIt": "Name (IT)",
+        "nameItPlaceholder": "Enter device name in Italian",
+        "type": "Device Type",
+        "typePlaceholder": "Select device type"
+      },
+      "controlLink": {
+        "editTitle": "Edit Control Link",
+        "createTitle": "Add Control Link",
+        "submitEdit": "Update",
+        "submitCreate": "Create",
+        "deleteTitle": "Delete Control Link",
+        "deleteDesc1": "Are you sure you want to delete",
+        "deleteDesc2": "This action cannot be undone.",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "buildingRequired": "Building is required",
+        "apartmentRequired": "Apartment is required",
+        "startDateRequired": "Start date is required",
+        "startTimeRequired": "Start time is required",
+        "endDateRequired": "End date is required",
+        "endTimeRequired": "End time is required"
+      },
+      "schema": {
+        "nameEnRequired": "Device name in English is required",
+        "nameItRequired": "Device name in Italian is required",
+        "typeRequired": "Device type is required"
+      }
+    },
+    "packages": {
+      "table": {
+        "nameEn": "Package Name (EN)",
+        "nameIt": "Package Name (IT)",
+        "itemsCount": "Item"
+      },
+      "searchPlaceholder": "Search by package’s name",
+      "title": "Packages",
+      "subtitle": "Define and categorize the different types of items available in packages.",
+      "createBtn": "Create Package",
+      "form": {
+        "titleEdit": "Edit Package",
+        "titleCreate": "Create Package",
+        "submitUpdate": "Save edits",
+        "submitCreate": "Create",
+        "nameEn": "Package Name (EN)",
+        "nameEnPlaceholder": "Name En",
+        "nameIt": "Package Name (IT)",
+        "nameItPlaceholder": "Name It",
+        "descriptionEn": "Package Description (EN)",
+        "descriptionEnPlaceholder": "Enter description in English",
+        "descriptionIt": "Package Description (IT)",
+        "descriptionItPlaceholder": "Enter description in Italy",
+        "price": "Package Price",
+        "priceHelperText": "The package price will be calculated based on the price of each item included",
+        "itemsTypeAll": "All items included",
+        "itemsTypeSelect": "Allow customer to select items",
+        "itemsLabel": "Items",
+        "selectItemPlaceholder": "Select an item",
+        "addItem": "Add Item"
+      }
+    },
+    "package": {
+      "form": {
+        "nameEn": "Package Name (EN)",
+        "nameEnPlaceholder": "Name En",
+        "nameIt": "Package Name (IT)",
+        "nameItPlaceholder": "Name It",
+        "price": "Package Price",
+        "pricePlaceholder": "Enter price"
+      }
+    }
+  },
+  "packages": {
+    "table": {
+      "nameEn": "Package Name (EN)",
+      "nameIt": "Package Name (IT)",
+      "itemsCount": "Item"
+    },
+    "searchPlaceholder": "Search by package’s name",
+    "title": "Packages",
+    "subtitle": "Define and classify the different types of items available in packages.",
+    "createBtn": "Create Package",
+    "form": {
+      "titleEdit": "Create Package",
+      "titleCreate": "Create Package",
+      "submitUpdate": "Save Edits",
+      "submitCreate": "Create",
+      "nameEn": "Package Name (EN)",
+      "nameEnPlaceholder": "Name En",
+      "nameIt": "Package Name (IT)",
+      "nameItPlaceholder": "Name It",
+      "descriptionEn": "Package Description (EN)",
+      "descriptionEnPlaceholder": "Enter description in English",
+      "descriptionIt": "Package Description (IT)",
+      "descriptionItPlaceholder": "Enter description in Italy",
+      "price": "Package Price",
+      "priceHelperText": "The package price will be calculated based on the price of each item included",
+      "itemsTypeAll": "All items included",
+      "itemsTypeSelect": "Allow customer to select items",
+      "itemsLabel": "Items",
+      "selectItemPlaceholder": "Select an item",
+      "addItem": "Add Item",
+      "itemsError": "Failed to load available items.",
+      "itemsLoading": "Loading items...",
+      "itemsEmpty": "No items available"
+    },
+    "actions": {
+      "deleteTitle": "Delete Package ",
+      "deleteDesc1": "Are you sure you want to delete aaaaab from Package Item?"
+    },
+    "details": "Package Details",
+    "price": "Package Price",
+    "items": "Items",
+    "detailsSection": "Details",
+    "nameIt": "Package Name (IT)",
+    "descriptionIt": "Package Description (IT)",
+    "descriptionEn": "Package Description (EN)",
+    "includedItems": "Included items",
+    "nameEn": "Package Name (EN)"
+  },
+  "item": {
+    "form": {
+      "nameEn": "tem Name (EN)",
+      "nameEnPlaceholder": "Name En",
+      "nameIt": "Item Name (IT)",
+      "nameItPlaceholder": "Name It",
+      "price": "Item Price",
+      "pricePlaceholder": "Enter price"
+    }
+  },
+  "form": {
+    "nameEn": "Package Name (EN)",
+    "nameEnPlaceholder": "Name EN",
+    "nameIt": "Package Name (IT)",
+    "nameItPlaceholder": "Name IT",
+    "price": "Package Price",
+    "pricePlaceholder": "Enter price",
+    "smartGuide": {
+      "title": "Smart Guide",
+      "subtitle": "Manage Smart Guide content to ensure users receive clear, timely, and relevant guidance throughout their journey.",
+      "createBtn": "Add Smart Guide",
+      "searchPlaceholder": "Search smart guides...",
+      "export": "Export",
+      "table": {
+        "titleEn": "Title (EN)",
+        "titleIt": "Title (IT)",
+        "descriptionEn": "Description (EN)",
+        "descriptionIt": "Description (IT)",
+        "order": "Order",
+        "actions": "Actions"
+      },
+      "form": {
+        "titleCreate": "Add Smart Guide",
+        "titleEdit": "Edit Smart Guide",
+        "submit": "Save",
+        "video": "Upload Video",
+        "titleEn": "Title (EN)",
+        "titleIt": "Title (IT)",
+        "titleEnPlaceholder": "Full Name",
+        "titleItPlaceholder": "Email",
+        "descriptionEn": "Description (EN)",
+        "descriptionIt": "Description (IT)",
+        "descriptionEnPlaceholder": "Enter description in English",
+        "descriptionItPlaceholder": "Enter description in Italy",
+        "thumbnail": "Thumbnail ",
+        "thumbnailHelper": "Upload a thumbnail image for the video",
+        "currentVideo": "Current Video",
+        "currentThumbnail": "Current Thumbnail",
+        "uploaded": "Already uploaded",
+        "validation": {
+          "titleEnRequired": "English title is required",
+          "titleItRequired": "Italian title is required"
+        }
+      },
+      "actions": {
+        "deleteTitle": "Delete Smart Guide?",
+        "deleteDesc": "Are you sure you want to delete this smart guide? This action cannot be undone.",
+        "deleteSuccess": "Smart Guide deleted successfully",
+        "delete": "Delete",
+        "edit": "Edit",
+        "cancel": "Cancel"
+      },
+      "view": {
+        "title": "Smart Guide Details",
+        "details": "Details",
+        "titleEn": "Title (EN)",
+        "titleIt": "Title (IT)",
+        "descriptionEn": "Description (EN)",
+        "descriptionIt": "Description (IT)"
+      }
+    }
+  },
+  "smartGuide": {
+    "title": "Smart Guide",
+    "subtitle": "Manage Smart Guide content to ensure users receive clear, timely, and relevant guidance throughout their journey.",
+    "createBtn": "Add Smart Guide",
+    "table": {
+      "titleEn": "Title (EN)",
+      "titleIt": "Title (IT)",
+      "descriptionEn": "Description (EN)",
+      "descriptionIt": "Description (IT)",
+      "actions": "Actions"
+    },
+    "searchPlaceholder": "Search by title",
+    "export": "Export",
+    "actions": {
+      "deleteTitle": "Delete Smart Guide",
+      "deleteDesc": "Are you sure you want to delete this smart guide?",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "deleteSuccess": "Smart Guide deleted successfully"
+    },
+    "view": {
+      "title": "Smart Guide Details",
+      "titleEn": "Title (EN)",
+      "titleIt": "Title (IT)",
+      "details": "Details",
+      "descriptionEn": "Description (EN)",
+      "descriptionIt": "Description (IT)"
+    },
+    "form": {
+      "titleEdit": "Edit Smart Guide",
+      "titleCreate": "Add Smart Guide",
+      "submit": "Save",
+      "video": "Upload Video",
+      "currentVideo": "Current Video",
+      "uploaded": "Already uploaded",
+      "titleEn": "Title (EN)",
+      "titleEnPlaceholder": "Enter Title (EN)",
+      "titleIt": "Title (IT)",
+      "titleItPlaceholder": "Enter Title (IT)",
+      "descriptionEn": "Description (EN)",
+      "descriptionEnPlaceholder": "Enter description in English",
+      "descriptionIt": "Description (IT)",
+      "descriptionItPlaceholder": "Enter description in Italy",
+      "thumbnail": "Thumbnail",
+      "currentThumbnail": "Current Thumbnail",
+      "thumbnailHelper": "Upload a thumbnail image for the video",
+      "validation": {
+        "titleEnRequired": "English title is required",
+        "titleItRequired": "Italian title is required"
+      }
+    }
+  }
+}

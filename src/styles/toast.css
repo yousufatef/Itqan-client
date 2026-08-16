@@ -1,0 +1,51 @@
+/* luca-stay Design System — Snackbar / Toaster (Figma Foundations) */
+
+[data-sonner-toaster] {
+  --width: 358px;
+}
+
+[data-sonner-toast][data-styled='false'] {
+  display: flex;
+  align-items: flex-start;
+  background-color: var(--white);
+}
+
+[data-sonner-toast][data-styled='false'][data-type='success'] {
+  background-color: var(--success-50);
+}
+
+[data-sonner-toast][data-styled='false'][data-type='error'] {
+  background-color: var(--error-50);
+}
+
+[data-sonner-toast][data-styled='false'][data-type='warning'] {
+  background-color: var(--accent-50);
+}
+
+[data-sonner-toast][data-styled='false'][data-type='info'],
+[data-sonner-toast][data-styled='false'][data-type='default'],
+[data-sonner-toast][data-styled='false'][data-type='loading'],
+[data-sonner-toast][data-styled='false'][data-type='normal'] {
+  background-color: var(--white);
+}
+
+[data-sonner-toast][data-styled='false'] [data-icon] {
+  order: 1;
+}
+
+[data-sonner-toast][data-styled='false'] [data-content] {
+  order: 2;
+}
+
+[data-sonner-toast][data-styled='false'] [data-close-button] {
+  order: 3;
+}
+
+[data-sonner-toast][data-styled='false'] [data-button][data-action] {
+  order: 4;
+  margin-inline-start: auto;
+}
+
+[data-sonner-toast][data-styled='false'] [data-button][data-cancel] {
+  order: 5;
+}

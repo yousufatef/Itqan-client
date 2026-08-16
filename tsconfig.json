@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "5.0",
+    "paths": {
+      "@/components/forms": ["./src/components/forms/index.ts"],
+      "@/components/forms/*": ["./src/components/forms/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+}

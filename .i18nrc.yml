@@ -1,0 +1,11 @@
+localesPaths:
+  - src/i18n/locales
+pathMatcher: '{locale}.json'
+namespace: false
+keystyle: nested
+dirStructure: file
+sourceLanguage: en
+displayLanguage: en
+enabledFrameworks:
+  - i18next
+  - react

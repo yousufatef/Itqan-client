@@ -36,7 +36,7 @@ export default function EditModal({
   title,
   children,
   submitLabel,
-  cancelLabel = 'Cancel',
+  cancelLabel = 'إلغاء',
   formId,
   className,
   contentClassName,
@@ -118,9 +118,9 @@ export default function EditModal({
                 <Button
                   form={formId}
                   disabled={isLoading || !isValid}
-                  className='bg-primary-500 hover:bg-primary-600 h-12 text-neutral-900'
+                  className='bg-primary-500 hover:bg-primary-600 h-12 text-white'
                 >
-                  {isLoading ? <Spinner /> : submitLabel || 'Create'}
+                  {isLoading ? <Spinner /> : submitLabel || 'حفظ'}
                 </Button>
               </div>
             )}

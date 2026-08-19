@@ -42,32 +42,39 @@ function CustomSearchBar({
   const searchValue = (value ?? internalValue) || searchParams.get(searchParamName) || '';
 
   React.useEffect(() => {
-    if (!onFilterChange) return;
-
     const timeoutId = window.setTimeout(() => {
       const trimmedValue = searchValue.trim();
 
-      onFilterChange({
-        [searchParamName]: trimmedValue || undefined,
-      });
+      if (onFilterChange) {
+        onFilterChange({
+          [searchParamName]: trimmedValue || undefined,
+        });
+      }
+
+      if (searchParamName && searchParams.get(searchParamName) !== trimmedValue) {
+        const newSearchParams = new URLSearchParams(searchParams);
+
+        if (trimmedValue) {
+          newSearchParams.set(searchParamName, trimmedValue);
+        } else {
+          newSearchParams.delete(searchParamName);
+        }
+
+        newSearchParams.set('pageNumber', '1');
+        setSearchParams(newSearchParams);
+      }
     }, debounceMs);
 
     return () => window.clearTimeout(timeoutId);
-  }, [debounceMs, onFilterChange, searchParamName, searchValue]);
+  }, [debounceMs, onFilterChange, searchParamName, searchParams, searchValue, setSearchParams]);
 
   const updateValue = (nextValue: string) => {
     if (value === undefined) setInternalValue(nextValue);
     onValueChange?.(nextValue);
 
-    if (searchParamName) {
+    if (!nextValue && searchParamName) {
       const newSearchParams = new URLSearchParams(searchParams);
-
-      if (nextValue) {
-        newSearchParams.set(searchParamName, nextValue);
-      } else {
-        newSearchParams.delete(searchParamName);
-      }
-
+      newSearchParams.delete(searchParamName);
       newSearchParams.set('pageNumber', '1');
       setSearchParams(newSearchParams);
     }

@@ -25,8 +25,8 @@ const PasswordChangedPage = lazy(
   () => import('@/modules/auth/pages/password-changed/PasswordChangedPage'),
 );
 
-const UsersPage = lazy(() => import('@/modules/users/pages/UsersPage'));
-const StudentsPage = lazy(() => import('@/modules/students/pages/StudentsPage'));
+const UsersPage = lazy(() => import('@/modules/users/UsersPage'));
+const StudentsPage = lazy(() => import('@/modules/students/StudentsPage'));
 const CirclesPage = lazy(() => import('@/modules/circles/pages/CirclesPage'));
 
 const PageLoader = () => <MainLoader className='min-h-dvh' />;

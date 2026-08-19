@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Logo from '@/assets/svgs/Logo.svg';
+import Logo from '@/assets/svgs/itqan-logo-white-bg.svg';
 
 type AuthPageShellProps = {
   title: string;

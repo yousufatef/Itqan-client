@@ -1,5 +1,6 @@
 export { default as CustomSidebar } from '../../layout/sidebar/SidebarLayout';
 export { default as CustomDateRangeFilter } from './CustomDateRangeFilter';
+export { default as CustomSelectorFilter } from './CustomFilter';
 export { default as CustomSearchBar } from './CustomSearchBar';
 export { default as CustomTable } from './CustomTable';
 export { default as CustomUserMenuAvatar } from './CustomUserMenuAvatar';

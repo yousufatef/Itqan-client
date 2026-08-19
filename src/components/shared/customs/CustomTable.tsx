@@ -32,7 +32,7 @@ type CustomTableProps<TData> = {
 function CustomTable<TData>({
   columns,
   data,
-  emptyMessage = 'No records found.',
+  emptyMessage = 'لا يوجد بيانات لعرضها',
   className,
   dir,
   rowClassName,

@@ -1,7 +1,7 @@
 import { Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Logo from '@/assets/svgs/itqan-logo-without-bg.png';
+import Logo from '@/assets/svgs/itqan-logo-white-bg.svg';
 import { useSidebar } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
@@ -19,7 +19,7 @@ function MobileHeader({ className }: MobileHeaderProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 flex h-[88px] shrink-0 items-center justify-between rounded-b-2xl bg-white px-6 shadow-[0_4px_16px_rgba(0,0,0,0.06)]',
+        'sticky top-0 z-40 flex h-22 shrink-0 items-center justify-between rounded-b-2xl bg-white px-6 shadow-[0_4px_16px_rgba(0,0,0,0.06)]',
         className,
       )}
     >
@@ -31,7 +31,7 @@ function MobileHeader({ className }: MobileHeaderProps) {
         <img
           src={Logo}
           alt='ITQAN'
-          className='h-[23px] w-[137px] object-contain'
+          className='h-12 w-55 bg-transparent object-contain'
         />
       </Link>
 

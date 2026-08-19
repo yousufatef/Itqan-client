@@ -1,7 +1,6 @@
-import Logo from '@/assets/svgs/Logo.svg';
+import Logo from '@/assets/svgs/itqan-logo-white-bg.svg';
 import { Spinner } from '@/components/ui/spinner';
 import { cn } from '@/lib/utils';
-import { useTranslation } from 'react-i18next';
 
 type MainLoaderProps = {
   className?: string;
@@ -9,8 +8,6 @@ type MainLoaderProps = {
 };
 
 const MainLoader = ({ className, showLogo = true }: MainLoaderProps) => {
-  const { t } = useTranslation();
-
   return (
     <div
       className={cn(
@@ -29,7 +26,7 @@ const MainLoader = ({ className, showLogo = true }: MainLoaderProps) => {
 
         <Spinner className='size-10' />
 
-        <p className='type-body-md text-neutral-400'>{t('common.loading')}</p>
+        <p className='type-body-md text-neutral-400'>جاري التحميل</p>
       </div>
     </div>
   );

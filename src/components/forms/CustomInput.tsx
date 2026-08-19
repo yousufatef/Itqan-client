@@ -6,6 +6,7 @@ import FieldLayout from './FieldLayout';
 import { formFieldStyles } from './form-field.styles';
 import type { FieldBaseProps } from './field.types';
 import type { FieldValues } from 'react-hook-form';
+import { useDirection } from '@/i18n/useDirection';
 
 export type CustomInputProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   React.ComponentProps<typeof Input>,
@@ -36,6 +37,7 @@ function CustomInput<TFieldValues extends FieldValues = FieldValues>({
   onChange,
   ...props
 }: CustomInputProps<TFieldValues>) {
+  const dir = useDirection();
   const generatedId = React.useId();
   const inputId = id ?? generatedId;
 
@@ -55,7 +57,7 @@ function CustomInput<TFieldValues extends FieldValues = FieldValues>({
       {(field, fieldState) => (
         <div className='relative'>
           {startIcon ? (
-            <span className='pointer-events-none absolute top-1/2 left-4 z-10 -translate-y-1/2 text-neutral-400'>
+            <span className='pointer-events-none absolute top-1/2 ltr:left-4 rtl:right-4 z-10 -translate-y-1/2 text-neutral-400'>
               {startIcon}
             </span>
           ) : null}
@@ -63,10 +65,11 @@ function CustomInput<TFieldValues extends FieldValues = FieldValues>({
             aria-invalid={fieldState.invalid}
             className={cn(
               formFieldStyles.control,
-              startIcon && 'ps-11!',
+              startIcon && 'ltr:ps-11! rtl:pe-11!',
               inputClassName,
               className,
             )}
+            dir={dir}
             id={inputId}
             {...props}
             {...field}

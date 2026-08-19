@@ -59,7 +59,7 @@ export default function MainHeader({
               type='button'
               onClick={onPrimaryClick}
               disabled={isPrimaryLoading}
-              className='type-body-md! bg-primary-500 hover:bg-primary-600 focus:ring-primary-500 min-h-12 w-fit border-0 px-4 py-3.5 text-neutral-900 focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'
+              className='type-body-md! bg-primary-500 hover:bg-primary-600 focus:ring-primary-500 min-h-12 w-fit border-0 px-4 py-3.5 text-white focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'
             >
               {isPrimaryLoading ? <Spinner /> : primaryLabel}
             </Button>

@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar';
 import ConfirmDialog from '@/components/shared/customs/CustomConfirmDialog';
@@ -34,14 +34,13 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
       <Sidebar
         collapsible='offcanvas'
         side={side}
-        style={{ '--sidebar-width': '240px' } as CSSProperties}
         className='border-0 bg-transparent **:data-[slot=sidebar-inner]:overflow-hidden **:data-[slot=sidebar-inner]:border-0 **:data-[slot=sidebar-inner]:bg-white'
       >
         <SidebarHeader className='border-b px-4 pt-8 pb-6 mb-8'>
           <div className='flex items-center justify-center'>
             <img
               alt='ITQAN'
-              className='h-14 w-[250px] object-contain'
+              className='h-24 w-full max-w-70 bg-transparent object-contain'
               src={Logo}
             />
           </div>
@@ -108,7 +107,6 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
         onConfirm={handleLogout}
         onCancel={() => setLogoutOpen(false)}
         loading={isLoading}
-        mode='destructive'
         className='sm:max-w-86.5'
       />
     </>

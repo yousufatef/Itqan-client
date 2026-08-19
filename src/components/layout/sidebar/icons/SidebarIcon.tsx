@@ -75,6 +75,47 @@ const SidebarIcon = ({ name, fill = 'currentColor', stroke, className = '' }: Ic
       </defs>
     </svg>
     ),
+    users: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 21V19C16 16.7909 14.2091 15 12 15H6C3.79086 15 2 16.7909 2 19V21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M22 21V19C22 17.1362 20.7252 15.5701 19 15.126" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16 3.12891C17.7252 3.57193 19 5.13812 19 7.00195C19 8.86579 17.7252 10.432 16 10.875" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+
+    students: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9L12 4L21 9L12 14L3 9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6 11V16C6 18.2091 8.68629 20 12 20C15.3137 20 18 18.2091 18 16V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M21 9V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="21" cy="17" r="1" fill="currentColor" />
+      </svg>
+    ),
+
+    circles: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 6.5C10.8 5.55 9.35 5 7.75 5C6.32 5 4.95 5.44 4 6.2V19C5.1 18.3 6.4 18 7.75 18C9.35 18 10.8 18.55 12 19.5M12 6.5C13.2 5.55 14.65 5 16.25 5C17.68 5 19.05 5.44 20 6.2V19C18.9 18.3 17.6 18 16.25 18C14.65 18 13.2 18.55 12 19.5M12 6.5V19.5"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7 9H9M7 12H9M15 9H17M15 12H17"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
     financial: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_1933_32596)">
         <path d="M4 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

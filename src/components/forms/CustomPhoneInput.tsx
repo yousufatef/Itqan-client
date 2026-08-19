@@ -14,12 +14,14 @@ const normalizePhoneValue = (value: string) => {
 function CustomPhoneInput<TFieldValues extends FieldValues = FieldValues>({
   onBlur,
   onChange,
+  inputClassName,
   ...props
 }: CustomPhoneInputProps<TFieldValues>) {
   return (
     <CustomInput
       autoComplete='tel'
       inputMode='tel'
+      inputClassName={inputClassName}
       onBlur={(event) => {
         event.currentTarget.value = trimStringValues(
           normalizePhoneValue(event.currentTarget.value),

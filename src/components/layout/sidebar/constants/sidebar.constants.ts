@@ -14,10 +14,10 @@ export function getMainNavSection(t: TFunction): SidebarNavSection {
         end: true,
       },
       {
-        type: 'link', key: 'students', title: t('sidebar.nav.students'), href: '/students', icon: 'users',
+        type: 'link', key: 'students', title: t('sidebar.nav.students'), href: '/students', icon: 'students',
       },
       {
-        type: 'link', key: 'circles', title: t('sidebar.nav.circles'), href: '/circles', icon: 'buildings',
+        type: 'link', key: 'circles', title: t('sidebar.nav.circles'), href: '/circles', icon: 'circles',
       },
     ],
   };

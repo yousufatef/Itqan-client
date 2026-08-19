@@ -7,8 +7,8 @@ export default function AccessDeniedPage() {
   return (
     <section className='flex size-full flex-col items-center justify-center bg-transparent'>
       {/* <img
-        src={luca-stayLogo}
-        alt='luca-stay Logo'
+        src={itqanLogo}
+        alt='itqan Logo'
         className='mb-8 h-11 w-40 items-center sm:h-10 sm:w-44'
       /> */}
       <h1 className='type-heading-xl mb-2'>{t('pages.errors.accessDenied')}</h1>

@@ -21,7 +21,7 @@ export default function MainHeader({
   subtitle,
   actions,
   primaryLabel,
-  secondaryLabel = 'Export',
+  secondaryLabel = 'تصدير',
   onPrimaryClick,
   onSecondaryClick,
   showPrimaryButton = false,

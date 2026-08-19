@@ -32,6 +32,7 @@ function AppLayout() {
   return (
     <TooltipProvider>
       <SidebarProvider
+        dir='rtl'
         style={
           {
             '--sidebar-width': '220px',

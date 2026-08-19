@@ -1,4 +1,4 @@
-/* Luca Design System - color tokens (primitive + semantic + compatibility). */
+/* Itqan Design System - color tokens (primitive + semantic + compatibility). */
 
 :root {
   /* ---------- Primitive palettes (source of truth) ---------- */
@@ -105,82 +105,82 @@
   --color-black: var(--black);
 
   /* Tailwind theme bridge tokens (non-circular source for @theme inline) */
-  --luca-primary-50: var(--color-primary-50);
-  --luca-primary-100: var(--color-primary-100);
-  --luca-primary-200: var(--color-primary-200);
-  --luca-primary-300: var(--color-primary-300);
-  --luca-primary-400: var(--color-primary-400);
-  --luca-primary-500: var(--color-primary-500);
-  --luca-primary-600: var(--color-primary-600);
-  --luca-primary-700: var(--color-primary-700);
-  --luca-primary-800: var(--color-primary-800);
-  --luca-primary-900: var(--color-primary-900);
+  --itqan-primary-50: var(--color-primary-50);
+  --itqan-primary-100: var(--color-primary-100);
+  --itqan-primary-200: var(--color-primary-200);
+  --itqan-primary-300: var(--color-primary-300);
+  --itqan-primary-400: var(--color-primary-400);
+  --itqan-primary-500: var(--color-primary-500);
+  --itqan-primary-600: var(--color-primary-600);
+  --itqan-primary-700: var(--color-primary-700);
+  --itqan-primary-800: var(--color-primary-800);
+  --itqan-primary-900: var(--color-primary-900);
 
-  --luca-neutral-50: var(--color-neutral-50);
-  --luca-neutral-100: var(--color-neutral-100);
-  --luca-neutral-200: var(--color-neutral-200);
-  --luca-neutral-300: var(--color-neutral-300);
-  --luca-neutral-400: var(--color-neutral-400);
-  --luca-neutral-500: var(--color-neutral-500);
-  --luca-neutral-600: var(--color-neutral-600);
-  --luca-neutral-700: var(--color-neutral-700);
-  --luca-neutral-800: var(--color-neutral-800);
-  --luca-neutral-900: var(--color-neutral-900);
+  --itqan-neutral-50: var(--color-neutral-50);
+  --itqan-neutral-100: var(--color-neutral-100);
+  --itqan-neutral-200: var(--color-neutral-200);
+  --itqan-neutral-300: var(--color-neutral-300);
+  --itqan-neutral-400: var(--color-neutral-400);
+  --itqan-neutral-500: var(--color-neutral-500);
+  --itqan-neutral-600: var(--color-neutral-600);
+  --itqan-neutral-700: var(--color-neutral-700);
+  --itqan-neutral-800: var(--color-neutral-800);
+  --itqan-neutral-900: var(--color-neutral-900);
 
-  --luca-success-50: var(--color-success-50);
-  --luca-success-100: var(--color-success-100);
-  --luca-success-200: var(--color-success-200);
-  --luca-success-300: var(--color-success-300);
-  --luca-success-400: var(--color-success-400);
-  --luca-success-500: var(--color-success-500);
-  --luca-success-600: var(--color-success-600);
-  --luca-success-700: var(--color-success-700);
-  --luca-success-800: var(--color-success-800);
-  --luca-success-900: var(--color-success-900);
+  --itqan-success-50: var(--color-success-50);
+  --itqan-success-100: var(--color-success-100);
+  --itqan-success-200: var(--color-success-200);
+  --itqan-success-300: var(--color-success-300);
+  --itqan-success-400: var(--color-success-400);
+  --itqan-success-500: var(--color-success-500);
+  --itqan-success-600: var(--color-success-600);
+  --itqan-success-700: var(--color-success-700);
+  --itqan-success-800: var(--color-success-800);
+  --itqan-success-900: var(--color-success-900);
 
-  --luca-error-50: var(--color-error-50);
-  --luca-error-100: var(--color-error-100);
-  --luca-error-200: var(--color-error-200);
-  --luca-error-300: var(--color-error-300);
-  --luca-error-400: var(--color-error-400);
-  --luca-error-500: var(--color-error-500);
-  --luca-error-600: var(--color-error-600);
-  --luca-error-700: var(--color-error-700);
-  --luca-error-800: var(--color-error-800);
-  --luca-error-900: var(--color-error-900);
+  --itqan-error-50: var(--color-error-50);
+  --itqan-error-100: var(--color-error-100);
+  --itqan-error-200: var(--color-error-200);
+  --itqan-error-300: var(--color-error-300);
+  --itqan-error-400: var(--color-error-400);
+  --itqan-error-500: var(--color-error-500);
+  --itqan-error-600: var(--color-error-600);
+  --itqan-error-700: var(--color-error-700);
+  --itqan-error-800: var(--color-error-800);
+  --itqan-error-900: var(--color-error-900);
 
-  --luca-information-50: var(--color-information-50);
-  --luca-information-100: var(--color-information-100);
-  --luca-information-200: var(--color-information-200);
-  --luca-information-300: var(--color-information-300);
-  --luca-information-400: var(--color-information-400);
-  --luca-information-500: var(--color-information-500);
-  --luca-information-600: var(--color-information-600);
-  --luca-information-700: var(--color-information-700);
-  --luca-information-800: var(--color-information-800);
-  --luca-information-900: var(--color-information-900);
+  --itqan-information-50: var(--color-information-50);
+  --itqan-information-100: var(--color-information-100);
+  --itqan-information-200: var(--color-information-200);
+  --itqan-information-300: var(--color-information-300);
+  --itqan-information-400: var(--color-information-400);
+  --itqan-information-500: var(--color-information-500);
+  --itqan-information-600: var(--color-information-600);
+  --itqan-information-700: var(--color-information-700);
+  --itqan-information-800: var(--color-information-800);
+  --itqan-information-900: var(--color-information-900);
 
-  --luca-warning-50: var(--color-warning-50);
-  --luca-warning-100: var(--color-warning-100);
-  --luca-warning-200: var(--color-warning-200);
-  --luca-warning-300: var(--color-warning-300);
-  --luca-warning-400: var(--color-warning-400);
-  --luca-warning-500: var(--color-warning-500);
-  --luca-warning-600: var(--color-warning-600);
-  --luca-warning-700: var(--color-warning-700);
-  --luca-warning-800: var(--color-warning-800);
-  --luca-warning-900: var(--color-warning-900);
+  --itqan-warning-50: var(--color-warning-50);
+  --itqan-warning-100: var(--color-warning-100);
+  --itqan-warning-200: var(--color-warning-200);
+  --itqan-warning-300: var(--color-warning-300);
+  --itqan-warning-400: var(--color-warning-400);
+  --itqan-warning-500: var(--color-warning-500);
+  --itqan-warning-600: var(--color-warning-600);
+  --itqan-warning-700: var(--color-warning-700);
+  --itqan-warning-800: var(--color-warning-800);
+  --itqan-warning-900: var(--color-warning-900);
 
-  --luca-accent-50: var(--color-accent-50);
-  --luca-accent-100: var(--color-accent-100);
-  --luca-accent-200: var(--color-accent-200);
-  --luca-accent-300: var(--color-accent-300);
-  --luca-accent-400: var(--color-accent-400);
-  --luca-accent-500: var(--color-accent-500);
-  --luca-accent-600: var(--color-accent-600);
-  --luca-accent-700: var(--color-accent-700);
-  --luca-accent-800: var(--color-accent-800);
-  --luca-accent-900: var(--color-accent-900);
+  --itqan-accent-50: var(--color-accent-50);
+  --itqan-accent-100: var(--color-accent-100);
+  --itqan-accent-200: var(--color-accent-200);
+  --itqan-accent-300: var(--color-accent-300);
+  --itqan-accent-400: var(--color-accent-400);
+  --itqan-accent-500: var(--color-accent-500);
+  --itqan-accent-600: var(--color-accent-600);
+  --itqan-accent-700: var(--color-accent-700);
+  --itqan-accent-800: var(--color-accent-800);
+  --itqan-accent-900: var(--color-accent-900);
 
   /* ---------- Backward-compatible aliases (existing app usage) ---------- */
 

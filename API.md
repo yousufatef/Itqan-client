@@ -1,4 +1,4 @@
-# Luca Stay Dashboard — API Reference
+# Itqan Dashboard — API Reference
 
 Complete API endpoint documentation for all modules. All paths are relative to `VITE_BASE_URL`. Authenticated requests use `Authorization: Bearer {token}` unless noted otherwise.
 

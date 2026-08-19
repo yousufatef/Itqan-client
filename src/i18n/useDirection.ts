@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 export type Direction = 'ltr' | 'rtl';
 
 export function getLanguageDirection(_language: string): Direction {
-  return 'ltr';
+  return 'rtl';
 }
 
 export function useDirection() {

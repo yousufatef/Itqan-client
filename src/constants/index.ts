@@ -1,6 +1,6 @@
-export const TOKEN = 'Luca_token';
-export const REFRESH_TOKEN = 'Luca_refresh_token';
-export const USER_VERIFIED = 'Luca_user_verified';
+export const TOKEN = 'Itqan_token';
+export const REFRESH_TOKEN = 'Itqan_refresh_token';
+export const USER_VERIFIED = 'Itqan_user_verified';
 
 export const MIN_TITLE_LENGTH = 2;
 export const MAX_TITLE_LENGTH = 100;

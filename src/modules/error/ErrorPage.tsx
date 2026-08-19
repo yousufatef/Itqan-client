@@ -12,8 +12,8 @@ export default function ErrorPage() {
     >
       <section className='flex flex-col items-center text-center'>
         {/* <img
-          src={luca-stayLogo}
-          alt='luca-stay Logo'
+          src={itqanLogo}
+          alt='itqan Logo'
           className='mb-8 h-11 w-40 sm:h-10 sm:w-44'
         /> */}
 

@@ -117,7 +117,7 @@ export default function FormHeader({
 {
   /* <FormHeader
     title="Blog Details"
-    subtitle="Edit blog content and preview how it will appear in the luca-stay app."
+    subtitle="Edit blog content and preview how it will appear in the itqan app."
     onBack={() => navigate(-1)}
     primaryLabel="Publish"
     secondaryLabel="Save as Draft"

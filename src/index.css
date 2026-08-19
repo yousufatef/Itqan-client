@@ -17,78 +17,78 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Primary Logo Colors (Blue) */
-  --luca-primary-50: #eff6ff;
-  --luca-primary-100: #dbeafe;
-  --luca-primary-200: #bfdbfe;
-  --luca-primary-300: #93c5fd;
-  --luca-primary-400: #60a5fa;
-  --luca-primary-500: #1a4f8b;
+  --itqan-primary-50: #eff6ff;
+  --itqan-primary-100: #dbeafe;
+  --itqan-primary-200: #bfdbfe;
+  --itqan-primary-300: #93c5fd;
+  --itqan-primary-400: #60a5fa;
+  --itqan-primary-500: #1a4f8b;
   /* Main Logo Blue */
-  --luca-primary-600: #1d4ed8;
-  --luca-primary-700: #1e40af;
-  --luca-primary-800: #1e3a8a;
-  --luca-primary-900: #111827;
+  --itqan-primary-600: #1d4ed8;
+  --itqan-primary-700: #1e40af;
+  --itqan-primary-800: #1e3a8a;
+  --itqan-primary-900: #111827;
   /* Near black neutral, good for dark mode bg */
 
   /* Neutral Colors (Light Gray/Cream tones from background) */
-  --luca-neutral-50: #fafaf9;
+  --itqan-neutral-50: #fafaf9;
   /* Very light cream from background */
-  --luca-neutral-100: #f5f5f4;
-  --luca-neutral-200: #e7e5e4;
-  --luca-neutral-300: #d6d3d1;
-  --luca-neutral-400: #a8a29e;
-  --luca-neutral-500: #78716c;
-  --luca-neutral-600: #57534e;
-  --luca-neutral-700: #44403c;
-  --luca-neutral-800: #292524;
-  --luca-neutral-900: #1c1917;
+  --itqan-neutral-100: #f5f5f4;
+  --itqan-neutral-200: #e7e5e4;
+  --itqan-neutral-300: #d6d3d1;
+  --itqan-neutral-400: #a8a29e;
+  --itqan-neutral-500: #78716c;
+  --itqan-neutral-600: #57534e;
+  --itqan-neutral-700: #44403c;
+  --itqan-neutral-800: #292524;
+  --itqan-neutral-900: #1c1917;
 
   /* Accent Colors (Gold) */
-  --luca-accent-50: #fffbeb;
-  --luca-accent-100: #fef3c7;
-  --luca-accent-200: #fde68a;
-  --luca-accent-300: #fcd34d;
-  --luca-accent-400: #fbbf24;
-  --luca-accent-500: #c9a05e;
+  --itqan-accent-50: #fffbeb;
+  --itqan-accent-100: #fef3c7;
+  --itqan-accent-200: #fde68a;
+  --itqan-accent-300: #fcd34d;
+  --itqan-accent-400: #fbbf24;
+  --itqan-accent-500: #c9a05e;
   /* Main Logo Gold */
-  --luca-accent-600: #d97706;
-  --luca-accent-700: #b45309;
-  --luca-accent-800: #92400e;
-  --luca-accent-900: #78350f;
+  --itqan-accent-600: #d97706;
+  --itqan-accent-700: #b45309;
+  --itqan-accent-800: #92400e;
+  --itqan-accent-900: #78350f;
 
   /* Derived System Colors */
-  --background: var(--luca-neutral-50);
+  --background: var(--itqan-neutral-50);
   /* Light background matching logo */
-  --foreground: var(--luca-neutral-900);
+  --foreground: var(--itqan-neutral-900);
   /* Dark text for contrast */
-  --card: var(--luca-neutral-100);
-  --card-foreground: var(--luca-neutral-900);
-  --popover: var(--luca-neutral-100);
-  --popover-foreground: var(--luca-neutral-900);
-  --primary: var(--luca-primary-500);
+  --card: var(--itqan-neutral-100);
+  --card-foreground: var(--itqan-neutral-900);
+  --popover: var(--itqan-neutral-100);
+  --popover-foreground: var(--itqan-neutral-900);
+  --primary: var(--itqan-primary-500);
   /* Core brand blue */
   --primary-foreground: #ffffff;
   /* White text on blue primary */
-  --secondary: var(--luca-accent-50);
+  --secondary: var(--itqan-accent-50);
   /* Subtle gold accent */
-  --secondary-foreground: var(--luca-accent-700);
+  --secondary-foreground: var(--itqan-accent-700);
   /* Darker gold text */
-  --muted: var(--luca-neutral-100);
-  --muted-foreground: var(--luca-neutral-600);
-  --accent: var(--luca-accent-100);
+  --muted: var(--itqan-neutral-100);
+  --muted-foreground: var(--itqan-neutral-600);
+  --accent: var(--itqan-accent-100);
   /* Noticeable gold accent */
-  --accent-foreground: var(--luca-accent-900);
+  --accent-foreground: var(--itqan-accent-900);
   /* Dark gold text */
   --destructive: #ef4444;
   /* Standard error red, adjust if a brand red exists */
-  --border: var(--luca-neutral-200);
-  --input: var(--luca-neutral-200);
-  --ring: var(--luca-primary-400);
+  --border: var(--itqan-neutral-200);
+  --input: var(--itqan-neutral-200);
+  --ring: var(--itqan-primary-400);
   /* Blue focus ring */
 
   /* Chart Colors (Mix of Primary Blue, Accent Gold, and standard palette) */
-  --chart-1: var(--luca-primary-500);
-  --chart-2: var(--luca-accent-500);
+  --chart-1: var(--itqan-primary-500);
+  --chart-2: var(--itqan-accent-500);
   --chart-3: #22c55e;
   /* Green */
   --chart-4: #eab308;
@@ -100,13 +100,13 @@
 
   /* Sidebar uses lighter neutral bg and blue primary accents */
   --sidebar: #ffffff;
-  --sidebar-foreground: var(--luca-neutral-900);
-  --sidebar-primary: var(--luca-primary-500);
+  --sidebar-foreground: var(--itqan-neutral-900);
+  --sidebar-primary: var(--itqan-primary-500);
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--luca-neutral-100);
-  --sidebar-accent-foreground: var(--luca-primary-600);
-  --sidebar-border: var(--luca-neutral-200);
-  --sidebar-ring: var(--luca-primary-400);
+  --sidebar-accent: var(--itqan-neutral-100);
+  --sidebar-accent-foreground: var(--itqan-primary-600);
+  --sidebar-border: var(--itqan-neutral-200);
+  --sidebar-ring: var(--itqan-primary-400);
 }
 
 * {
@@ -130,38 +130,38 @@ body {
 
 @theme inline {
   /* Palette tokens from root variables above */
-  --color-primary-50: var(--luca-primary-50);
-  --color-primary-100: var(--luca-primary-100);
-  --color-primary-200: var(--luca-primary-200);
-  --color-primary-300: var(--luca-primary-300);
-  --color-primary-400: var(--luca-primary-400);
-  --color-primary-500: var(--luca-primary-500);
-  --color-primary-600: var(--luca-primary-600);
-  --color-primary-700: var(--luca-primary-700);
-  --color-primary-800: var(--luca-primary-800);
-  --color-primary-900: var(--luca-primary-900);
+  --color-primary-50: var(--itqan-primary-50);
+  --color-primary-100: var(--itqan-primary-100);
+  --color-primary-200: var(--itqan-primary-200);
+  --color-primary-300: var(--itqan-primary-300);
+  --color-primary-400: var(--itqan-primary-400);
+  --color-primary-500: var(--itqan-primary-500);
+  --color-primary-600: var(--itqan-primary-600);
+  --color-primary-700: var(--itqan-primary-700);
+  --color-primary-800: var(--itqan-primary-800);
+  --color-primary-900: var(--itqan-primary-900);
 
-  --color-neutral-50: var(--luca-neutral-50);
-  --color-neutral-100: var(--luca-neutral-100);
-  --color-neutral-200: var(--luca-neutral-200);
-  --color-neutral-300: var(--luca-neutral-300);
-  --color-neutral-400: var(--luca-neutral-400);
-  --color-neutral-500: var(--luca-neutral-500);
-  --color-neutral-600: var(--luca-neutral-600);
-  --color-neutral-700: var(--luca-neutral-700);
-  --color-neutral-800: var(--luca-neutral-800);
-  --color-neutral-900: var(--luca-neutral-900);
+  --color-neutral-50: var(--itqan-neutral-50);
+  --color-neutral-100: var(--itqan-neutral-100);
+  --color-neutral-200: var(--itqan-neutral-200);
+  --color-neutral-300: var(--itqan-neutral-300);
+  --color-neutral-400: var(--itqan-neutral-400);
+  --color-neutral-500: var(--itqan-neutral-500);
+  --color-neutral-600: var(--itqan-neutral-600);
+  --color-neutral-700: var(--itqan-neutral-700);
+  --color-neutral-800: var(--itqan-neutral-800);
+  --color-neutral-900: var(--itqan-neutral-900);
 
-  --color-accent-50: var(--luca-accent-50);
-  --color-accent-100: var(--luca-accent-100);
-  --color-accent-200: var(--luca-accent-200);
-  --color-accent-300: var(--luca-accent-300);
-  --color-accent-400: var(--luca-accent-400);
-  --color-accent-500: var(--luca-accent-500);
-  --color-accent-600: var(--luca-accent-600);
-  --color-accent-700: var(--luca-accent-700);
-  --color-accent-800: var(--luca-accent-800);
-  --color-accent-900: var(--luca-accent-900);
+  --color-accent-50: var(--itqan-accent-50);
+  --color-accent-100: var(--itqan-accent-100);
+  --color-accent-200: var(--itqan-accent-200);
+  --color-accent-300: var(--itqan-accent-300);
+  --color-accent-400: var(--itqan-accent-400);
+  --color-accent-500: var(--itqan-accent-500);
+  --color-accent-600: var(--itqan-accent-600);
+  --color-accent-700: var(--itqan-accent-700);
+  --color-accent-800: var(--itqan-accent-800);
+  --color-accent-900: var(--itqan-accent-900);
 
   /* System token mappings */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -205,40 +205,40 @@ body {
 }
 
 .dark {
-  --background: var(--luca-neutral-950);
+  --background: var(--itqan-neutral-950);
   /* Near-black background for dark mode */
-  --foreground: var(--luca-neutral-50);
-  --card: var(--luca-neutral-900);
-  --card-foreground: var(--luca-neutral-50);
-  --popover: var(--luca-neutral-900);
-  --popover-foreground: var(--luca-neutral-50);
-  --primary: var(--luca-primary-400);
+  --foreground: var(--itqan-neutral-50);
+  --card: var(--itqan-neutral-900);
+  --card-foreground: var(--itqan-neutral-50);
+  --popover: var(--itqan-neutral-900);
+  --popover-foreground: var(--itqan-neutral-50);
+  --primary: var(--itqan-primary-400);
   /* Lighter blue for primary in dark mode */
-  --primary-foreground: var(--luca-neutral-950);
-  --secondary: var(--luca-neutral-800);
-  --secondary-foreground: var(--luca-neutral-50);
-  --muted: var(--luca-neutral-800);
-  --muted-foreground: var(--luca-neutral-200);
-  --accent: var(--luca-accent-900);
-  --accent-foreground: var(--luca-accent-100);
+  --primary-foreground: var(--itqan-neutral-950);
+  --secondary: var(--itqan-neutral-800);
+  --secondary-foreground: var(--itqan-neutral-50);
+  --muted: var(--itqan-neutral-800);
+  --muted-foreground: var(--itqan-neutral-200);
+  --accent: var(--itqan-accent-900);
+  --accent-foreground: var(--itqan-accent-100);
   --destructive: #f87171;
   /* Brighter red for destructive in dark mode */
-  --border: color-mix(in srgb, var(--luca-neutral-50) 12%, transparent);
-  --input: color-mix(in srgb, var(--luca-neutral-50) 16%, transparent);
-  --ring: var(--luca-primary-300);
-  --chart-1: var(--luca-primary-400);
-  --chart-2: var(--luca-accent-400);
+  --border: color-mix(in srgb, var(--itqan-neutral-50) 12%, transparent);
+  --input: color-mix(in srgb, var(--itqan-neutral-50) 16%, transparent);
+  --ring: var(--itqan-primary-300);
+  --chart-1: var(--itqan-primary-400);
+  --chart-2: var(--itqan-accent-400);
   /* other charts can stay as red, yellow, green from standard palette */
 
-  --sidebar: var(--luca-neutral-950);
-  --sidebar-foreground: var(--luca-neutral-50);
-  --sidebar-primary: var(--luca-accent-500);
+  --sidebar: var(--itqan-neutral-950);
+  --sidebar-foreground: var(--itqan-neutral-50);
+  --sidebar-primary: var(--itqan-accent-500);
   /* Gold primary for sidebar in dark mode */
-  --sidebar-primary-foreground: var(--luca-neutral-950);
-  --sidebar-accent: var(--luca-neutral-800);
-  --sidebar-accent-foreground: var(--luca-neutral-50);
-  --sidebar-border: color-mix(in srgb, var(--luca-neutral-50) 12%, transparent);
-  --sidebar-ring: var(--luca-accent-500);
+  --sidebar-primary-foreground: var(--itqan-neutral-950);
+  --sidebar-accent: var(--itqan-neutral-800);
+  --sidebar-accent-foreground: var(--itqan-neutral-50);
+  --sidebar-border: color-mix(in srgb, var(--itqan-neutral-50) 12%, transparent);
+  --sidebar-ring: var(--itqan-accent-500);
 }
 
 @layer base {
@@ -286,7 +286,7 @@ body {
 
 @utility thick-scrollbar {
   scrollbar-width: auto;
-  scrollbar-color: var(--luca-primary-500) transparent;
+  scrollbar-color: var(--itqan-primary-500) transparent;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -294,7 +294,7 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--luca-primary-500);
+    background-color: var(--itqan-primary-500);
     border-radius: 6px;
   }
 
@@ -315,7 +315,7 @@ body {
     bottom: 0;
     height: 1px;
     background-image: repeating-linear-gradient(to right,
-        var(--luca-neutral-200, #e7e5e4) 0 8px,
+        var(--itqan-neutral-200, #e7e5e4) 0 8px,
         transparent 8px 14px);
   }
 }
@@ -326,6 +326,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--luca-primary-500);
+  background-color: var(--itqan-primary-500);
   border-radius: 4px;
 }

@@ -1,4 +1,4 @@
-# Luca Stay Admin
+# Itqan Admin
 
 React, TypeScript, Vite, Tailwind CSS, React Router, i18next, and React Query.
 

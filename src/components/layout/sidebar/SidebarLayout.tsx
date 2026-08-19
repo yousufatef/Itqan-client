@@ -1,59 +1,26 @@
-import { useEffect, useState } from 'react';
-import type { CSSProperties } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, type CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Languages } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar';
 import ConfirmDialog from '@/components/shared/customs/CustomConfirmDialog';
 import Logo from '@/assets/svgs/itqan-logo-white-bg.svg';
 import {
   getMainNavSection,
-  getRouteGroupKey,
-  getSettingsNavSection,
 } from './constants/sidebar.constants';
-import type { CustomSidebarProps, SidebarNavEntry } from './types/sidebar.types';
+import type { CustomSidebarProps } from './types/sidebar.types';
 import NavItem from './components/NavItem';
-import ExpandableNavItem from './components/ExpandableNavItem';
 import LogoutNavItem from './components/LogoutNavItem';
 import SidebarUserMenu from './components/SidebarUserMenu';
 import { useUser } from '@/modules/auth/hooks/useUser';
 import { useLogoutApi } from '@/modules/auth/hooks/useLogoutApi';
 
 function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
-  const { t, i18n } = useTranslation();
-  const { pathname } = useLocation();
+  const { t } = useTranslation();
   const { user } = useUser();
   const { logOut, isLoading } = useLogoutApi();
   const [logoutOpen, setLogoutOpen] = useState(false);
 
   const mainSection = getMainNavSection(t);
-  const settingsSection = getSettingsNavSection(t);
-
-  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(() => {
-    const activeGroup = getRouteGroupKey(pathname);
-    return activeGroup ? { [activeGroup]: true } : {};
-  });
-
-  useEffect(() => {
-    const activeGroup = getRouteGroupKey(pathname);
-    if (activeGroup) {
-      setOpenGroups((prev) => ({ ...prev, [activeGroup]: true }));
-    }
-  }, [pathname]);
-
-  const toggleGroup = (key: string) => {
-    setOpenGroups((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
-
   const openLogoutDialog = () => setLogoutOpen(true);
-  const currentLang = i18n.language.startsWith('it') ? 'it' : 'en';
-
-  const changeLanguage = async (nextLang: 'en' | 'it') => {
-    await i18n.changeLanguage(nextLang);
-    document.documentElement.lang = nextLang;
-    document.documentElement.dir = 'ltr';
-  };
-
   const handleLogout = async () => {
     try {
       await logOut();
@@ -62,44 +29,13 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
     }
   };
 
-  const renderNavEntry = (entry: SidebarNavEntry) => {
-    if (entry.type === 'link') {
-      return (
-        <NavItem
-          key={entry.key}
-          end={entry.end}
-          icon={entry.icon}
-          to={entry.href}
-          permissions={entry.permissions}
-        >
-          {entry.title}
-        </NavItem>
-      );
-    }
-
-    if (entry.type === 'group') {
-      return (
-        <ExpandableNavItem
-          key={entry.key}
-          title={entry.title}
-          icon={entry.icon}
-          items={entry.items}
-          isOpen={!!openGroups[entry.key]}
-          onToggle={() => toggleGroup(entry.key)}
-        />
-      );
-    }
-
-
-  };
-
   return (
     <>
       <Sidebar
         collapsible='offcanvas'
         side={side}
         style={{ '--sidebar-width': '240px' } as CSSProperties}
-        className='border-r-0 bg-transparent data-[side=left]:border-r-0 data-[side=right]:border-l-0 **:data-[slot=sidebar-inner]:overflow-hidden **:data-[slot=sidebar-inner]:rounded-tr-[32px] **:data-[slot=sidebar-inner]:border-0 **:data-[slot=sidebar-inner]:bg-white'
+        className='border-0 bg-transparent **:data-[slot=sidebar-inner]:overflow-hidden **:data-[slot=sidebar-inner]:border-0 **:data-[slot=sidebar-inner]:bg-white'
       >
         <SidebarHeader className='border-b px-4 pt-8 pb-6 mb-8'>
           <div className='flex items-center justify-center'>
@@ -115,18 +51,26 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
           <nav className='flex flex-col gap-6'>
             <div className='flex flex-col gap-1'>
               <p className='type-body-xs px-3 pb-1 text-neutral-400'>{t(mainSection.labelKey)}</p>
-              {mainSection.items.map(renderNavEntry)}
+              {mainSection.items.map((entry) =>
+                entry.type === 'link' ? (
+                  <NavItem
+                    key={entry.key}
+                    end={entry.end}
+                    icon={entry.icon}
+                    to={entry.href}
+                    permissions={entry.permissions}
+                  >
+                    {entry.title}
+                  </NavItem>
+                ) : null,
+              )}
             </div>
 
-            <div className='flex flex-col gap-1'>
-              <p className='type-body-xs px-3 pb-1 text-neutral-400'>{t(settingsSection.labelKey)}</p>
-              {settingsSection.items.map(renderNavEntry)}
-            </div>
           </nav>
         </SidebarContent>
 
         <SidebarFooter className='mt-auto gap-3 border-t-0 bg-white px-3 py-4'>
-          <button
+          {/* <button
             type='button'
             onClick={() => {
               void changeLanguage(currentLang === 'en' ? 'it' : 'en');
@@ -137,7 +81,7 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
             <span className='min-w-0 flex-1 truncate text-start'>
               {currentLang === 'en' ? 'IT' : 'EN'}
             </span>
-          </button>
+          </button> */}
 
           <LogoutNavItem
             key='logout'

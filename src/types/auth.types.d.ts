@@ -1,4 +1,4 @@
-import type { AppPermissions } from '../modules/roles/types/permissions-types';
+export type AppPermissions = string;
 
 export type ValidationErrorApiResponse = {
   errors: Record<string, string[]> | string[];

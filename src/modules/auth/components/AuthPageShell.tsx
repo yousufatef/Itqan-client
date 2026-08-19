@@ -13,7 +13,7 @@ function AuthPageShell({ title, description, icon, children }: AuthPageShellProp
     <section className='mx-auto flex w-full max-w-[400px] flex-col items-center'>
       <img
         src={Logo}
-        alt='Luca Stay'
+        alt='Itqan'
         className='mb-8 h-10 w-[232px] object-contain'
       />
 

@@ -7,7 +7,7 @@ import { isSuperAdminRole } from '@/modules/auth/constants/permissions.constants
 import { USER_DETAILS_QUERY_KEY } from '@/modules/auth/constants/queryKeys';
 import { getUserDetails } from '@/modules/auth/service/auth.service';
 import type { UserApiResponse } from '@/modules/auth/types/auth.types';
-import type { AppPermissions } from '@/modules/(settings)/(roles-managements)/roles/types/permissions-types';
+import type { AppPermissions } from '@/types/auth.types';
 
 const ACTIONS = ['create', 'read', 'update', 'delete'] as const;
 
@@ -82,11 +82,11 @@ export function useUser() {
   const isSuperAdmin = isSuperAdminRole(userResult?.role);
   const user = userResult
     ? {
-        ...userResult.user,
-        roleName: userResult.role?.nameEn ?? '',
-        isSuperAdmin,
-        permission: extractUserPermissions(userResult),
-      }
+      ...userResult.user,
+      roleName: userResult.role?.nameEn ?? '',
+      isSuperAdmin,
+      permission: extractUserPermissions(userResult),
+    }
     : undefined;
 
   const permissionSet: Set<AppPermissions> = useMemo(

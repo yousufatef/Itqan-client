@@ -22,7 +22,7 @@ const MainLoader = ({ className, showLogo = true }: MainLoaderProps) => {
         {showLogo ? (
           <img
             src={Logo}
-            alt='Luca Stay'
+            alt='Itqan'
             className='h-10 w-[232px] animate-in fade-in object-contain duration-500'
           />
         ) : null}

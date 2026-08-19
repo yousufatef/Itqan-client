@@ -1,7 +1,7 @@
 # Smart Guide Module Implementation - Complete
 
 ## Overview
-Successfully implemented a complete Smart Guide management module for the Luca-Admin-Redesign application with full CRUD operations (Create, Read, Update, Delete) for managing smart guide content.
+Successfully implemented a complete Smart Guide management module for the Itqan-Admin application with full CRUD operations (Create, Read, Update, Delete) for managing smart guide content.
 
 ## API Specifications
 

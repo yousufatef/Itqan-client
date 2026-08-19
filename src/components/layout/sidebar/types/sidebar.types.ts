@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react';
 import type { Sidebar } from '@/components/ui/sidebar';
-import type { AppPermissions } from '@/modules/(settings)/(roles-managements)/roles/types/permissions-types';
+import type { AppPermissions } from '@/types/auth.types';
 
 export type SidebarSide = ComponentProps<typeof Sidebar>['side'];
 
@@ -57,10 +57,3 @@ export type NavItemProps = {
   permissions?: AppPermissions[];
 };
 
-export type ExpandableNavItemProps = {
-  title: string;
-  icon: string;
-  items: readonly SubNavItem[];
-  isOpen: boolean;
-  onToggle: () => void;
-};

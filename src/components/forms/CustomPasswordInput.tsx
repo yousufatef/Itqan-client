@@ -7,6 +7,7 @@ import { formFieldStyles } from './form-field.styles';
 import type { FieldBaseProps } from './field.types';
 import type { FieldValues } from 'react-hook-form';
 import { Eye, EyeOff } from 'lucide-react';
+import { useDirection } from '@/i18n/useDirection';
 
 type CustomPasswordInputProps<TFieldValues extends FieldValues = FieldValues> = Omit<
   React.ComponentProps<typeof Input>,
@@ -38,6 +39,7 @@ function CustomPasswordInput<TFieldValues extends FieldValues = FieldValues>({
   ...props
 }: CustomPasswordInputProps<TFieldValues>) {
   const [visible, setVisible] = React.useState(false);
+  const dir = useDirection();
   const generatedId = React.useId();
   const inputId = id ?? generatedId;
 
@@ -60,7 +62,7 @@ function CustomPasswordInput<TFieldValues extends FieldValues = FieldValues>({
         return (
           <div className='relative'>
             {startIcon ? (
-              <span className='pointer-events-none absolute top-1/2 left-4 z-10 -translate-y-1/2 text-neutral-400'>
+              <span className='pointer-events-none absolute top-1/2 ltr:left-4 rtl:right-4 z-10 -translate-y-1/2 text-neutral-400'>
                 {startIcon}
               </span>
             ) : null}
@@ -74,6 +76,7 @@ function CustomPasswordInput<TFieldValues extends FieldValues = FieldValues>({
                 inputClassName,
                 className,
               )}
+              dir={dir}
               id={inputId}
               required={required}
               type={visible ? 'text' : 'password'}

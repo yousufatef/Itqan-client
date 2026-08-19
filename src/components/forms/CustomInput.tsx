@@ -65,7 +65,7 @@ function CustomInput<TFieldValues extends FieldValues = FieldValues>({
             aria-invalid={fieldState.invalid}
             className={cn(
               formFieldStyles.control,
-              startIcon && 'ltr:ps-11! rtl:pe-11!',
+              startIcon && 'ps-11!',
               inputClassName,
               className,
             )}

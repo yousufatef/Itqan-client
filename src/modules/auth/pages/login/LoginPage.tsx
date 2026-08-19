@@ -91,7 +91,7 @@ function LoginPage() {
 
           <Button
             type='submit'
-            className='type-body-md bg-primary-500 hover:bg-primary-600 mt-2 h-12 w-full rounded-[4px] text-neutral-900'
+            className='type-body-md bg-primary-500 hover:bg-primary-600 mt-2 h-12 w-full rounded-[4px] '
             disabled={isLoading}
           >
             {isLoading ? <Spinner /> : t('forms.buttonLabels.signin')}

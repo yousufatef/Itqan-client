@@ -111,7 +111,7 @@ function VerifyEmailPage() {
 
           <Button
             type='submit'
-            className='type-body-md bg-primary-500 hover:bg-primary-600 mt-8 h-12 w-full rounded-[4px] text-neutral-900'
+            className='type-body-md bg-primary-500 hover:bg-primary-600 mt-8 h-12 w-full rounded-[4px] '
             disabled={isLoading}
           >
             {isLoading ? <Spinner /> : t('forms.buttonLabels.verifyOtp')}
@@ -119,7 +119,7 @@ function VerifyEmailPage() {
 
           <Link
             to='/forget-password'
-            className='type-body-md text-primary-500 hover:text-primary-600 mt-4 text-center underline underline-offset-4'
+            className='type-body-md  mt-4 text-center underline underline-offset-4'
           >
             {t('forms.buttonLabels.resetLink')}
           </Link>

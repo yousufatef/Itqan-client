@@ -27,7 +27,8 @@ const PasswordChangedPage = lazy(
 
 const UsersPage = lazy(() => import('@/modules/users/UsersPage'));
 const StudentsPage = lazy(() => import('@/modules/students/StudentsPage'));
-const CirclesPage = lazy(() => import('@/modules/circles/pages/CirclesPage'));
+const CirclesPage = lazy(() => import('@/modules/circles/CirclesPage'));
+const CircleDetails = lazy(() => import('@/modules/circles/components/CircleDetails'));
 
 const PageLoader = () => <MainLoader className='min-h-dvh' />;
 
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
               { path: 'users', element: <UsersPage /> },
               { path: 'students', element: <StudentsPage /> },
               { path: 'circles', element: <CirclesPage /> },
+              { path: 'circles/:id', element: <CircleDetails /> },
 
             ],
           },

@@ -1,10 +1,12 @@
 {
   "sidebar": {
-    "sections": { "main": "الرئيسية" },
+    "sections": { "main": "الرئيسية", "settings": "الإعدادات" },
     "nav": {
       "users": "المستخدمون",
       "students": "الطلاب",
-      "circles": "الحلقات"
+      "circles": "الحلقات",
+      "financial": "المالية",
+      "settings": "إعدادات الحساب"
     },
     "userMenu": {
       "logOut": "تسجيل الخروج",
@@ -31,23 +33,64 @@
       "confirmPassword": "تأكيد كلمة المرور",
       "backToLogin": "العودة إلى تسجيل الدخول"
     },
-    "resetPassword": { "title": "استعادة كلمة المرور", "description": "أدخل بريدك الإلكتروني لاستلام رابط الاستعادة." },
-    "verifyEmail": { "title": "تأكيد البريد الإلكتروني", "description": "أدخل الرمز المرسل إلى {{email}}." },
-    "passwordChanged": { "title": "تم تغيير كلمة المرور", "description": "تم تحديث كلمة المرور بنجاح.", "login": "الانتقال إلى تسجيل الدخول" },
-    "errors": { "somethingWrong": "حدث خطأ", "description": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.", "goBack": "العودة" }
+    "resetPassword": {
+      "title": "استعادة كلمة المرور",
+      "description": "أدخل بريدك الإلكتروني لاستلام رابط الاستعادة."
+    },
+    "verifyEmail": {
+      "title": "تأكيد البريد الإلكتروني",
+      "description": "أدخل الرمز المرسل إلى {{email}}."
+    },
+    "passwordChanged": {
+      "title": "تم تغيير كلمة المرور",
+      "description": "تم تحديث كلمة المرور بنجاح.",
+      "login": "الانتقال إلى تسجيل الدخول"
+    },
+    "errors": {
+      "somethingWrong": "حدث خطأ",
+      "description": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "goBack": "العودة"
+    }
   },
   "forms": {
-    "labels": { "email": "البريد الإلكتروني", "password": "كلمة المرور", "newPassword": "كلمة المرور الجديدة", "confirmNewPassword": "تأكيد كلمة المرور الجديدة" },
-    "placeholders": { "email": "أدخل البريد الإلكتروني", "password": "أدخل كلمة المرور", "newpassword": "أدخل كلمة المرور الجديدة" },
-    "buttonLabels": { "signin": "تسجيل الدخول", "resetLink": "إرسال رابط الاستعادة", "resetPassword": "تغيير كلمة المرور", "verifyOtp": "تأكيد الرمز", "didNotGetCode": "لم يصلك الرمز؟", "resendAgain": "إعادة الإرسال", "resendEmail": "إرسال الرمز مرة أخرى" },
+    "labels": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmNewPassword": "تأكيد كلمة المرور الجديدة"
+    },
+    "placeholders": {
+      "email": "أدخل البريد الإلكتروني",
+      "password": "أدخل كلمة المرور",
+      "newpassword": "أدخل كلمة المرور الجديدة"
+    },
+    "buttonLabels": {
+      "signin": "تسجيل الدخول",
+      "resetLink": "إرسال رابط الاستعادة",
+      "resetPassword": "تغيير كلمة المرور",
+      "verifyOtp": "تأكيد الرمز",
+      "didNotGetCode": "لم يصلك الرمز؟",
+      "resendAgain": "إعادة الإرسال",
+      "resendEmail": "إرسال الرمز مرة أخرى"
+    },
     "errors": {
-      "email": { "required": "البريد الإلكتروني مطلوب", "invalid": "أدخل بريدًا إلكترونيًا صحيحًا" },
+      "email": {
+        "required": "البريد الإلكتروني مطلوب",
+        "invalid": "أدخل بريدًا إلكترونيًا صحيحًا"
+      },
       "password": { "required": "كلمة المرور مطلوبة" },
       "passwordsMustMatch": "كلمتا المرور غير متطابقتين",
       "emailMissing": "البريد الإلكتروني غير موجود",
       "otp": "أدخل رمز التحقق الصحيح"
     },
-    "passwordRules": { "title": "متطلبات كلمة المرور", "length": "من 8 إلى 20 حرفًا", "lowercase": "حرف إنجليزي صغير واحد على الأقل", "uppercase": "حرف إنجليزي كبير واحد على الأقل", "number": "رقم واحد على الأقل", "specialCharacter": "رمز خاص واحد على الأقل" },
+    "passwordRules": {
+      "title": "متطلبات كلمة المرور",
+      "length": "من 8 إلى 20 حرفًا",
+      "lowercase": "حرف إنجليزي صغير واحد على الأقل",
+      "uppercase": "حرف إنجليزي كبير واحد على الأقل",
+      "number": "رقم واحد على الأقل",
+      "specialCharacter": "رمز خاص واحد على الأقل"
+    },
     "messages": { "otpResent": "تم إرسال الرمز مرة أخرى" }
   },
   "emptyStates": {

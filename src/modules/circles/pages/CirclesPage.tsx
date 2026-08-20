@@ -1,8 +1,8 @@
 import PageLayout from '@/components/layout/PageLayout';
 import { PlusIcon } from 'lucide-react';
 import { useState } from 'react';
-import CirclesForm from './components/CirclesForm';
-import CirclesTable from './components/table/CirclesTable';
+import CirclesTable from '../components/table/CirclesTable';
+import CirclesForm from '../components/CirclesForm';
 
 function CirclesPage() {
     const [isAddingCircle, setIsAddingCircle] = useState(false);

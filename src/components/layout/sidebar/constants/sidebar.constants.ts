@@ -14,19 +14,42 @@ export function getMainNavSection(t: TFunction): SidebarNavSection {
         end: true,
       },
       {
-        type: 'link', key: 'students', title: t('sidebar.nav.students'), href: '/students', icon: 'students',
+        type: 'link',
+        key: 'students',
+        title: t('sidebar.nav.students'),
+        href: '/students',
+        icon: 'students',
       },
       {
-        type: 'link', key: 'circles', title: t('sidebar.nav.circles'), href: '/circles', icon: 'circles',
+        type: 'link',
+        key: 'circles',
+        title: t('sidebar.nav.circles'),
+        href: '/circles',
+        icon: 'circles',
+      },
+      {
+        type: 'link',
+        key: 'financial',
+        title: t('sidebar.nav.financial'),
+        href: '/financial',
+        icon: 'financial',
       },
     ],
   };
 }
 
-export function getSettingsNavSection(_t: TFunction): SidebarNavSection {
+export function getSettingsNavSection(t: TFunction): SidebarNavSection {
   return {
-    labelKey: 'sidebar.sections.main',
-    items: [],
+    labelKey: 'sidebar.sections.settings',
+    items: [
+      {
+        type: 'link',
+        key: 'settings',
+        title: t('sidebar.nav.settings'),
+        href: '/settings',
+        icon: 'settings',
+      },
+    ],
   };
 }
 

@@ -138,6 +138,8 @@ export type UserDetails = {
   firstName: string;
   lastName: string;
   fullName: string;
+  username?: string;
+  userName?: string;
   profilePicture?: string | null;
   isSuspended: boolean;
   isDeleted: boolean;

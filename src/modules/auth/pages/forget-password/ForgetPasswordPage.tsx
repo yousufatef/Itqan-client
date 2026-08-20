@@ -200,7 +200,7 @@ function ForgetPasswordPage() {
           <div className='mt-4 flex flex-col gap-4'>
             <Button
               type='submit'
-              className='type-body-md bg-primary-500 hover:bg-primary-600 h-12 w-full rounded-[4px]'
+              className='type-body-md bg-primary-500 hover:bg-primary-600 h-12 w-full rounded-lg'
               disabled={isLoading || isSetPasswordInviteLoading}
             >
               {isLoading || isSetPasswordInviteLoading ? (

@@ -116,18 +116,11 @@ const SidebarIcon = ({ name, fill = 'currentColor', stroke, className = '' }: Ic
         />
       </svg>
     ),
-    financial: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_1933_32596)">
-        <path d="M4 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M4 14H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M18.9997 6.00003C17.5767 4.70768 15.7219 3.99427 13.7997 4.00003C12.7622 4.01308 11.7375 4.23037 10.784 4.63949C9.83049 5.0486 8.96694 5.64153 8.24262 6.38442C7.51831 7.1273 6.94743 8.00559 6.56258 8.96913C6.17773 9.93266 5.98645 10.9626 5.99966 12C5.99966 16.4 9.49966 20 13.7997 20C15.7997 20 17.5997 19.2 18.9997 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      <defs>
-        <clipPath id="clip0_1933_32596">
-          <rect width="24" height="24" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
+    financial: (
+      <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M6 3H15L19 7V21H6V3Z' stroke='currentColor' strokeWidth='1.5' strokeLinejoin='round' />
+        <path d='M14 3V8H19M9 12H16M9 16H14' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+      </svg>
     ),
     devices: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_1933_32610)">

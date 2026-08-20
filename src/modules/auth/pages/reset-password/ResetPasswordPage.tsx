@@ -72,7 +72,7 @@ function ResetPasswordPage() {
           <div className='flex flex-col gap-4'>
             <Button
               type='submit'
-              className='type-body-md bg-primary-500 hover:bg-primary-600 h-12 w-full rounded-[4px] '
+              className='type-body-md bg-primary-500 hover:bg-primary-600 h-12 w-full rounded-lg '
               disabled={isLoading}
             >
               {isLoading ? <Spinner /> : t('forms.buttonLabels.resetLink')}

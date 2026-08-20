@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar';
 import ConfirmDialog from '@/components/shared/customs/CustomConfirmDialog';
 import Logo from '@/assets/svgs/itqan-logo-white-bg.svg';
-import {
-  getMainNavSection,
-} from './constants/sidebar.constants';
+import { getMainNavSection, getSettingsNavSection } from './constants/sidebar.constants';
 import type { CustomSidebarProps } from './types/sidebar.types';
 import NavItem from './components/NavItem';
 import LogoutNavItem from './components/LogoutNavItem';
@@ -20,6 +18,7 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
   const [logoutOpen, setLogoutOpen] = useState(false);
 
   const mainSection = getMainNavSection(t);
+  const settingsSection = getSettingsNavSection(t);
   const openLogoutDialog = () => setLogoutOpen(true);
   const handleLogout = async () => {
     try {
@@ -36,7 +35,7 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
         side={side}
         className='border-0 bg-transparent **:data-[slot=sidebar-inner]:overflow-hidden **:data-[slot=sidebar-inner]:border-0 **:data-[slot=sidebar-inner]:bg-white'
       >
-        <SidebarHeader className='border-b px-4 pt-8 pb-6 mb-8'>
+        <SidebarHeader className='mb-8 border-b px-4 pt-8 pb-6'>
           <div className='flex items-center justify-center'>
             <img
               alt='ITQAN'
@@ -46,7 +45,7 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
           </div>
         </SidebarHeader>
 
-        <SidebarContent className='gap-0  py-2'>
+        <SidebarContent className='gap-0 py-2'>
           <nav className='flex flex-col gap-6'>
             <div className='flex flex-col gap-1'>
               <p className='type-body-xs px-3 pb-1 text-neutral-400'>{t(mainSection.labelKey)}</p>
@@ -64,7 +63,24 @@ function SidebarLayout({ side = 'left' }: CustomSidebarProps) {
                 ) : null,
               )}
             </div>
-
+            <div className='flex flex-col gap-1'>
+              <p className='type-body-xs px-3 pb-1 text-neutral-400'>
+                {t(settingsSection.labelKey)}
+              </p>
+              {settingsSection.items.map((entry) =>
+                entry.type === 'link' ? (
+                  <NavItem
+                    key={entry.key}
+                    end={entry.end}
+                    icon={entry.icon}
+                    to={entry.href}
+                    permissions={entry.permissions}
+                  >
+                    {entry.title}
+                  </NavItem>
+                ) : null,
+              )}
+            </div>
           </nav>
         </SidebarContent>
 

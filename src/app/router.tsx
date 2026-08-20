@@ -10,7 +10,6 @@ import MainLoader from '@/components/shared/loader/MainLoader';
 import ErrorPage from '@/modules/error/ErrorPage';
 import NotFoundPage from '@/modules/not-found/NotFoundPage';
 
-
 // Lazily loaded pages — each becomes its own async chunk
 const LoginPage = lazy(() => import('../modules/auth/pages/login/LoginPage'));
 const ResetPasswordPage = lazy(
@@ -27,8 +26,10 @@ const PasswordChangedPage = lazy(
 
 const UsersPage = lazy(() => import('@/modules/users/UsersPage'));
 const StudentsPage = lazy(() => import('@/modules/students/StudentsPage'));
-const CirclesPage = lazy(() => import('@/modules/circles/CirclesPage'));
-const CircleDetails = lazy(() => import('@/modules/circles/components/CircleDetails'));
+const CirclesPage = lazy(() => import('@/modules/circles/pages/CirclesPage'));
+const CircleDetails = lazy(() => import('@/modules/circles/pages/CircleDetailsPage'));
+const FinancialPage = lazy(() => import('@/modules/financial/FinancialPage'));
+const SettingsPage = lazy(() => import('@/modules/settings/SettingsPage'));
 
 const PageLoader = () => <MainLoader className='min-h-dvh' />;
 
@@ -48,13 +49,13 @@ export const router = createBrowserRouter([
               </ProtectedRoute>
             ),
             children: [
-
               { path: '', element: <UsersPage /> },
               { path: 'users', element: <UsersPage /> },
               { path: 'students', element: <StudentsPage /> },
               { path: 'circles', element: <CirclesPage /> },
               { path: 'circles/:id', element: <CircleDetails /> },
-
+              { path: 'financial', element: <FinancialPage /> },
+              { path: 'settings', element: <SettingsPage /> },
             ],
           },
         ],

@@ -14,6 +14,7 @@ import { apiRequest } from '@/utils/api';
 
 export const AUTH_ENDPOINTS = {
   currentUser: 'Users/userData',
+  updateCurrentUser: 'Users/edit-admin',
   login: 'Account/adminLogin',
   refreshToken: 'Account/refreshToken',
   forgotPasswordOtp: 'Account/sendForgetPasswordOtp',
@@ -63,6 +64,31 @@ export async function getUserDetails<TUser = unknown>() {
   });
 
   return getResult(response);
+}
+
+export type UpdateUserDetailsPayload = {
+  id: string;
+  username: string;
+  email: string;
+  phoneNumber: string;
+};
+
+export async function updateUserDetails({
+  id,
+  username,
+  email,
+  phoneNumber,
+}: UpdateUserDetailsPayload) {
+  const body = new FormData();
+  body.append('id', id);
+  body.append('username', username);
+  body.append('email', email);
+  body.append('phoneNumber', phoneNumber);
+
+  return apiRequest(AUTH_ENDPOINTS.updateCurrentUser, {
+    method: 'POST',
+    body,
+  });
 }
 
 export async function loginApi({ email, password }: LoginParams): Promise<LoginResponse> {
@@ -153,11 +179,7 @@ export async function resetAdminPasswordApi({
   });
 }
 
-export async function resetPasswordUserApi({
-  email,
-  otp,
-  newPassword,
-}: ResetForgotPasswordParams) {
+export async function resetPasswordUserApi({ email, otp, newPassword }: ResetForgotPasswordParams) {
   return resetAdminPasswordApi({ email, otp, newPassword });
 }
 

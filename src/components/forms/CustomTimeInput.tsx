@@ -61,6 +61,11 @@ type TimeInputControlProps = {
   periodAriaLabel?: string;
 };
 
+const periodLabels: Record<TimePeriod, string> = {
+  AM: 'صباحًا',
+  PM: 'مساءً',
+};
+
 function TimeInputControl({
   field,
   fieldState,
@@ -239,14 +244,14 @@ function TimeInputControl({
               aria-label={periodAriaLabel ?? t('forms.time.period')}
               className={formFieldStyles.timePeriodTrigger}
             >
-              <span>{period}</span>
+              <span>{periodLabels[period]}</span>
               <ChevronDown className='size-6 stroke-[1.5]' aria-hidden />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='center' className='min-w-24'>
             {(['AM', 'PM'] as const).map((option) => (
               <DropdownMenuItem key={option} onClick={() => handlePeriodChange(option)}>
-                {option}
+                {periodLabels[option]}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>

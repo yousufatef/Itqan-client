@@ -42,7 +42,7 @@ function CustomMultiSelect<TFieldValues extends FieldValues = FieldValues>({
   options,
   defaultValue = [],
   onValueChange,
-  placeholder = 'Select options',
+  placeholder = 'اختر الخيارات',
   disabled,
   maxVisibleLabels = 2,
 }: CustomMultiSelectProps<TFieldValues>) {

@@ -37,17 +37,23 @@ const dummyUsers: IUser[] = [
   },
 ];
 
-export default function useGetUsers() {
+type UseGetUsersOptions = {
+  searchValue?: string;
+  role?: string;
+};
+
+export default function useGetUsers(options: UseGetUsersOptions = {}) {
   const { searchValue, getTableSearchParam } = useTableSearchParam();
-  const selectedRole = getTableSearchParam('role');
+  const selectedRole = options.role ?? getTableSearchParam('role');
   const role = selectedRole === 'all' ? '' : selectedRole;
+  const currentSearchValue = options.searchValue ?? searchValue;
 
   return useQuery({
     queryKey: [...USERS_QUERY_KEY, searchValue, role],
     queryFn: async () => ({
       result: {
         data: dummyUsers.filter((user) => {
-          const normalizedSearch = searchValue.trim().toLowerCase();
+          const normalizedSearch = currentSearchValue.trim().toLowerCase();
           const matchesSearch = normalizedSearch
             ? [user.username, user.email, user.phone].some((value) =>
               value.toLowerCase().includes(normalizedSearch),
@@ -58,7 +64,7 @@ export default function useGetUsers() {
           return matchesSearch && matchesRole;
         }),
         totalCount: dummyUsers.filter((user) => {
-          const normalizedSearch = searchValue.trim().toLowerCase();
+          const normalizedSearch = currentSearchValue.trim().toLowerCase();
           const matchesSearch = normalizedSearch
             ? [user.username, user.email, user.phone].some((value) =>
               value.toLowerCase().includes(normalizedSearch),

@@ -8,9 +8,16 @@ import StudentsActions from './UsersActions';
 import useGetStudents from '../../hooks/useGetStudents';
 import { exportArabicTableToPdf } from '@/utils/exportArabicPdf';
 import type { IStudent } from '../../types';
+import useGetUsers from '@/modules/users/hooks/useGetUsers';
 
 export default function StudentsTable() {
   const { data, isPending, isError } = useGetStudents();
+  const { data: usersData } = useGetUsers({ searchValue: '', role: 'parent' });
+  const parentNames = new Map(
+    (usersData?.result.data ?? [])
+      .filter((user) => user.role === 'parent')
+      .map((user) => [user.id, user.username]),
+  );
 
   // const { data, isPending, isError, error, isFetching } = useItems();
 
@@ -26,6 +33,11 @@ export default function StudentsTable() {
     {
       header: 'تاريخ الميلاد',
       accessorKey: 'dateOfBirth',
+    },
+    {
+      header: 'ولي الأمر',
+      accessorFn: (student) => parentNames.get(student.parentId) ?? 'غير محدد',
+      id: 'parent',
     },
     {
       header: 'الإجراءات',
@@ -48,6 +60,7 @@ export default function StudentsTable() {
         { header: 'اسم الطالب', value: (student: IStudent) => student.name },
         { header: 'رقم الهاتف', value: (student: IStudent) => student.phone },
         { header: 'تاريخ الميلاد', value: (student: IStudent) => student.dateOfBirth },
+        { header: 'ولي الأمر', value: (student: IStudent) => parentNames.get(student.parentId) ?? 'غير محدد' },
       ],
       rows: items?.data ?? [],
     });

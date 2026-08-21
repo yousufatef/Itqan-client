@@ -27,16 +27,16 @@ export type FieldLayoutProps<TFieldValues extends FieldValues = FieldValues> = {
   htmlFor?: string;
   labelClassName?: string;
 } & (
-  | {
+    | {
       children: (
         field: ControllerRenderProps<TFieldValues, FieldPath<TFieldValues>>,
         fieldState: ControllerFieldState,
       ) => ReactNode;
     }
-  | {
+    | {
       children: ReactNode;
     }
-);
+  );
 
 function FieldLayout<TFieldValues extends FieldValues = FieldValues>({
   control,
@@ -53,7 +53,7 @@ function FieldLayout<TFieldValues extends FieldValues = FieldValues>({
 }: FieldLayoutProps<TFieldValues>) {
   const { t } = useTranslation();
   const messageId = useId();
-  const requiredMessage = `${label ?? 'This field'} is required`;
+  const requiredMessage = `${label ?? 'هذا الحقل'} مطلوب`;
 
   return (
     <Controller

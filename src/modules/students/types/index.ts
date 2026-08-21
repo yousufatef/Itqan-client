@@ -5,6 +5,7 @@ export interface IStudent {
     name: string;
     phone: string;
     dateOfBirth: string;
+    parentId: string;
     createdAt: string;
     updatedAt: string;
 }

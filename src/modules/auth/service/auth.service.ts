@@ -13,17 +13,17 @@ import type {
 import { apiRequest } from '@/utils/api';
 
 export const AUTH_ENDPOINTS = {
-  currentUser: 'Users/userData',
-  updateCurrentUser: 'Users/edit-admin',
-  login: 'Account/adminLogin',
-  refreshToken: 'Account/refreshToken',
-  forgotPasswordOtp: 'Account/sendForgetPasswordOtp',
-  validateOtp: 'Account/validateOtp',
-  forgetPassword: 'Account/forgetPassword',
-  resetPassword: 'Users/resetPassword',
-  resendOtp: 'Account/sendForgetPasswordOtp',
-  setPasswordInvite: 'identity/admin/management/set-password-invite',
-  logout: 'identity/admin/auth/logout',
+  currentUser: 'users/profile',
+  updateCurrentUser: 'users/profile',
+  login: 'auth/login',
+  refreshToken: 'auth/refresh',
+  forgotPasswordOtp: 'auth/forgot-password',
+  validateOtp: 'auth/verify-otp',
+  forgetPassword: 'auth/reset-password',
+  resetPassword: 'auth/reset-password',
+  resendOtp: 'auth/forgot-password',
+  setPasswordInvite: 'auth/set-password-invite',
+  logout: 'auth/logout',
 } as const;
 
 function getResult<T>(response: T | ApiResult<T>): T {

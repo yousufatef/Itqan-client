@@ -31,7 +31,7 @@ function MobileHeader({ className }: MobileHeaderProps) {
         <img
           src={Logo}
           alt='ITQAN'
-          className='h-12 w-55 bg-transparent object-contain'
+          className='h-12 bg-transparent object-contain'
         />
       </Link>
 

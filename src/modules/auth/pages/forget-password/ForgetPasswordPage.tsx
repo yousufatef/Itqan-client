@@ -9,7 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { toast } from 'sonner';
 import { useResetAdminPassword } from '@/modules/auth/hooks/useResetAdminPassword';
-import { FORGOT_PASSWORD_OTP_KEY } from '@/modules/auth/hooks/useOtp';
 import { useSetPasswordInvite } from '../../hooks/useNewPasswordInvite';
 import useSyncFormLocalization from '@/hooks/useSyncFormLocalization';
 import { Check, X } from 'lucide-react';
@@ -20,14 +19,13 @@ function ForgetPasswordPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token') ?? '';
-  const email = searchParams.get('email') ?? '';
-  const [otp] = useState(() => sessionStorage.getItem(FORGOT_PASSWORD_OTP_KEY) ?? '');
+  const [resetToken] = useState(() => token || sessionStorage.getItem('resetToken') || '');
   const location = useLocation();
   const isForgotPasswordReset = location.pathname === '/new-password';
 
   useEffect(() => {
     if (isForgotPasswordReset) {
-      if (!email || !otp) {
+      if (!resetToken) {
         void navigate('/forget-password', { replace: true });
       }
       return;
@@ -36,7 +34,7 @@ function ForgetPasswordPage() {
     if (!token) {
       void navigate('/forget-password', { replace: true });
     }
-  }, [token, email, otp, isForgotPasswordReset, navigate]);
+  }, [token, resetToken, isForgotPasswordReset, navigate]);
 
   const schema = useMemo(() => {
     const stringField = z.string({ message: '' });
@@ -104,29 +102,32 @@ function ForgetPasswordPage() {
   const onSubmit = async (data: FormData) => {
     if (!isPasswordValid) return;
 
-    if (isForgotPasswordReset) {
-      if (!email || !otp) {
-        toast.error('Invalid or missing reset credentials');
+    try {
+      if (isForgotPasswordReset) {
+        if (!resetToken) {
+          toast.error('Invalid or missing reset credentials');
+          return;
+        }
+
+        await resetAdminPassword({
+          resetToken,
+          newPassword: data.newPassword,
+        });
         return;
       }
 
-      await resetAdminPassword({
-        email,
-        otp,
-        newPassword: data.newPassword,
+      if (!token) {
+        toast.error('Invalid or missing reset token');
+        return;
+      }
+
+      await setPasswordInvite({
+        password: data.newPassword,
+        token: token,
       });
-      return;
+    } catch {
+      // Error is already toasted by apiRequest / handleResponse
     }
-
-    if (!token) {
-      toast.error('Invalid or missing reset token');
-      return;
-    }
-
-    await setPasswordInvite({
-      password: data.newPassword,
-      token: token,
-    });
   };
 
   return (

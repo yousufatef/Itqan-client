@@ -1,4 +1,5 @@
 import type { TFunction } from 'i18next';
+import { APP_PERMISSIONS } from '@/modules/auth/constants/permissions.constants';
 import type { SidebarNavEntry, SidebarNavSection } from '../types/sidebar.types';
 
 export function getMainNavSection(t: TFunction): SidebarNavSection {
@@ -12,6 +13,7 @@ export function getMainNavSection(t: TFunction): SidebarNavSection {
         href: '/',
         icon: 'users',
         end: true,
+        permissions: [APP_PERMISSIONS.users],
       },
       {
         type: 'link',
@@ -19,6 +21,7 @@ export function getMainNavSection(t: TFunction): SidebarNavSection {
         title: t('sidebar.nav.students'),
         href: '/students',
         icon: 'students',
+        permissions: [APP_PERMISSIONS.students],
       },
       {
         type: 'link',
@@ -26,6 +29,7 @@ export function getMainNavSection(t: TFunction): SidebarNavSection {
         title: t('sidebar.nav.circles'),
         href: '/circles',
         icon: 'circles',
+        permissions: [APP_PERMISSIONS.circles],
       },
       {
         type: 'link',
@@ -33,6 +37,7 @@ export function getMainNavSection(t: TFunction): SidebarNavSection {
         title: t('sidebar.nav.financial'),
         href: '/financial',
         icon: 'financial',
+        permissions: [APP_PERMISSIONS.financial],
       },
     ],
   };
@@ -48,6 +53,7 @@ export function getSettingsNavSection(t: TFunction): SidebarNavSection {
         title: t('sidebar.nav.settings'),
         href: '/settings',
         icon: 'settings',
+        permissions: [APP_PERMISSIONS.settings],
       },
     ],
   };

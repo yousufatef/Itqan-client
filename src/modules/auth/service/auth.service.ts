@@ -6,6 +6,7 @@ import type {
   LoginParams,
   LoginResponse,
   OtpParams,
+  OtpResponse,
   RefreshTokenResponse,
   ResetAdminPasswordParams,
   ResetForgotPasswordParams,
@@ -129,22 +130,21 @@ export async function refreshTokenApi(): Promise<RefreshTokenResponse> {
 }
 
 export async function forgetPasswordApi({ email }: { email: string }) {
-  return apiRequest<unknown>(
-    `${AUTH_ENDPOINTS.forgotPasswordOtp}?${new URLSearchParams({
-      emailOrPhoneNumber: email,
-    }).toString()}`,
-    {
-      method: 'POST',
-      skipAuth: true,
+  return apiRequest<unknown>(AUTH_ENDPOINTS.forgotPasswordOtp, {
+    method: 'POST',
+    skipAuth: true,
+    body: {
+      email,
     },
-  );
+  });
 }
 
 export async function resendOtpApi({ email }: { email: string }) {
   return apiRequest<unknown>(
     `${AUTH_ENDPOINTS.resendOtp}?${new URLSearchParams({
       emailOrPhoneNumber: email,
-    }).toString()}`,
+    }).toString()}
+    `,
     {
       method: 'POST',
       skipAuth: true,
@@ -153,34 +153,32 @@ export async function resendOtpApi({ email }: { email: string }) {
 }
 
 export async function otpApi({ otp, email }: OtpParams) {
-  return apiRequest<{ message?: string | null }>(AUTH_ENDPOINTS.validateOtp, {
+  return apiRequest<OtpResponse>(AUTH_ENDPOINTS.validateOtp, {
     method: 'POST',
     skipAuth: true,
     body: {
       otp,
-      EmailOrPhoneNumber: email,
+      email,
     },
   });
 }
 
 export async function resetAdminPasswordApi({
-  email,
-  otp,
+  resetToken,
   newPassword,
 }: ResetForgotPasswordParams) {
   return apiRequest<unknown>(AUTH_ENDPOINTS.forgetPassword, {
     method: 'POST',
     skipAuth: true,
     body: {
+      resetToken,
       newPassword,
-      otp,
-      emailOrPhoneNumber: email,
     },
   });
 }
 
-export async function resetPasswordUserApi({ email, otp, newPassword }: ResetForgotPasswordParams) {
-  return resetAdminPasswordApi({ email, otp, newPassword });
+export async function resetPasswordUserApi({ resetToken, newPassword }: ResetForgotPasswordParams) {
+  return resetAdminPasswordApi({ resetToken, newPassword });
 }
 
 export async function setPasswordInviteApi({ password, token }: ResetAdminPasswordParams) {

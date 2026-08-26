@@ -37,7 +37,7 @@ function VerifyEmailPage() {
           .regex(/^\d+$/, {
             message: t('forms.errors.otp'),
           })
-          .length(4, {
+          .length(6, {
             message: t('forms.errors.otp'),
           }),
       }),
@@ -56,7 +56,11 @@ function VerifyEmailPage() {
   useSyncFormLocalization(form);
 
   const onSubmit = async (data: FormData) => {
-    await otp({ otp: data.otp, email });
+    try {
+      await otp({ otp: data.otp, email });
+    } catch {
+      // Error is already toasted by apiRequest / handleResponse
+    }
   };
 
   return (
@@ -79,7 +83,7 @@ function VerifyEmailPage() {
               <FormItem>
                 <FormControl>
                   <InputOTP
-                    maxLength={4}
+                    maxLength={6}
                     pattern='[0-9]*'
                     inputMode='numeric'
                     value={field.value || ''}
@@ -91,7 +95,7 @@ function VerifyEmailPage() {
                     name={field.name}
                   >
                     <InputOTPGroup className='mx-auto flex items-center justify-center gap-3'>
-                      {[...Array(4)].map((_, index) => (
+                      {[...Array(6)].map((_, index) => (
                         <InputOTPSlot
                           key={index}
                           index={index}

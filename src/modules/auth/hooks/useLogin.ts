@@ -33,25 +33,29 @@ export function useLogin() {
   >({
     mutationFn: loginApi,
     onSuccess: (user) => {
-      if (user.token) {
-        Cookies.set(TOKEN, user.token, {
+      const accessToken = user.accessToken ?? user.token;
+      const accessTokenExpiresAt =
+        user.accessTokenExpiresAt ?? user.accessTokenExpiryTime ?? user.expiresOn;
+      const refreshTokenExpiresAt =
+        user.refreshTokenExpiresAt ?? user.refreshTokenExpiryTime ?? user.refreshTokenExpiration;
+
+      if (accessToken) {
+        Cookies.set(TOKEN, accessToken, {
           ...cookieBase,
-          expires: user.expiresOn ? new Date(user.expiresOn) : undefined,
+          expires: accessTokenExpiresAt ? new Date(accessTokenExpiresAt) : undefined,
         });
       }
 
       if (user.refreshToken) {
         Cookies.set(REFRESH_TOKEN, user.refreshToken, {
           ...cookieBase,
-          expires: user.refreshTokenExpiration
-            ? new Date(user.refreshTokenExpiration)
-            : undefined,
+          expires: refreshTokenExpiresAt ? new Date(refreshTokenExpiresAt) : undefined,
         });
       }
 
       Cookies.set(USER_VERIFIED, String(true), {
         ...cookieBase,
-        expires: user.expiresOn ? new Date(user.expiresOn) : undefined,
+        expires: accessTokenExpiresAt ? new Date(accessTokenExpiresAt) : undefined,
       });
 
       queryClient.removeQueries();

@@ -13,8 +13,15 @@ export function useOtp() {
     mutationFn: otpApi,
     onSuccess: (res, variables: OtpParams) => {
       sessionStorage.setItem(FORGOT_PASSWORD_OTP_KEY, variables.otp);
+      const resetToken = res?.result?.resetToken;
+      if (resetToken) {
+        sessionStorage.setItem('resetToken', resetToken);
+      }
 
       const query = new URLSearchParams({ email: variables.email });
+      if (resetToken) {
+        query.set('token', resetToken);
+      }
       toast.success(res?.message ?? undefined);
       void navigate(`/new-password?${query.toString()}`);
     },

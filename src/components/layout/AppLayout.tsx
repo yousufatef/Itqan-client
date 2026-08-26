@@ -7,6 +7,10 @@ import { TooltipProvider } from '../ui/tooltip';
 import { useDirection } from '../../i18n/useDirection';
 import { useUser } from '@/modules/auth/hooks/useUser';
 import MobileHeader from './header/MobileHeader';
+import {
+  canAccessPath,
+  getDefaultPathForPermissions,
+} from '@/modules/auth/constants/permissions.constants';
 
 function AppLayout() {
   const { pathname } = useLocation();
@@ -21,13 +25,22 @@ function AppLayout() {
     });
   }, [pathname]);
 
-  const { isAuthenticated, isLoading, isError } = useUser();
+  const { isAuthenticated, isLoading, isError, permissionSet, user } = useUser();
 
   if (isAuthenticated && isLoading) {
     return <MainLoader className='size-full' />;
   }
 
   if (isError) return <Navigate to={'/login'} />;
+
+  if (isAuthenticated && user && !canAccessPath(pathname, permissionSet)) {
+    return (
+      <Navigate
+        to={getDefaultPathForPermissions(permissionSet)}
+        replace
+      />
+    );
+  }
 
   return (
     <TooltipProvider>

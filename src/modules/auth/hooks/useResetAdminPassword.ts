@@ -15,6 +15,7 @@ export function useResetAdminPassword() {
     mutationFn: resetAdminPasswordApi,
     onSuccess: () => {
       sessionStorage.removeItem(FORGOT_PASSWORD_OTP_KEY);
+      sessionStorage.removeItem('resetToken');
       void navigate('/password-changed', { replace: true });
     },
   });

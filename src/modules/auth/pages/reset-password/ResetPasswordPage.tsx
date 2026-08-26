@@ -38,7 +38,11 @@ function ResetPasswordPage() {
   useSyncFormLocalization(form);
 
   const onSubmit = async (data: FormData) => {
-    await forgetPassword(data);
+    try {
+      await forgetPassword(data);
+    } catch {
+      // Error is already toasted by apiRequest / handleResponse
+    }
   };
 
   return (

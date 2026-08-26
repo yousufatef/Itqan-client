@@ -1,5 +1,12 @@
 import type { ApiResponse } from '@/types/index.t';
 
+export enum UserRole {
+  SUPER_ADMIN = 'super_admin',
+  ADMIN = 'admin',
+  TEACHER = 'teacher',
+  PARENT = 'parent',
+}
+
 export type ValidationErrorApiResponse = {
   errors: Record<string, string[]> | string[];
   status?: number;
@@ -33,20 +40,37 @@ export type LoginParams = {
 };
 
 export interface LoginResponse {
-  id: string;
-  isAuthenticated: boolean;
-  fullName: string;
-  firstName: string;
-  lastName: string;
+  id?: string | number;
+  isAuthenticated?: boolean;
+  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   profilePicture?: string | null;
-  username: string;
-  email: string;
+  profileImage?: string | null;
+  username?: string;
+  email?: string;
   phoneNumber?: string | null;
-  token: string;
-  expiresOn: string;
-  accountType: number;
+  token?: string;
+  accessToken?: string;
+  expiresOn?: string;
+  accessTokenExpiresAt?: string;
+  accessTokenExpiryTime?: string;
+  accountType?: number;
   refreshToken: string;
-  refreshTokenExpiration: string;
+  refreshTokenExpiration?: string;
+  refreshTokenExpiresAt?: string;
+  refreshTokenExpiryTime?: string;
+  user?: {
+    id: string | number;
+    email: string;
+    username: string;
+    userType: string;
+    isActive: boolean;
+    tokenVersion: number;
+    profileImage?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
   role?: LoginRole;
 }
 
@@ -106,9 +130,15 @@ export type ResetAdminPasswordParams = {
   token: string;
 };
 
+export type OtpResponse = {
+  message?: string | null;
+  result?: {
+    resetToken: string;
+  };
+};
+
 export type ResetForgotPasswordParams = {
-  email: string;
-  otp: string;
+  resetToken: string;
   newPassword: string;
 };
 

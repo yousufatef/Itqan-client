@@ -14,7 +14,7 @@ function AuthPageShell({ title, description, icon, children }: AuthPageShellProp
       <img
         src={Logo}
         alt='Itqan'
-        className='mb-8 h-10 w-[232px] object-contain'
+        className='mb-8 h-14 object-contain'
       />
 
       {icon ? <div className='mb-8 flex justify-center'>{icon}</div> : null}

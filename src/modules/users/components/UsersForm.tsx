@@ -13,7 +13,7 @@ import useUpdateUser from '../hooks/useUpdateUser';
 type UserFormValues = {
   username: string;
   email: string;
-  phone: string;
+  phoneNumber: string | null;
   role: TRole;
 };
 
@@ -26,7 +26,7 @@ type UserFormProps = {
 const userSchema = z.object({
   username: z.string().min(1, 'اسم المستخدم مطلوب'),
   email: z.string().email('البريد الإلكتروني غير صحيح'),
-  phone: z.string().min(1, 'رقم الهاتف مطلوب'),
+  phoneNumber: z.string().min(1, 'رقم الهاتف مطلوب'),
   role: z.enum(['admin', 'parent', 'teacher']),
 });
 
@@ -37,8 +37,8 @@ export default function UsersForm({ isOpen, setIsOpen, user }: UserFormProps) {
     defaultValues: {
       username: user?.username || '',
       email: user?.email || '',
-      phone: user?.phone || '',
-      role: user?.role || 'parent',
+      phoneNumber: user?.phoneNumber,
+      role: user?.userType || 'parent',
     },
   });
 
@@ -53,9 +53,15 @@ export default function UsersForm({ isOpen, setIsOpen, user }: UserFormProps) {
 
   const handleFormSubmit = handleSubmit((values) => {
     if (isEdit && user) {
-      updateMutate({ id: user.id, values: { ...values, isActive: user.isActive } });
+      updateMutate({
+        // id: user.id,
+        username: values.username,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        role: values.role,
+      });
     } else {
-      createMutate({ ...values, isActive: true });
+      createMutate(values);
     }
   });
   return (
@@ -91,7 +97,7 @@ export default function UsersForm({ isOpen, setIsOpen, user }: UserFormProps) {
           <CustomPhoneInput
             required
             control={control}
-            name='phone'
+            name='phoneNumber'
             label='رقم الهاتف'
             placeholder='أدخل رقم الهاتف'
           />

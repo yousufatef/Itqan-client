@@ -1,20 +1,22 @@
-import { useMutation } from '@tanstack/react-query';
-import type { IUser } from '../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from '@/lib/toast';
+import type { CreateUserFormValues } from '../types';
+import { updateUser } from '../services/users.service';
 
-type UserFormValues = Omit<IUser, 'id' | 'createdAt' | 'updatedAt'>;
-
-type UseUpdateUserArgs = {
+type useUpdateUserArg = {
     onSuccess?: () => void;
 };
 
-type UpdateUserPayload = {
-    id: string;
-    values: UserFormValues;
-};
-
-export default function useUpdateUser({ onSuccess }: UseUpdateUserArgs = {}) {
+export default function useUpdateUser({ onSuccess }: useUpdateUserArg = {}) {
+    const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async ({ values }: UpdateUserPayload) => values,
-        onSuccess,
+        mutationFn: (payload: CreateUserFormValues) => updateUser(payload),
+        onSuccess: (res: any) => {
+            onSuccess?.();
+            toast.success(res?.message || "نم تحديث المستخدم بنجاح");
+            queryClient.invalidateQueries({
+                queryKey: ['users'],
+            });
+        },
     });
 }

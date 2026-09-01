@@ -1,80 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
 import useTableSearchParam from '@/hooks/useTableSearchParam';
-import type { IUser } from '../types';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { getAllUsers } from '../services/users.service';
 
-export const USERS_QUERY_KEY = ['users'];
-
-const dummyUsers: IUser[] = [
-  {
-    id: '1',
-    username: 'أحمد حسن',
-    email: 'أحمد.حسن@example.com',
-    phone: '+201001234567',
-    role: 'admin',
-    isActive: true,
-    createdAt: '2026-01-10T10:00:00.000Z',
-    updatedAt: '2026-01-10T10:00:00.000Z',
-  },
-  {
-    id: '2',
-    username: 'سارة علي',
-    email: 'سارة.علي@example.com',
-    phone: '+201112345678',
-    role: 'teacher',
-    isActive: true,
-    createdAt: '2026-02-03T10:00:00.000Z',
-    updatedAt: '2026-02-03T10:00:00.000Z',
-  },
-  {
-    id: '3',
-    username: 'محمد سامي',
-    email: 'محمد.سامي@example.com',
-    phone: '+201223456789',
-    role: 'parent',
-    isActive: false,
-    createdAt: '2026-02-18T10:00:00.000Z',
-    updatedAt: '2026-02-18T10:00:00.000Z',
-  },
-];
-
-type UseGetUsersOptions = {
-  searchValue?: string;
-  role?: string;
-};
-
-export default function useGetUsers(options: UseGetUsersOptions = {}) {
-  const { searchValue, getTableSearchParam } = useTableSearchParam();
-  const selectedRole = options.role ?? getTableSearchParam('role');
-  const role = selectedRole === 'all' ? '' : selectedRole;
-  const currentSearchValue = options.searchValue ?? searchValue;
+export default function useGetUsers() {
+  const { pageNumber, pageSize, searchValue } = useTableSearchParam();
 
   return useQuery({
-    queryKey: [...USERS_QUERY_KEY, searchValue, role],
-    queryFn: async () => ({
-      result: {
-        data: dummyUsers.filter((user) => {
-          const normalizedSearch = currentSearchValue.trim().toLowerCase();
-          const matchesSearch = normalizedSearch
-            ? [user.username, user.email, user.phone].some((value) =>
-              value.toLowerCase().includes(normalizedSearch),
-            )
-            : true;
-          const matchesRole = role ? user.role === role : true;
-
-          return matchesSearch && matchesRole;
-        }),
-        totalCount: dummyUsers.filter((user) => {
-          const normalizedSearch = currentSearchValue.trim().toLowerCase();
-          const matchesSearch = normalizedSearch
-            ? [user.username, user.email, user.phone].some((value) =>
-              value.toLowerCase().includes(normalizedSearch),
-            )
-            : true;
-          const matchesRole = role ? user.role === role : true;
-
-          return matchesSearch && matchesRole;
-        }).length,
-      },
-    }),
+    queryKey: ['users', pageNumber, pageSize, searchValue],
+    queryFn: () => getAllUsers(pageNumber, pageSize, searchValue),
+    placeholderData: keepPreviousData,
   });
 }

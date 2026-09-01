@@ -1,15 +1,22 @@
-import { useMutation } from '@tanstack/react-query';
-import type { IUser } from '../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from '@/lib/toast';
+import type { CreateUserFormValues } from '../types';
+import { createUser } from '../services/users.service';
 
-type UserFormValues = Omit<IUser, 'id' | 'createdAt' | 'updatedAt'>;
-
-type UseCreateUserArgs = {
+type useCreateUserArg = {
     onSuccess?: () => void;
 };
 
-export default function useCreateUser({ onSuccess }: UseCreateUserArgs = {}) {
+export default function useCreateUser({ onSuccess }: useCreateUserArg = {}) {
+    const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (values: UserFormValues) => values,
-        onSuccess,
+        mutationFn: (payload: CreateUserFormValues) => createUser(payload),
+        onSuccess: (res: any) => {
+            onSuccess?.();
+            toast.success(res?.message || "نم انشاء المستخدم بنجاح");
+            queryClient.invalidateQueries({
+                queryKey: ['users'],
+            });
+        },
     });
 }

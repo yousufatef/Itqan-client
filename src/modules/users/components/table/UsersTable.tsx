@@ -7,11 +7,12 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { Upload } from 'lucide-react';
 import type { IUser } from '../../types';
 import UsersActions from './UsersActions';
-import useGetUsers from '../../hooks/useGetUsers';
 import useToggleUserStatus from '../../hooks/useToggleUserStatus';
 import { exportArabicTableToPdf } from '@/utils/exportArabicPdf';
+import useGetUsers from '../../hooks/useGetUsers';
 
 const roleLabels = {
+  super_admin: 'مدير النظام',
   admin: 'مسؤول',
   parent: 'ولي أمر',
   teacher: 'معلم',
@@ -34,7 +35,6 @@ function UserStatusSwitch({ user }: { user: IUser }) {
 export default function UsersTable() {
   const { data, isPending, isError } = useGetUsers();
 
-  // const { data, isPending, isError, error, isFetching } = useItems();
 
   const columns: ColumnDef<IUser>[] = [
 
@@ -48,11 +48,11 @@ export default function UsersTable() {
     },
     {
       header: 'رقم الهاتف',
-      accessorKey: 'phone',
+      accessorKey: 'phoneNumber',
     },
     {
       header: 'الدور',
-      cell: ({ row }) => roleLabels[row.original.role],
+      cell: ({ row }) => roleLabels[row.original.userType] || 'غير معروف',
     },
     {
       header: 'الحالة',
@@ -69,7 +69,7 @@ export default function UsersTable() {
   if (isPending) return <div className='py-8 text-center'>جاري تحميل المستخدمين...</div>;
   if (isError) return <div className='py-8 text-center'>تعذر تحميل المستخدمين.</div>;
 
-  const items = data?.result;
+  const users = data?.result;
 
   const handleExport = () => {
     void exportArabicTableToPdf({
@@ -78,11 +78,11 @@ export default function UsersTable() {
       columns: [
         { header: 'اسم المستخدم', value: (user: IUser) => user.username },
         { header: 'البريد الإلكتروني', value: (user: IUser) => user.email },
-        { header: 'رقم الهاتف', value: (user: IUser) => user.phone },
-        { header: 'الدور', value: (user: IUser) => roleLabels[user.role] },
+        { header: 'رقم الهاتف', value: (user: IUser) => user.phoneNumber },
+        { header: 'الدور', value: (user: IUser) => roleLabels[user.userType] },
         { header: 'الحالة', value: (user: IUser) => (user.isActive ? 'نشط' : 'غير نشط') },
       ],
-      rows: items?.data ?? [],
+      rows: users?.data ?? [],
     });
   };
 
@@ -122,17 +122,17 @@ export default function UsersTable() {
       </div>
 
       <CustomTable
-        data={items?.data ?? []}
+        data={users?.data ?? []}
         columns={columns}
       // isFetching={isFetching}
       />
 
       <div className='flex items-center justify-between'>
-        <TableStatistics totalCount={items?.totalCount ?? 0} />
+        <TableStatistics totalCount={users?.meta.total ?? 0} />
         <div className='flex-1'>
           <Pagination
-            totalCount={items?.totalCount ?? 0}
-            currentCount={items?.data.length ?? 0}
+            totalCount={users?.meta.total ?? 0}
+            currentCount={users?.data.length ?? 0}
           />
         </div>
       </div>

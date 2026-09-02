@@ -13,13 +13,15 @@ export const USERS_ENDPOINTS = {
 export async function getAllUsers(
     pageNumber: number,
     pageSize: number,
-    searchTerm: string
+    searchTerm: string,
+    role: string
 ): Promise<UsersResponse> {
     return apiRequest<UsersResponse>(
         `${USERS_ENDPOINTS.paginated}?${generateQueryParams({
             pageNumber,
             pageSize,
             searchTerm,
+            role
         })}`,
     );
 }

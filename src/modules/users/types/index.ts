@@ -30,7 +30,12 @@ export interface CreateUserFormValues {
     username: string;
     email: string;
     phoneNumber: string | null;
-    userType: TRole;
-    password: string;
-    confirmPassword: string;
+    role: Exclude<TRole, 'super_admin'>;
+}
+
+export interface UpdateUserFormValues {
+    username: string;
+    email: string;
+    phoneNumber: string | null;
+    role: Exclude<TRole, 'super_admin'>;
 }

@@ -21,3 +21,36 @@ export interface IStudent {
     createdAt: string;
     updatedAt: string;
 }
+
+// ── Categories ──────────────────────────────────────────────────────────────
+
+export type CategoryType = 'income' | 'expense';
+
+export interface ICategory {
+    id: number;
+    name: string;
+    type: CategoryType;
+}
+
+export type CategoryPayload = {
+    name: string;
+    type: CategoryType;
+};
+
+// ── Transactions ─────────────────────────────────────────────────────────────
+
+export interface ITransaction {
+    id: number;
+    category_id: number;
+    amount: number;
+    transaction_date: string;
+    note: string;
+    category?: ICategory;
+}
+
+export type TransactionPayload = {
+    category_id: number;
+    amount: number;
+    transaction_date: string;
+    note: string;
+};

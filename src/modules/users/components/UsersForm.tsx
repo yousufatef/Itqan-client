@@ -13,8 +13,8 @@ import useUpdateUser from '../hooks/useUpdateUser';
 type UserFormValues = {
   username: string;
   email: string;
-  phoneNumber: string | null;
-  role: TRole;
+  phoneNumber: string;
+  role: Exclude<TRole, 'super_admin'>;
 };
 
 type UserFormProps = {
@@ -37,8 +37,11 @@ export default function UsersForm({ isOpen, setIsOpen, user }: UserFormProps) {
     defaultValues: {
       username: user?.username || '',
       email: user?.email || '',
-      phoneNumber: user?.phoneNumber,
-      role: user?.userType || 'parent',
+      phoneNumber: user?.phoneNumber || '',
+      role:
+        user?.userType && user.userType !== 'super_admin'
+          ? user.userType
+          : 'parent',
     },
   });
 
@@ -54,7 +57,7 @@ export default function UsersForm({ isOpen, setIsOpen, user }: UserFormProps) {
   const handleFormSubmit = handleSubmit((values) => {
     if (isEdit && user) {
       updateMutate({
-        // id: user.id,
+        id: user.id,
         username: values.username,
         email: values.email,
         phoneNumber: values.phoneNumber,

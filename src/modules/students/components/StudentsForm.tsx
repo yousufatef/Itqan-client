@@ -3,13 +3,14 @@ import { CustomCalendar, CustomComboboxSingle, CustomPhoneInput } from '@/compon
 import EditModal from '@/components/shared/customs/EditModal';
 import useLiveForm from '@/hooks/useLiveForm';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 import { z } from 'zod';
 
 import { Form } from '@/components/ui/form';
 import useCreateStudent from '../hooks/useCreateStudent';
 import useUpdateStudent from '../hooks/useUpdateStudent';
 import type { IStudent } from '../types';
-import useGetUsers from '@/modules/users/hooks/useGetUsers';
+import useGetParents from '@/modules/users/hooks/useGetParents';
 
 type StudentFormValues = {
   name: string;
@@ -35,7 +36,14 @@ const parseDateOfBirth = (value: string) => {
   if (!value) return undefined;
 
   const [year, month, day] = value.split('-').map(Number);
-  return new Date(year, month - 1, day);
+  if (!year || !month || !day) return undefined;
+
+  const date = new Date(year, month - 1, day);
+  return date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() === day
+    ? date
+    : undefined;
 };
 
 const formatDateOfBirth = (date?: Date) => {
@@ -49,20 +57,30 @@ const formatDateOfBirth = (date?: Date) => {
 
 export default function StudentsForm({ isOpen, setIsOpen, student }: StudentFormProps) {
   const isEdit = !!student;
-  const { data: usersData } = useGetUsers({ searchValue: '', role: 'parent' });
-  const parentOptions = (usersData?.result.data ?? [])
-    .filter((user) => user.role === 'parent')
-    .map((user) => ({ value: user.id, label: user.username }));
+  const { data: parentsData } = useGetParents();
+  const parentOptions = (parentsData?.result ?? []).map((parent) => ({
+    value: String(parent.id),
+    label: parent.username,
+  }));
 
   const form = useLiveForm<StudentFormValues>({
     resolver: zodResolver(studentSchema),
     defaultValues: {
       name: student?.name || '',
-      phone: student?.phone || '',
-      dateOfBirth: parseDateOfBirth(student?.dateOfBirth || ''),
-      parentId: student?.parentId || '',
+      phone: student?.phoneNumber || '',
+      dateOfBirth: parseDateOfBirth(student?.birthOfDate || ''),
+      parentId: student?.parent?.id ? String(student.parent.id) : '',
     },
   });
+
+  useEffect(() => {
+    form.reset({
+      name: student?.name || '',
+      phone: student?.phoneNumber || '',
+      dateOfBirth: parseDateOfBirth(student?.birthOfDate || ''),
+      parentId: student?.parent?.id ? String(student.parent.id) : '',
+    });
+  }, [form, student]);
 
   const { control, handleSubmit } = form;
 
@@ -73,18 +91,22 @@ export default function StudentsForm({ isOpen, setIsOpen, student }: StudentForm
     onSuccess: () => setIsOpen(false),
   });
 
-  const handleFormSubmit = handleSubmit((values) => {
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    void handleSubmit((values) => {
     const payload = {
-      ...values,
-      dateOfBirth: formatDateOfBirth(values.dateOfBirth),
+      name: values.name,
+      phoneNumber: values.phone,
+      birthOfDate: formatDateOfBirth(values.dateOfBirth),
+      parent_id: Number(values.parentId),
     };
 
     if (isEdit && student) {
-      updateMutate({ id: student.id, values: payload });
+      updateMutate({ id: String(student.id), values: payload });
     } else {
       createMutate(payload);
     }
-  });
+    })(event);
+  };
   return (
     <Form {...form}>
       <form

@@ -1,11 +1,14 @@
 export type TRole = 'admin' | 'parent' | 'teacher';
 
 export interface IStudent {
-    id: string;
+    id: number;
     name: string;
-    phone: string;
-    dateOfBirth: string;
-    parentId: string;
+    phoneNumber: string;
+    birthOfDate: string;
+    parent: {
+        id: number;
+        parentName: string;
+    };
     createdAt: string;
     updatedAt: string;
 }

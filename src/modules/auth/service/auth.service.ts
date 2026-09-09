@@ -109,7 +109,6 @@ export async function loginApi({ email, password }: LoginParams): Promise<LoginR
 }
 
 export async function refreshTokenApi(): Promise<RefreshTokenResponse> {
-  const token = Cookies.get(TOKEN);
   const refreshToken = Cookies.get(REFRESH_TOKEN);
 
   const response = await apiRequest<RefreshTokenResponse | ApiResult<RefreshTokenResponse>>(
@@ -117,7 +116,6 @@ export async function refreshTokenApi(): Promise<RefreshTokenResponse> {
     {
       method: 'POST',
       body: {
-        accessToken: token,
         refreshToken,
       },
     },

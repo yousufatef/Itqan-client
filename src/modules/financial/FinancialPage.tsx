@@ -8,82 +8,106 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import useLiveForm from '@/hooks/useLiveForm';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ClipboardList, Edit2Icon, Layers3, PlusIcon, Trash } from 'lucide-react';
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 import { z } from 'zod';
+import type { ICategory, ITransaction, CategoryPayload, TransactionPayload } from './types';
+import useGetCategories from './hooks/useGetCategories';
+import useCreateCategory from './hooks/useCreateCategory';
+import useUpdateCategory from './hooks/useUpdateCategory';
+import useDeleteCategory from './hooks/useDeleteCategory';
+import useGetTransactions from './hooks/useGetTransactions';
+import useCreateTransaction from './hooks/useCreateTransaction';
+import useUpdateTransaction from './hooks/useUpdateTransaction';
+import useDeleteTransaction from './hooks/useDeleteTransaction';
 
 type CategoryType = 'income' | 'expense';
-type Category = { id: number; name: string; type: CategoryType };
-type Transaction = { id: number; categoryId: number; amount: number; date: Date; notes: string };
 type CategoryFormValues = { name: string; type: CategoryType };
-type TransactionFormValues = { categoryId: string; amount: unknown; date: Date; notes: string };
+type TransactionFormValues = { category_id: string; amount: unknown; transaction_date: Date; note: string };
 
 const categorySchema = z.object({
     name: z.string().min(1, 'اسم الفئة مطلوب'),
     type: z.enum(['income', 'expense']),
 });
 const transactionSchema = z.object({
-    categoryId: z.string().min(1, 'نوع المعاملة مطلوب'),
+    category_id: z.string().min(1, 'نوع المعاملة مطلوب'),
     amount: z.coerce.number().positive('يجب أن يكون المبلغ أكبر من صفر'),
-    date: z.date({ error: 'التاريخ مطلوب' }),
-    notes: z.string(),
+    transaction_date: z.date({ error: 'التاريخ مطلوب' }),
+    note: z.string(),
 });
 const categoryTypeLabels: Record<CategoryType, string> = { income: 'إيراد (+)', expense: 'مصروف (-)' };
-
-const initialCategories: Category[] = [
-    { id: 1, name: 'اشتراكات', type: 'income' },
-    { id: 2, name: 'كتب ومذكرات', type: 'income' },
-    { id: 3, name: 'إيجار', type: 'expense' },
-    { id: 4, name: 'مرتبات معلمين', type: 'expense' },
-    { id: 5, name: 'كهرباء', type: 'expense' },
-];
-
-const initialTransactions: Transaction[] = [
-    { id: 1, categoryId: 1, amount: 1200, date: new Date(2026, 7, 1), notes: 'اشتراك شهر أغسطس' },
-    { id: 2, categoryId: 2, amount: 350, date: new Date(2026, 7, 3), notes: 'شراء كتب للطلاب' },
-    { id: 3, categoryId: 4, amount: 8500, date: new Date(2026, 7, 5), notes: 'مرتبات المعلمين' },
-    { id: 4, categoryId: 5, amount: 740, date: new Date(2026, 7, 8), notes: 'فاتورة كهرباء المركز' },
-];
 
 function FinancialPage() {
     const [activeTab, setActiveTab] = useState('categories');
     const [isCategoryFormOpen, setIsCategoryFormOpen] = useState(false);
     const [isTransactionFormOpen, setIsTransactionFormOpen] = useState(false);
-    const [categories, setCategories] = useState<Category[]>(initialCategories);
-    const [transactions, setTransactions] = useState<Transaction[]>(initialTransactions);
-    const [editingCategory, setEditingCategory] = useState<Category>();
-    const [editingTransaction, setEditingTransaction] = useState<Transaction>();
-    const [deletingCategory, setDeletingCategory] = useState<Category>();
-    const [deletingTransaction, setDeletingTransaction] = useState<Transaction>();
+    const [editingCategory, setEditingCategory] = useState<ICategory>();
+    const [editingTransaction, setEditingTransaction] = useState<ITransaction>();
+    const [deletingCategory, setDeletingCategory] = useState<ICategory>();
+    const [deletingTransaction, setDeletingTransaction] = useState<ITransaction>();
 
-    const addCategory = (values: CategoryFormValues) => {
-        setCategories((current) => editingCategory
-            ? current.map((category) => category.id === editingCategory.id ? { ...category, ...values } : category)
-            : [...current, { ...values, id: Date.now() }]);
-        setEditingCategory(undefined);
-        setIsCategoryFormOpen(false);
+    // ── Queries ─────────────────────────────────────────────────────────────
+    const { data: categories = [], isLoading: loadingCategories } = useGetCategories();
+    const { data: transactions = [], isLoading: loadingTransactions } = useGetTransactions();
+
+    // ── Category mutations ──────────────────────────────────────────────────
+    const createCategory = useCreateCategory({ onSuccess: () => { setIsCategoryFormOpen(false); } });
+    const updateCategory = useUpdateCategory({ onSuccess: () => { setIsCategoryFormOpen(false); setEditingCategory(undefined); } });
+    const deleteCategory = useDeleteCategory({ onSuccess: () => setDeletingCategory(undefined) });
+
+    // ── Transaction mutations ───────────────────────────────────────────────
+    const createTransaction = useCreateTransaction({ onSuccess: () => { setIsTransactionFormOpen(false); } });
+    const updateTransaction = useUpdateTransaction({ onSuccess: () => { setIsTransactionFormOpen(false); setEditingTransaction(undefined); } });
+    const deleteTransaction = useDeleteTransaction({ onSuccess: () => setDeletingTransaction(undefined) });
+
+    const handleCategorySubmit = (values: CategoryFormValues) => {
+        const payload: CategoryPayload = { name: values.name, type: values.type };
+        if (editingCategory) {
+            updateCategory.mutate({ id: editingCategory.id, values: payload });
+        } else {
+            createCategory.mutate(payload);
+        }
     };
-    const addTransaction = (values: TransactionFormValues) => {
-        const transactionValues = {
-            categoryId: Number(values.categoryId),
+
+    const handleTransactionSubmit = (values: TransactionFormValues) => {
+        const payload: TransactionPayload = {
+            category_id: Number(values.category_id),
             amount: Number(values.amount),
-            date: values.date,
-            notes: values.notes,
+            transaction_date: values.transaction_date instanceof Date
+                ? values.transaction_date.toISOString().split('T')[0]
+                : String(values.transaction_date),
+            note: values.note,
         };
-        setTransactions((current) => editingTransaction
-            ? current.map((transaction) => transaction.id === editingTransaction.id ? { ...transaction, ...transactionValues } : transaction)
-            : [...current, { id: Date.now(), ...transactionValues }]);
-        setEditingTransaction(undefined);
-        setIsTransactionFormOpen(false);
+        if (editingTransaction) {
+            updateTransaction.mutate({ id: editingTransaction.id, values: payload });
+        } else {
+            createTransaction.mutate(payload);
+        }
     };
-    const openCategoryForm = (category?: Category) => {
+
+    const openCategoryForm = (category?: ICategory) => {
         setEditingCategory(category);
         setIsCategoryFormOpen(true);
     };
-    const openTransactionForm = (transaction?: Transaction) => {
+    const openTransactionForm = (transaction?: ITransaction) => {
         setEditingTransaction(transaction);
         setIsTransactionFormOpen(true);
     };
-    const categoryById = new Map(categories.map((category) => [category.id, category]));
+
+    // Close category form: clear editing state too
+    const handleCategoryFormOpen: Dispatch<SetStateAction<boolean>> = (value) => {
+        const next = typeof value === 'function' ? value(isCategoryFormOpen) : value;
+        if (!next) setEditingCategory(undefined);
+        setIsCategoryFormOpen(next);
+    };
+
+    // Close transaction form: clear editing state too
+    const handleTransactionFormOpen: Dispatch<SetStateAction<boolean>> = (value) => {
+        const next = typeof value === 'function' ? value(isTransactionFormOpen) : value;
+        if (!next) setEditingTransaction(undefined);
+        setIsTransactionFormOpen(next);
+    };
+
+    const categoryById = new Map(categories.map((c) => [c.id, c]));
 
     return (
         <PageLayout
@@ -122,48 +146,228 @@ function FinancialPage() {
                         سجل المعاملات
                     </TabsTrigger>
                 </TabsList>
+
+                {/* ── Categories tab ──────────────────────────────────────── */}
                 <TabsContent className='mt-6' value='categories'>
-                    <div
-                        className='overflow-x-auto rounded border border-neutral-100 bg-white'
-                        dir='rtl'
-                    >
-                        <div className='grid grid-cols-[1fr_180px_120px] border-b border-neutral-100 bg-neutral-50 px-5 py-3 text-sm font-medium text-neutral-500'><span>اسم الفئة</span><span>نوع الفئة</span><span>الإجراءات</span></div>
-                        {categories.length === 0 ? <p className='px-5 py-10 text-center text-sm text-neutral-400'>لا توجد فئات مضافة بعد.</p> : categories.map((category) => <div className='grid grid-cols-[1fr_180px_120px] items-center border-b border-neutral-100 px-5 py-4 last:border-b-0' key={category.id}><span>{category.name}</span><span className={category.type === 'income' ? 'text-emerald-600' : 'text-red-600'}>{categoryTypeLabels[category.type]}</span><FinancialActions onDelete={() => setDeletingCategory(category)} onEdit={() => openCategoryForm(category)} /></div>)}
+                    <div className='overflow-x-auto rounded border border-neutral-100 bg-white' dir='rtl'>
+                        <div className='grid grid-cols-[1fr_180px_120px] border-b border-neutral-100 bg-neutral-50 px-5 py-3 text-sm font-medium text-neutral-500'>
+                            <span>اسم الفئة</span><span>نوع الفئة</span><span>الإجراءات</span>
+                        </div>
+                        {loadingCategories
+                            ? <p className='px-5 py-10 text-center text-sm text-neutral-400'>جارٍ التحميل…</p>
+                            : categories.length === 0
+                                ? <p className='px-5 py-10 text-center text-sm text-neutral-400'>لا توجد فئات مضافة بعد.</p>
+                                : categories.map((category) => (
+                                    <div
+                                        className='grid grid-cols-[1fr_180px_120px] items-center border-b border-neutral-100 px-5 py-4 last:border-b-0'
+                                        key={category.id}
+                                    >
+                                        <span>{category.name}</span>
+                                        <span className={category.type === 'income' ? 'text-emerald-600' : 'text-red-600'}>
+                                            {categoryTypeLabels[category.type]}
+                                        </span>
+                                        <FinancialActions
+                                            onDelete={() => setDeletingCategory(category)}
+                                            onEdit={() => openCategoryForm(category)}
+                                        />
+                                    </div>
+                                ))
+                        }
                     </div>
                 </TabsContent>
+
+                {/* ── Transactions tab ────────────────────────────────────── */}
                 <TabsContent className='mt-6' value='transactions'>
-                    <div
-                        className='overflow-x-auto rounded border border-neutral-100 bg-white'
-                        dir='rtl'
-                    >
-                        <div className='grid grid-cols-[1fr_150px_150px_1.5fr_120px] border-b border-neutral-100 bg-neutral-50 px-5 py-3 text-sm font-medium text-neutral-500'><span>نوع المعاملة</span><span>المبلغ</span><span>التاريخ</span><span>الملاحظات</span><span>الإجراءات</span></div>
-                        {transactions.length === 0 ? <p className='px-5 py-10 text-center text-sm text-neutral-400'>لا توجد معاملات مضافة بعد.</p> : transactions.map((transaction) => <div className='grid grid-cols-[1fr_150px_150px_1.5fr_120px] items-center border-b border-neutral-100 px-5 py-4 last:border-b-0' key={transaction.id}><span>{categoryById.get(transaction.categoryId)?.name}</span><span>{transaction.amount.toLocaleString('ar-EG')} ج.م</span><span>{transaction.date.toLocaleDateString('ar-EG')}</span><span className='text-neutral-500'>{transaction.notes || '-'}</span><FinancialActions onDelete={() => setDeletingTransaction(transaction)} onEdit={() => openTransactionForm(transaction)} /></div>)}
+                    <div className='overflow-x-auto rounded border border-neutral-100 bg-white' dir='rtl'>
+                        <div className='grid grid-cols-[1fr_150px_150px_1.5fr_120px] border-b border-neutral-100 bg-neutral-50 px-5 py-3 text-sm font-medium text-neutral-500'>
+                            <span>نوع المعاملة</span><span>المبلغ</span><span>التاريخ</span><span>الملاحظات</span><span>الإجراءات</span>
+                        </div>
+                        {loadingTransactions
+                            ? <p className='px-5 py-10 text-center text-sm text-neutral-400'>جارٍ التحميل…</p>
+                            : transactions.length === 0
+                                ? <p className='px-5 py-10 text-center text-sm text-neutral-400'>لا توجد معاملات مضافة بعد.</p>
+                                : transactions.map((transaction) => (
+                                    <div
+                                        className='grid grid-cols-[1fr_150px_150px_1.5fr_120px] items-center border-b border-neutral-100 px-5 py-4 last:border-b-0'
+                                        key={transaction.id}
+                                    >
+                                        <span>{transaction.category?.name ?? categoryById.get(transaction.category_id)?.name ?? '-'}</span>
+                                        <span>{transaction.amount.toLocaleString('ar-EG')} ج.م</span>
+                                        <span>{new Date(transaction.transaction_date).toLocaleDateString('ar-EG')}</span>
+                                        <span className='text-neutral-500'>{transaction.note || '-'}</span>
+                                        <FinancialActions
+                                            onDelete={() => setDeletingTransaction(transaction)}
+                                            onEdit={() => openTransactionForm(transaction)}
+                                        />
+                                    </div>
+                                ))
+                        }
                     </div>
                 </TabsContent>
             </Tabs>
-            <CategoryForm category={editingCategory} isOpen={isCategoryFormOpen} onSubmit={addCategory} setIsOpen={setIsCategoryFormOpen} />
-            <TransactionForm categories={categories} isOpen={isTransactionFormOpen} onSubmit={addTransaction} setIsOpen={setIsTransactionFormOpen} transaction={editingTransaction} />
-            <ConfirmDialog open={!!deletingCategory} title='حذف الفئة' description={<p>هل أنت متأكد من رغبتك في حذف هذه الفئة؟</p>} confirmText='حذف' cancelText='إلغاء' mode='destructive' onConfirm={() => { if (deletingCategory) setCategories((current) => current.filter((category) => category.id !== deletingCategory.id)); setDeletingCategory(undefined); }} onCancel={() => setDeletingCategory(undefined)} />
-            <ConfirmDialog open={!!deletingTransaction} title='حذف المعاملة' description={<p>هل أنت متأكد من رغبتك في حذف هذه المعاملة؟</p>} confirmText='حذف' cancelText='إلغاء' mode='destructive' onConfirm={() => { if (deletingTransaction) setTransactions((current) => current.filter((transaction) => transaction.id !== deletingTransaction.id)); setDeletingTransaction(undefined); }} onCancel={() => setDeletingTransaction(undefined)} />
+
+            {/* ── Forms ──────────────────────────────────────────────────── */}
+            <CategoryForm
+                category={editingCategory}
+                isOpen={isCategoryFormOpen}
+                onSubmit={handleCategorySubmit}
+                setIsOpen={handleCategoryFormOpen}
+                isPending={createCategory.isPending || updateCategory.isPending}
+            />
+            <TransactionForm
+                categories={categories}
+                isOpen={isTransactionFormOpen}
+                onSubmit={handleTransactionSubmit}
+                setIsOpen={handleTransactionFormOpen}
+                transaction={editingTransaction}
+                isPending={createTransaction.isPending || updateTransaction.isPending}
+            />
+
+            {/* ── Confirm dialogs ─────────────────────────────────────────── */}
+            <ConfirmDialog
+                open={!!deletingCategory}
+                title='حذف الفئة'
+                description={<p>هل أنت متأكد من رغبتك في حذف هذه الفئة؟</p>}
+                confirmText='حذف'
+                cancelText='إلغاء'
+                mode='destructive'
+                onConfirm={() => { if (deletingCategory) deleteCategory.mutate(deletingCategory.id); }}
+                onCancel={() => setDeletingCategory(undefined)}
+            />
+            <ConfirmDialog
+                open={!!deletingTransaction}
+                title='حذف المعاملة'
+                description={<p>هل أنت متأكد من رغبتك في حذف هذه المعاملة؟</p>}
+                confirmText='حذف'
+                cancelText='إلغاء'
+                mode='destructive'
+                onConfirm={() => { if (deletingTransaction) deleteTransaction.mutate(deletingTransaction.id); }}
+                onCancel={() => setDeletingTransaction(undefined)}
+            />
         </PageLayout>
     );
 }
 
-type CategoryFormProps = { isOpen: boolean; setIsOpen: React.Dispatch<React.SetStateAction<boolean>>; onSubmit: (values: CategoryFormValues) => void; category?: Category };
-function CategoryForm({ isOpen, setIsOpen, onSubmit, category }: CategoryFormProps) {
-    const form = useLiveForm<CategoryFormValues>({ resolver: zodResolver(categorySchema), defaultValues: { name: category?.name ?? '', type: category?.type ?? 'income' } });
-    return <Form {...form}><form id='category-form' onSubmit={form.handleSubmit(onSubmit)}><EditModal formId='category-form' isOpen={isOpen} submitLabel={category ? 'حفظ التعديلات' : 'إضافة'} title={category ? 'تعديل الفئة' : 'إضافة فئة'} toggle={setIsOpen}><CustomInput control={form.control} label='اسم الفئة' name='name' placeholder='مثل: اشتراكات، كتب، إيجار' required /><CustomSelect control={form.control} label='نوع الفئة' name='type' options={[{ value: 'income', label: 'إيراد (+)' }, { value: 'expense', label: 'مصروف (-)' }]} placeholder='اختر نوع الفئة' required /></EditModal></form></Form>;
+// ── Category Form ─────────────────────────────────────────────────────────────
+
+type CategoryFormProps = {
+    isOpen: boolean;
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    onSubmit: (values: CategoryFormValues) => void;
+    category?: ICategory;
+    isPending?: boolean;
+};
+function CategoryForm({ isOpen, setIsOpen, onSubmit, category, isPending }: CategoryFormProps) {
+    const form = useLiveForm<CategoryFormValues>({
+        resolver: zodResolver(categorySchema),
+        defaultValues: { name: '', type: 'income' },
+    });
+
+    // Reset form values whenever the editing target changes or the modal opens
+    useEffect(() => {
+        form.reset({
+            name: category?.name ?? '',
+            type: category?.type ?? 'income',
+        });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [category, isOpen]);
+
+    return (
+        <Form {...form}>
+            <form id='category-form' onSubmit={form.handleSubmit(onSubmit)}>
+                <EditModal
+                    formId='category-form'
+                    isOpen={isOpen}
+                    submitLabel={category ? 'حفظ التعديلات' : 'إضافة'}
+                    title={category ? 'تعديل الفئة' : 'إضافة فئة'}
+                    toggle={setIsOpen}
+                    isLoading={isPending}
+                >
+                    <CustomInput control={form.control} label='اسم الفئة' name='name' placeholder='مثل: اشتراكات، كتب، إيجار' required />
+                    <CustomSelect
+                        control={form.control}
+                        label='نوع الفئة'
+                        name='type'
+                        options={[{ value: 'income', label: 'إيراد (+)' }, { value: 'expense', label: 'مصروف (-)' }]}
+                        placeholder='اختر نوع الفئة'
+                        required
+                    />
+                </EditModal>
+            </form>
+        </Form>
+    );
 }
 
-type TransactionFormProps = { isOpen: boolean; setIsOpen: React.Dispatch<React.SetStateAction<boolean>>; onSubmit: (values: TransactionFormValues) => void; categories: Category[]; transaction?: Transaction };
-function TransactionForm({ isOpen, setIsOpen, onSubmit, categories, transaction }: TransactionFormProps) {
-    const form = useLiveForm<TransactionFormValues>({ resolver: zodResolver(transactionSchema), defaultValues: { categoryId: transaction ? String(transaction.categoryId) : '', amount: transaction?.amount ?? 0, date: transaction?.date ?? new Date(), notes: transaction?.notes ?? '' } });
-    return <Form {...form}><form id='transaction-form' onSubmit={form.handleSubmit(onSubmit)}><EditModal formId='transaction-form' isOpen={isOpen} submitLabel={transaction ? 'حفظ التعديلات' : 'إضافة'} title={transaction ? 'تعديل المعاملة' : 'إضافة معاملة'} toggle={setIsOpen}><CustomSelect control={form.control} label='نوع المعاملة' name='categoryId' options={categories.map((category) => ({ value: String(category.id), label: `${category.name} - ${categoryTypeLabels[category.type]}` }))} placeholder='اختر الفئة' required /><CustomNumberInput control={form.control} label='المبلغ' name='amount' placeholder='أدخل المبلغ' required /><CustomCalendar control={form.control} label='التاريخ' name='date' placeholder='اختر التاريخ' required /><CustomTextarea control={form.control} label='ملاحظات / البيان' name='notes' optional placeholder='مثل: اشتراك شهر أغسطس أو صيانة تكييف' /></EditModal></form></Form>;
+// ── Transaction Form ──────────────────────────────────────────────────────────
+
+type TransactionFormProps = {
+    isOpen: boolean;
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    onSubmit: (values: TransactionFormValues) => void;
+    categories: ICategory[];
+    transaction?: ITransaction;
+    isPending?: boolean;
+};
+function TransactionForm({ isOpen, setIsOpen, onSubmit, categories, transaction, isPending }: TransactionFormProps) {
+    const form = useLiveForm<TransactionFormValues>({
+        resolver: zodResolver(transactionSchema),
+        defaultValues: { category_id: '', amount: 0, transaction_date: new Date(), note: '' },
+    });
+
+    // Reset form values whenever the editing target changes or the modal opens
+    useEffect(() => {
+        form.reset({
+            category_id: transaction ? String(transaction.category_id) : '',
+            amount: transaction?.amount ?? 0,
+            transaction_date: transaction?.transaction_date
+                ? new Date(transaction.transaction_date)
+                : new Date(),
+            note: transaction?.note ?? '',
+        });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [transaction, isOpen]);
+
+    return (
+        <Form {...form}>
+            <form id='transaction-form' onSubmit={form.handleSubmit(onSubmit)}>
+                <EditModal
+                    formId='transaction-form'
+                    isOpen={isOpen}
+                    submitLabel={transaction ? 'حفظ التعديلات' : 'إضافة'}
+                    title={transaction ? 'تعديل المعاملة' : 'إضافة معاملة'}
+                    toggle={setIsOpen}
+                    isLoading={isPending}
+                >
+                    <CustomSelect
+                        control={form.control}
+                        label='نوع المعاملة'
+                        name='category_id'
+                        options={categories.map((c) => ({
+                            value: String(c.id),
+                            label: `${c.name} - ${categoryTypeLabels[c.type]}`,
+                        }))}
+                        placeholder='اختر الفئة'
+                        required
+                    />
+                    <CustomNumberInput control={form.control} label='المبلغ' name='amount' placeholder='أدخل المبلغ' required />
+                    <CustomCalendar control={form.control} label='التاريخ' name='transaction_date' placeholder='اختر التاريخ' required />
+                    <CustomTextarea control={form.control} label='ملاحظات / البيان' name='note' optional placeholder='مثل: اشتراك شهر أغسطس أو صيانة تكييف' />
+                </EditModal>
+            </form>
+        </Form>
+    );
 }
+
+// ── Actions ───────────────────────────────────────────────────────────────────
 
 type FinancialActionsProps = { onEdit: () => void; onDelete: () => void };
 function FinancialActions({ onEdit, onDelete }: FinancialActionsProps) {
-    return <div className='flex items-center gap-0.5'><Button aria-label='حذف' onClick={onDelete} size='sm' variant='ghost'><Trash className='size-4' /></Button><Button aria-label='تعديل' onClick={onEdit} size='sm' variant='ghost'><Edit2Icon className='size-4.5' /></Button></div>;
+    return (
+        <div className='flex items-center gap-0.5'>
+            <Button aria-label='حذف' onClick={onDelete} size='sm' variant='ghost'><Trash className='size-4' /></Button>
+            <Button aria-label='تعديل' onClick={onEdit} size='sm' variant='ghost'><Edit2Icon className='size-4.5' /></Button>
+        </div>
+    );
 }
 
 export default FinancialPage;

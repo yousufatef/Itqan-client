@@ -10,7 +10,7 @@ export default function useDeleteUser({ onSuccess }: UseDeleteUserArgs = {}) {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (id: string) => deleteUser(id),
+    mutationFn: (id: number) => deleteUser(id),
     onSuccess: (res: any) => {
       onSuccess?.();
       queryClient.invalidateQueries({ queryKey: ['users'] });

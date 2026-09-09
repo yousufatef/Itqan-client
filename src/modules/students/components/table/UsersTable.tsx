@@ -8,16 +8,9 @@ import StudentsActions from './UsersActions';
 import useGetStudents from '../../hooks/useGetStudents';
 import { exportArabicTableToPdf } from '@/utils/exportArabicPdf';
 import type { IStudent } from '../../types';
-import useGetUsers from '@/modules/users/hooks/useGetUsers';
 
 export default function StudentsTable() {
   const { data, isPending, isError } = useGetStudents();
-  const { data: usersData } = useGetUsers({ searchValue: '', role: 'parent' });
-  const parentNames = new Map(
-    (usersData?.result.data ?? [])
-      .filter((user) => user.role === 'parent')
-      .map((user) => [user.id, user.username]),
-  );
 
   // const { data, isPending, isError, error, isFetching } = useItems();
 
@@ -28,16 +21,24 @@ export default function StudentsTable() {
     },
     {
       header: 'رقم الهاتف',
-      accessorKey: 'phone',
+      accessorKey: 'phoneNumber',
+       cell: ({ row }) => (
+       <span>
+         {row.original.phoneNumber ? row.original.phoneNumber : 'غير محدد'}
+       </span>
+      ),
     },
     {
       header: 'تاريخ الميلاد',
-      accessorKey: 'dateOfBirth',
+      accessorKey: 'birthOfDate',
     },
     {
       header: 'ولي الأمر',
-      accessorFn: (student) => parentNames.get(student.parentId) ?? 'غير محدد',
-      id: 'parent',
+     cell: ({ row }) => (
+       <span>
+         {row.original.parent.parentName}
+       </span>
+      ),
     },
     {
       header: 'الإجراءات',
@@ -58,9 +59,9 @@ export default function StudentsTable() {
       filename: 'الطلاب',
       columns: [
         { header: 'اسم الطالب', value: (student: IStudent) => student.name },
-        { header: 'رقم الهاتف', value: (student: IStudent) => student.phone },
-        { header: 'تاريخ الميلاد', value: (student: IStudent) => student.dateOfBirth },
-        { header: 'ولي الأمر', value: (student: IStudent) => parentNames.get(student.parentId) ?? 'غير محدد' },
+        { header: 'رقم الهاتف', value: (student: IStudent) => student.phoneNumber },
+        { header: 'تاريخ الميلاد', value: (student: IStudent) => student.birthOfDate },
+        { header: 'ولي الأمر', value: (student: IStudent) => String(student.parent?.parentName ?? 'غير محدد') },
       ],
       rows: items?.data ?? [],
     });

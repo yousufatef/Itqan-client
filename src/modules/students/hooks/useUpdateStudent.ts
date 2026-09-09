@@ -1,7 +1,8 @@
-import { useMutation } from '@tanstack/react-query';
-import type { IStudent } from '../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { updateStudent } from '../services/students.service';
+import { STUDENTS_QUERY_KEY } from './studentsData';
 
-type StudentFormValues = Omit<IStudent, 'id' | 'createdAt' | 'updatedAt'>;
+import type { StudentPayload } from '../services/students.service';
 
 type UseUpdateStudentArgs = {
     onSuccess?: () => void;
@@ -9,12 +10,17 @@ type UseUpdateStudentArgs = {
 
 type UpdateStudentPayload = {
     id: string;
-    values: StudentFormValues;
+    values: StudentPayload;
 };
 
 export default function useUpdateStudent({ onSuccess }: UseUpdateStudentArgs = {}) {
+    const queryClient = useQueryClient();
+
     return useMutation({
-        mutationFn: async ({ values }: UpdateStudentPayload) => values,
-        onSuccess,
+        mutationFn: ({ id, values }: UpdateStudentPayload) => updateStudent(id, values),
+        onSuccess: () => {
+            void queryClient.invalidateQueries({ queryKey: STUDENTS_QUERY_KEY });
+            onSuccess?.();
+        },
     });
 }

@@ -2,14 +2,20 @@ import useTableSearchParam from '@/hooks/useTableSearchParam';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { getAllUsers } from '../services/users.service';
 
-export default function useGetUsers() {
+type UseGetUsersOptions = {
+  searchValue?: string;
+  role?: string;
+};
+
+export default function useGetUsers(options: UseGetUsersOptions = {}) {
   const { pageNumber, pageSize, searchValue, searchParams } = useTableSearchParam();
-  const roleParam = searchParams.get('role') ?? '';
+  const roleParam = options.role ?? searchParams.get('role') ?? '';
   const role = roleParam === 'all' ? '' : roleParam;
+  const search = options.searchValue ?? searchValue;
 
   return useQuery({
-    queryKey: ['users', pageNumber, pageSize, searchValue, role],
-    queryFn: () => getAllUsers(pageNumber, pageSize, searchValue, role),
+    queryKey: ['users', pageNumber, pageSize, search, role],
+    queryFn: () => getAllUsers(pageNumber, pageSize, search, role),
     placeholderData: keepPreviousData,
   });
 }

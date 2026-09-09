@@ -15,7 +15,7 @@ export default function StudentsActions({ student }: { student: IStudent }) {
   });
 
   function handleDelete() {
-    deleteStudent(student.id);
+    deleteStudent({ id: String(student.id) });
   }
 
   return (

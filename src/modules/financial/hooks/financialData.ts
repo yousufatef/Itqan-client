@@ -1,6 +1,8 @@
 import type { IFinancialInvoice } from '../types';
 
 export const FINANCIAL_QUERY_KEY = ['financial-invoices'];
+export const CATEGORIES_QUERY_KEY = ['financial-categories'];
+export const TRANSACTIONS_QUERY_KEY = ['financial-transactions'];
 
 export const financialInvoices: IFinancialInvoice[] = [
     {

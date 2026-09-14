@@ -22,7 +22,7 @@ import useDeleteTransaction from './hooks/useDeleteTransaction';
 
 type CategoryType = 'income' | 'expense';
 type CategoryFormValues = { name: string; type: CategoryType };
-type TransactionFormValues = { category_id: string; amount: unknown; transaction_date: Date; note: string };
+type TransactionFormValues = { category_id: string; amount: unknown; transaction_date: Date; notes: string };
 
 const categorySchema = z.object({
     name: z.string().min(1, 'اسم الفئة مطلوب'),
@@ -32,7 +32,7 @@ const transactionSchema = z.object({
     category_id: z.string().min(1, 'نوع المعاملة مطلوب'),
     amount: z.coerce.number().positive('يجب أن يكون المبلغ أكبر من صفر'),
     transaction_date: z.date({ error: 'التاريخ مطلوب' }),
-    note: z.string(),
+    notes: z.string(),
 });
 const categoryTypeLabels: Record<CategoryType, string> = { income: 'إيراد (+)', expense: 'مصروف (-)' };
 
@@ -75,7 +75,7 @@ function FinancialPage() {
             transaction_date: values.transaction_date instanceof Date
                 ? values.transaction_date.toISOString().split('T')[0]
                 : String(values.transaction_date),
-            note: values.note,
+            notes: values.notes,
         };
         if (editingTransaction) {
             updateTransaction.mutate({ id: editingTransaction.id, values: payload });
@@ -194,7 +194,7 @@ function FinancialPage() {
                                         <span>{transaction.category?.name ?? categoryById.get(transaction.category_id)?.name ?? '-'}</span>
                                         <span>{transaction.amount.toLocaleString('ar-EG')} ج.م</span>
                                         <span>{new Date(transaction.transaction_date).toLocaleDateString('ar-EG')}</span>
-                                        <span className='text-neutral-500'>{transaction.note || '-'}</span>
+                                        <span className='text-neutral-500'>{transaction.notes || '-'}</span>
                                         <FinancialActions
                                             onDelete={() => setDeletingTransaction(transaction)}
                                             onEdit={() => openTransactionForm(transaction)}
@@ -269,7 +269,7 @@ function CategoryForm({ isOpen, setIsOpen, onSubmit, category, isPending }: Cate
             name: category?.name ?? '',
             type: category?.type ?? 'income',
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category, isOpen]);
 
     return (
@@ -311,7 +311,7 @@ type TransactionFormProps = {
 function TransactionForm({ isOpen, setIsOpen, onSubmit, categories, transaction, isPending }: TransactionFormProps) {
     const form = useLiveForm<TransactionFormValues>({
         resolver: zodResolver(transactionSchema),
-        defaultValues: { category_id: '', amount: 0, transaction_date: new Date(), note: '' },
+        defaultValues: { category_id: '', amount: 0, transaction_date: new Date(), notes: '' },
     });
 
     // Reset form values whenever the editing target changes or the modal opens
@@ -322,9 +322,9 @@ function TransactionForm({ isOpen, setIsOpen, onSubmit, categories, transaction,
             transaction_date: transaction?.transaction_date
                 ? new Date(transaction.transaction_date)
                 : new Date(),
-            note: transaction?.note ?? '',
+            notes: transaction?.notes ?? '',
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [transaction, isOpen]);
 
     return (
@@ -351,7 +351,7 @@ function TransactionForm({ isOpen, setIsOpen, onSubmit, categories, transaction,
                     />
                     <CustomNumberInput control={form.control} label='المبلغ' name='amount' placeholder='أدخل المبلغ' required />
                     <CustomCalendar control={form.control} label='التاريخ' name='transaction_date' placeholder='اختر التاريخ' required />
-                    <CustomTextarea control={form.control} label='ملاحظات / البيان' name='note' optional placeholder='مثل: اشتراك شهر أغسطس أو صيانة تكييف' />
+                    <CustomTextarea control={form.control} label='ملاحظات / البيان' name='notes' optional placeholder='مثل: اشتراك شهر أغسطس أو صيانة تكييف' />
                 </EditModal>
             </form>
         </Form>

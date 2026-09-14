@@ -44,7 +44,7 @@ export interface ITransaction {
     category_id: number;
     amount: number;
     transaction_date: string;
-    note: string;
+    notes: string;
     category?: ICategory;
 }
 
@@ -52,5 +52,5 @@ export type TransactionPayload = {
     category_id: number;
     amount: number;
     transaction_date: string;
-    note: string;
+    notes: string;
 };

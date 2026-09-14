@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form } from '@/components/ui/form';
 import useLiveForm from '@/hooks/useLiveForm';
 import { useUser } from '@/modules/auth/hooks/useUser';
-import useUpdateUserDetails from '@/modules/auth/hooks/useUpdateUserDetails';
+import useUpdateProfile from './hooks/useUpdateProfile';
 
 type SettingsFormValues = {
     username: string;
@@ -30,7 +30,7 @@ const settingsSchema = z.object({
 
 function SettingsPage() {
     const { user, isLoading, isError } = useUser();
-    const updateUser = useUpdateUserDetails();
+    const updateUser = useUpdateProfile();
     const form = useLiveForm<SettingsFormValues>({
         resolver: zodResolver(settingsSchema),
         defaultValues: {
@@ -56,11 +56,9 @@ function SettingsPage() {
     }, [reset, trigger, user]);
 
     const handleFormSubmit = handleSubmit((values) => {
-        if (!user?.id) return;
-
         updateUser.mutate({
-            id: user.id,
-            ...values,
+            username: values.username,
+            phoneNumber: values.phoneNumber
         });
     });
 
@@ -107,6 +105,7 @@ function SettingsPage() {
                                         />
                                         <CustomInput
                                             required
+                                            disabled
                                             control={control}
                                             name='email'
                                             label='البريد الإلكتروني'

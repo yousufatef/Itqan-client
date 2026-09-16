@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { dummyCircles } from './useGetCircles';
+import { getCircleById } from '../services/circles.service';
+import { CIRCLES_QUERY_KEY } from './circlesData';
 
-export default function useGetCircle(id: string | undefined) {
+export default function useGetCircle(id: string | number | undefined) {
     return useQuery({
-        queryKey: ['circle', id],
-        queryFn: async () => dummyCircles.find((circle) => circle.id === id) ?? null,
+        queryKey: [...CIRCLES_QUERY_KEY, 'detail', id],
+        queryFn: () => (id ? getCircleById(id) : null),
         enabled: Boolean(id),
     });
 }

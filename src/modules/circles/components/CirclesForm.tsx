@@ -1,20 +1,19 @@
-import CustomInput from '@/components/forms';
-import { CustomMultiSelect, CustomSelect, CustomTimeInput } from '@/components/forms';
+import CustomInput, { CustomMultiSelect, CustomSelect, CustomTimeInput } from '@/components/forms';
+import { formatTo24HourTime } from '@/components/forms/time-input.utils';
 import EditModal from '@/components/shared/customs/EditModal';
-import useLiveForm from '@/hooks/useLiveForm';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-
 import { Form } from '@/components/ui/form';
-import useCreateCircle from '../hooks/useCreateCircle';
-import useUpdateCircle from '../hooks/useUpdateCircle';
+import useLiveForm from '@/hooks/useLiveForm';
 import useGetStudents from '@/modules/students/hooks/useGetStudents';
 import useGetUsers from '@/modules/users/hooks/useGetUsers';
-import type { ICircle } from '../types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import useCreateCircle from '../hooks/useCreateCircle';
+import useUpdateCircle from '../hooks/useUpdateCircle';
+import type { CreateCirclePayload, ICircle, ITimeObject, UpdateCirclePayload } from '../types';
 
 type CircleFormValues = {
   name: string;
-  teacherName: string;
+  teacherId: string;
   studentIds: string[];
   startTime: string;
   endTime: string;
@@ -30,7 +29,7 @@ type CircleFormProps = {
 
 const circleSchema = z.object({
   name: z.string().min(1, 'اسم الحلقة مطلوب'),
-  teacherName: z.string().min(1, 'اسم المعلم مطلوب'),
+  teacherId: z.string().min(1, 'اسم المعلم مطلوب'),
   studentIds: z.array(z.string()),
   startTime: z.string().min(1, 'وقت البداية مطلوب'),
   endTime: z.string().min(1, 'وقت النهاية مطلوب'),
@@ -39,25 +38,48 @@ const circleSchema = z.object({
 });
 
 const dayOptions = [
-  { value: 'السبت', label: 'السبت' },
-  { value: 'الأحد', label: 'الأحد' },
-  { value: 'الإثنين', label: 'الإثنين' },
-  { value: 'الثلاثاء', label: 'الثلاثاء' },
-  { value: 'الأربعاء', label: 'الأربعاء' },
-  { value: 'الخميس', label: 'الخميس' },
-  { value: 'الجمعة', label: 'الجمعة' },
+  { value: 'Sunday', label: 'الأحد' },
+  { value: 'Monday', label: 'الإثنين' },
+  { value: 'Tuesday', label: 'الثلاثاء' },
+  { value: 'Wednesday', label: 'الأربعاء' },
+  { value: 'Thursday', label: 'الخميس' },
+  { value: 'Friday', label: 'الجمعة' },
+  { value: 'Saturday', label: 'السبت' },
 ];
+
+function formatTimeTo24H(timeValue: string | ITimeObject | undefined): string {
+  if (!timeValue) return '00:00';
+  if (typeof timeValue === 'object' && timeValue !== null) {
+    const hh = String(timeValue.hour || 0).padStart(2, '0');
+    const mm = String(timeValue.minute || 0).padStart(2, '0');
+    return `${hh}:${mm}`;
+  }
+  return formatTo24HourTime(timeValue) || '00:00';
+}
 
 export default function CirclesForm({ isOpen, setIsOpen, circle }: CircleFormProps) {
   const isEdit = !!circle;
+
+  const defaultTeacherId = circle?.teacherId
+    ? String(circle.teacherId)
+    : circle?.teacher?.id
+      ? String(circle.teacher.id)
+      : '';
+
+  const defaultStudentIds = circle?.studentIds
+    ? circle.studentIds.map(String)
+    : circle?.students
+      ? circle.students.map((s) => String(s.id))
+      : [];
+
   const form = useLiveForm<CircleFormValues>({
     resolver: zodResolver(circleSchema),
     defaultValues: {
       name: circle?.name || '',
-      teacherName: circle?.teacherName || '',
-      studentIds: circle?.studentIds || [],
-      startTime: circle?.startTime || '',
-      endTime: circle?.endTime || '',
+      teacherId: defaultTeacherId,
+      studentIds: defaultStudentIds,
+      startTime: formatTimeTo24H(circle?.startTime),
+      endTime: formatTimeTo24H(circle?.endTime),
       days: circle?.days || [],
       isActive: circle?.isActive ?? true,
     },
@@ -67,11 +89,11 @@ export default function CirclesForm({ isOpen, setIsOpen, circle }: CircleFormPro
   const { data: usersData, isPending: isTeachersPending } = useGetUsers({ role: 'teacher' });
   const { data: studentsData, isPending: isStudentsPending } = useGetStudents();
 
-  const teacherOptions = (usersData?.result.data ?? [])
-    .filter((user) => user.isActive)
-    .map((user) => ({ value: user.username, label: user.username }));
-  const studentOptions = (studentsData?.result.data ?? []).map((student) => ({
-    value: student.id,
+  const teacherOptions = (usersData?.result?.data ?? [])
+    .map((user) => ({ value: String(user.id), label: user.username || `معلم #${user.id}` }));
+
+  const studentOptions = (studentsData?.result?.data ?? []).map((student) => ({
+    value: String(student.id),
     label: student.name,
   }));
 
@@ -83,12 +105,35 @@ export default function CirclesForm({ isOpen, setIsOpen, circle }: CircleFormPro
   });
 
   const handleFormSubmit = handleSubmit((values) => {
+    const startTimeStr = formatTimeTo24H(values.startTime);
+    const endTimeStr = formatTimeTo24H(values.endTime);
+    const teacherIdNum = Number(values.teacherId);
+    const studentIdsNums = values.studentIds.map(Number);
+
     if (isEdit && circle) {
-      updateMutate({ id: circle.id, values });
+      const updatePayload: UpdateCirclePayload = {
+        name: values.name,
+        teacherId: teacherIdNum,
+        studentIds: studentIdsNums,
+        days: values.days,
+        startTime: startTimeStr,
+        endTime: endTimeStr,
+        isActive: values.isActive,
+      };
+      updateMutate({ id: circle.id, values: updatePayload });
     } else {
-      createMutate(values);
+      const createPayload: CreateCirclePayload = {
+        name: values.name,
+        teacherId: teacherIdNum,
+        studentIds: studentIdsNums,
+        days: values.days,
+        startTime: startTimeStr,
+        endTime: endTimeStr,
+      };
+      createMutate(createPayload);
     }
   });
+
   return (
     <Form {...form}>
       <form
@@ -114,23 +159,21 @@ export default function CirclesForm({ isOpen, setIsOpen, circle }: CircleFormPro
           <CustomSelect
             required
             control={control}
-            name='teacherName'
+            name='teacherId'
             label='اسم المعلم'
             placeholder={isTeachersPending ? 'جاري تحميل المعلمين...' : 'اختر المعلم'}
             options={teacherOptions}
             disabled={isTeachersPending}
           />
-          {!isEdit && (
-            <CustomMultiSelect
-              control={control}
-              name='studentIds'
-              label='إضافة الطلاب للحلقة'
-              optional
-              placeholder={isStudentsPending ? 'جاري تحميل الطلاب...' : 'اختر الطلاب'}
-              options={studentOptions}
-              disabled={isStudentsPending}
-            />
-          )}
+          <CustomMultiSelect
+            control={control}
+            name='studentIds'
+            label='إضافة الطلاب للحلقة'
+            optional
+            placeholder={isStudentsPending ? 'جاري تحميل الطلاب...' : 'اختر الطلاب'}
+            options={studentOptions}
+            disabled={isStudentsPending}
+          />
           <CustomTimeInput
             required
             control={control}

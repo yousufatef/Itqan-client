@@ -15,6 +15,7 @@ export interface ICircleTeacher {
 }
 
 export interface ICircle {
+    circleName: any;
     id: number | string;
     name: string;
     teacherId: number;
@@ -23,8 +24,10 @@ export interface ICircle {
     studentIds?: number[];
     students?: ICircleStudent[];
     days: string[];
-    startTime: ITimeObject | string;
-    endTime: ITimeObject | string;
+    timeFrom?: ITimeObject | string;
+    timeTo?: ITimeObject | string;
+    startTime?: ITimeObject | string;
+    endTime?: ITimeObject | string;
     isActive: boolean;
     createdAt?: string;
     updatedAt?: string;
@@ -50,16 +53,17 @@ export interface UpdateCirclePayload {
     isActive: boolean;
 }
 
-export type AttendanceStatusType = 'PRESENT' | 'ABSENT';
+export type AttendanceStatusType = 'present' | 'absent' | 'PRESENT' | 'ABSENT';
 
 export interface IDailyRecord {
-    id?: number | string;
+    id?: number | string | null;
+    recordId?: number | string | null;
     circleId?: number | string;
     studentId: number;
     studentName?: string;
-    attendanceStatus: AttendanceStatusType;
-    evaluation?: string;
-    notes?: string;
+    attendanceStatus?: AttendanceStatusType | null;
+    evaluation?: string | null;
+    notes?: string | null;
     date?: string;
     createdAt?: string;
 }
@@ -67,6 +71,12 @@ export interface IDailyRecord {
 export interface CreateDailyRecordItem {
     studentId: number;
     attendanceStatus: AttendanceStatusType;
+    evaluation?: string;
+    notes?: string;
+}
+
+export interface UpdateDailyRecordItem {
+    attendanceStatus?: AttendanceStatusType;
     evaluation?: string;
     notes?: string;
 }
@@ -97,5 +107,9 @@ export interface CircleSingleResponse {
 export interface DailyRecordsResponse {
     isSuccess?: boolean;
     message?: string;
-    result: IDailyRecord[];
+    errors?: unknown;
+    statusCode?: number;
+    result?: {
+        students?: IDailyRecord[];
+    } | IDailyRecord[];
 }

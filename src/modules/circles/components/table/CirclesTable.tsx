@@ -54,7 +54,7 @@ export default function CirclesTable() {
   const columns: ColumnDef<ICircle>[] = [
     {
       header: 'اسم الحلقة',
-      accessorKey: 'name',
+      accessorKey: 'circleName',
     },
     {
       header: 'المعلم',
@@ -69,7 +69,7 @@ export default function CirclesTable() {
     },
     {
       header: 'الوقت',
-      cell: ({ row }) => `${formatTime(row.original.startTime)} - ${formatTime(row.original.endTime)}`,
+      cell: ({ row }) => `${formatTime(row.original.timeFrom)} - ${formatTime(row.original.timeTo)}`,
     },
     {
       header: 'الحالة',
@@ -101,7 +101,7 @@ export default function CirclesTable() {
         {
           header: 'الوقت',
           value: (circle: ICircle) =>
-            `${formatTime(circle.startTime)} - ${formatTime(circle.endTime)}`,
+            `${formatTime(circle.timeFrom)} - ${formatTime(circle.timeTo)}`,
         },
         { header: 'الحالة', value: (circle: ICircle) => (circle.isActive ? 'نشطة' : 'غير نشطة') },
       ],

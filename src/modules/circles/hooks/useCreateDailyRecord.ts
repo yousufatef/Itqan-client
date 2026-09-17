@@ -1,30 +1,30 @@
 import { toast } from '@/lib/toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createDailyRecords } from '../services/circles.service';
+import { createDailyRecord } from '../services/circles.service';
 import { CIRCLE_DAILY_RECORDS_QUERY_KEY } from './circlesData';
 import type { CreateDailyRecordItem } from '../types';
 
-type UseCreateDailyRecordsArgs = {
+type UseCreateDailyRecordArgs = {
     onSuccess?: () => void;
 };
 
-type CreateDailyRecordsParams = {
+type CreateDailyRecordParams = {
     circleId: string | number;
-    records: CreateDailyRecordItem[];
+    payload: CreateDailyRecordItem;
     date?: string;
 };
 
-export default function useCreateDailyRecords({ onSuccess }: UseCreateDailyRecordsArgs = {}) {
+export default function useCreateDailyRecord({ onSuccess }: UseCreateDailyRecordArgs = {}) {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: ({ circleId, records, date }: CreateDailyRecordsParams) =>
-            createDailyRecords(circleId, records, date),
+        mutationFn: ({ circleId, payload, date }: CreateDailyRecordParams) =>
+            createDailyRecord(circleId, payload, date),
         onSuccess: (_, variables) => {
             void queryClient.invalidateQueries({
                 queryKey: [...CIRCLE_DAILY_RECORDS_QUERY_KEY, variables.circleId],
             });
-            toast.success('تم حفظ السجل اليومي بنجاح');
+            toast.success('تم تسجيل حضور الطالب بنجاح');
             onSuccess?.();
         },
     });

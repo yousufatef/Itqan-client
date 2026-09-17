@@ -9,6 +9,7 @@ import type {
   ICircle,
   IDailyRecord,
   UpdateCirclePayload,
+  UpdateDailyRecordItem,
 } from '../types';
 
 export const CIRCLES_ENDPOINTS = {
@@ -16,6 +17,8 @@ export const CIRCLES_ENDPOINTS = {
   getById: (id: string | number) => `circles/${id}`,
   delete: (id: string | number) => `circles/${id}`,
   dailyRecords: (circleId: string | number) => `circles/${circleId}/daily-records`,
+  singleDailyRecord: (circleId: string | number, recordId: string | number) =>
+    `circles/${circleId}/daily-records/${recordId}`,
 } as const;
 
 export async function getAllCircles(
@@ -104,20 +107,69 @@ export async function getDailyRecords(
   const endpoint = CIRCLES_ENDPOINTS.dailyRecords(circleId);
   const url = date ? `${endpoint}?date=${date}` : endpoint;
 
-  return apiRequest<DailyRecordsResponse | IDailyRecord[]>(url).then((response) => {
-    if (response && typeof response === 'object' && 'result' in response) {
-      return (response as DailyRecordsResponse).result || [];
-    }
-    return (response as IDailyRecord[]) || [];
+  return apiRequest<DailyRecordsResponse | { students?: IDailyRecord[] } | IDailyRecord[]>(url).then(
+    (response) => {
+      if (!response) return [];
+
+      if (typeof response === 'object' && 'result' in response && response.result) {
+        const res = response.result;
+        if (Array.isArray(res)) {
+          return res;
+        }
+        if (typeof res === 'object' && 'students' in res && Array.isArray(res.students)) {
+          return res.students;
+        }
+        if (typeof res === 'object' && 'data' in res && Array.isArray(res.data)) {
+          return res.data;
+        }
+      }
+
+      if (typeof response === 'object' && 'students' in response && Array.isArray((response as { students?: IDailyRecord[] }).students)) {
+        return (response as { students?: IDailyRecord[] }).students || [];
+      }
+
+      if (Array.isArray(response)) {
+        return response;
+      }
+
+      return [];
+    },
+  );
+}
+
+export async function createDailyRecord(
+  circleId: string | number,
+  record: CreateDailyRecordItem,
+  date?: string,
+): Promise<unknown> {
+  const endpoint = CIRCLES_ENDPOINTS.dailyRecords(circleId);
+  const url = date ? `${endpoint}?date=${date}` : endpoint;
+
+  return apiRequest(url, {
+    method: 'POST',
+    body: record,
   });
 }
 
 export async function createDailyRecords(
   circleId: string | number,
   records: CreateDailyRecordItem[],
+  date?: string,
 ): Promise<unknown> {
-  return apiRequest(CIRCLES_ENDPOINTS.dailyRecords(circleId), {
-    method: 'POST',
-    body: records,
+  return Promise.all(records.map((record) => createDailyRecord(circleId, record, date)));
+}
+
+export async function updateDailyRecord(
+  circleId: string | number,
+  recordId: string | number,
+  payload: UpdateDailyRecordItem,
+  date?: string,
+): Promise<unknown> {
+  const baseEndpoint = CIRCLES_ENDPOINTS.singleDailyRecord(circleId, recordId);
+  const url = date ? `${baseEndpoint}?date=${date}` : baseEndpoint;
+
+  return apiRequest(url, {
+    method: 'PATCH',
+    body: payload,
   });
 }

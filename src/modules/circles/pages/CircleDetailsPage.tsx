@@ -2,17 +2,21 @@ import { CustomCalendar } from '@/components/forms';
 import PageLayout from '@/components/layout/PageLayout';
 import { CustomTable } from '@/components/shared/customs';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import useLiveForm from '@/hooks/useLiveForm';
 import type { ColumnDef } from '@tanstack/react-table';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import StudentEvaluationForm, { type CircleStudentRow } from '../components/StudentEvaluationForm';
-import useCreateDailyRecords from '../hooks/useCreateDailyRecords';
+import StudentEvaluationForm, {
+    evaluationOptions,
+    type CircleStudentRow,
+    type EvaluationFormValues,
+} from '../components/StudentEvaluationForm';
+import useCreateDailyRecord from '../hooks/useCreateDailyRecord';
 import useGetCircle from '../hooks/useGetCircle';
 import useGetDailyRecords from '../hooks/useGetDailyRecords';
-import type { AttendanceStatusType, CreateDailyRecordItem, ITimeObject } from '../types';
+import useUpdateDailyRecord from '../hooks/useUpdateDailyRecord';
+import type { AttendanceStatusType, ITimeObject } from '../types';
 
 const DAY_TRANSLATIONS: Record<string, string> = {
     Sunday: 'الأحد',
@@ -25,7 +29,7 @@ const DAY_TRANSLATIONS: Record<string, string> = {
 };
 
 const detailItems = [
-    { key: 'name', label: 'اسم الحلقة' },
+    { key: 'circleName', label: 'اسم الحلقة' },
     { key: 'teacherName', label: 'المعلم' },
     { key: 'days', label: 'الأيام' },
     { key: 'time', label: 'الوقت' },
@@ -66,7 +70,8 @@ export default function CircleDetailsPage() {
     const dateStr = reportDate ? formatDateForApi(reportDate) : undefined;
 
     const { data: dailyRecords, isPending: isRecordsPending } = useGetDailyRecords(id, dateStr);
-    const { mutate: saveDailyRecords, isPending: isSaving } = useCreateDailyRecords();
+    const { mutate: mutateCreateRecord, isPending: isCreating } = useCreateDailyRecord();
+    const { mutate: mutateUpdateRecord, isPending: isUpdating } = useUpdateDailyRecord();
 
     const [students, setStudents] = useState<CircleStudentRow[]>([]);
     const [selectedStudentId, setSelectedStudentId] = useState<number>();
@@ -74,45 +79,53 @@ export default function CircleDetailsPage() {
     const dateForm = useLiveForm<{ date?: Date }>({ defaultValues: { date: today } });
     const isReadOnly = Boolean(reportDate && reportDate < today);
 
+    const recordsList = Array.isArray(dailyRecords) ? dailyRecords : [];
+
     useEffect(() => {
         if (!circle) return;
 
         const circleStudents = circle.students || [];
-        const recordMap = new Map((dailyRecords || []).map((r) => [r.studentId, r]));
 
-        if (circleStudents.length > 0) {
-            const mappedRows: CircleStudentRow[] = circleStudents.map((st) => {
-                const rec = recordMap.get(st.id);
+        const getStatus = (status?: string | null): AttendanceStatusType =>
+            status?.toLowerCase() === 'absent' ? 'absent' : 'present';
+
+        if (recordsList.length > 0) {
+            const mappedRows: CircleStudentRow[] = recordsList.map((rec) => {
+                const stName =
+                    circleStudents.find((s) => s.id === rec.studentId)?.name ||
+                    rec.studentName ||
+                    `طالب #${rec.studentId}`;
+                const recId = rec.id ?? rec.recordId;
                 return {
-                    studentId: st.id,
-                    studentName: st.name,
-                    attendanceStatus: rec?.attendanceStatus || 'PRESENT',
-                    evaluation: rec?.evaluation || '',
-                    notes: rec?.notes || '',
+                    recordId: recId ?? undefined,
+                    studentId: rec.studentId,
+                    studentName: stName,
+                    attendanceStatus: getStatus(rec.attendanceStatus),
+                    evaluation: rec.evaluation ? rec.evaluation.toLowerCase() : '',
+                    notes: rec.notes || '',
                 };
             });
             setStudents(mappedRows);
-        } else if (dailyRecords && dailyRecords.length > 0) {
-            const mappedRows: CircleStudentRow[] = dailyRecords.map((rec) => ({
-                studentId: rec.studentId,
-                studentName: rec.studentName || `طالب #${rec.studentId}`,
-                attendanceStatus: rec.attendanceStatus || 'PRESENT',
-                evaluation: rec.evaluation || '',
-                notes: rec.notes || '',
+        } else if (circleStudents.length > 0) {
+            const mappedRows: CircleStudentRow[] = circleStudents.map((st) => ({
+                studentId: st.id,
+                studentName: st.name,
+                attendanceStatus: 'present',
+                evaluation: '',
+                notes: '',
             }));
             setStudents(mappedRows);
         } else if (circle.studentIds && circle.studentIds.length > 0) {
-            const mappedRows: CircleStudentRow[] = circle.studentIds.map((stId) => {
-                const rec = recordMap.get(stId);
-                return {
-                    studentId: stId,
-                    studentName: rec?.studentName || `طالب #${stId}`,
-                    attendanceStatus: rec?.attendanceStatus || 'PRESENT',
-                    evaluation: rec?.evaluation || '',
-                    notes: rec?.notes || '',
-                };
-            });
+            const mappedRows: CircleStudentRow[] = circle.studentIds.map((stId) => ({
+                studentId: stId,
+                studentName: `طالب #${stId}`,
+                attendanceStatus: 'present',
+                evaluation: '',
+                notes: '',
+            }));
             setStudents(mappedRows);
+        } else {
+            setStudents([]);
         }
     }, [circle, dailyRecords]);
 
@@ -130,33 +143,57 @@ export default function CircleDetailsPage() {
     const formattedDays = (circle.days || []).map((d) => DAY_TRANSLATIONS[d] || d).join('، ');
 
     const values = {
-        name: circle.name,
+        circleName: circle.circleName,
         teacherName: teacherDisplayName,
         days: formattedDays,
-        time: `${formatTime(circle.startTime)} - ${formatTime(circle.endTime)}`,
+        time: `${formatTime(circle.timeFrom)} - ${formatTime(circle.timeTo)}`,
     };
 
-    const updateStudent = (studentId: number, updates: Partial<CircleStudentRow>) => {
-        setStudents((current) =>
-            current.map((student) =>
-                student.studentId === studentId ? { ...student, ...updates } : student,
-            ),
-        );
-    };
+    const handleModalSubmit = (formValues: EvaluationFormValues) => {
+        if (!selectedStudent || !id) return;
 
-    const handleSaveRecords = () => {
-        if (!id) return;
-        const recordsPayload: CreateDailyRecordItem[] = students.map((st) => ({
-            studentId: st.studentId,
-            attendanceStatus: st.attendanceStatus,
-            evaluation: st.evaluation || undefined,
-            notes: st.notes || undefined,
-        }));
+        const updatedAttendance = formValues.attendanceStatus?.toLowerCase() === 'absent' ? 'absent' : 'present';
+        const updatedEval = updatedAttendance === 'absent' ? undefined : (formValues.evaluation || undefined);
+        const updatedNotes = formValues.notes || undefined;
 
-        saveDailyRecords({
-            circleId: id,
-            records: recordsPayload,
-        });
+        const recId = selectedStudent.recordId;
+        if (recId) {
+            mutateUpdateRecord(
+                {
+                    circleId: id,
+                    recordId: recId,
+                    payload: {
+                        attendanceStatus: updatedAttendance,
+                        evaluation: updatedEval,
+                        notes: updatedNotes,
+                    },
+                    date: dateStr,
+                },
+                {
+                    onSuccess: () => {
+                        setSelectedStudentId(undefined);
+                    },
+                },
+            );
+        } else {
+            mutateCreateRecord(
+                {
+                    circleId: id,
+                    payload: {
+                        studentId: selectedStudent.studentId,
+                        attendanceStatus: updatedAttendance,
+                        evaluation: updatedEval,
+                        notes: updatedNotes,
+                    },
+                    date: dateStr,
+                },
+                {
+                    onSuccess: () => {
+                        setSelectedStudentId(undefined);
+                    },
+                },
+            );
+        }
     };
 
     const selectedStudent = students.find((st) => st.studentId === selectedStudentId);
@@ -164,39 +201,57 @@ export default function CircleDetailsPage() {
     const columns: ColumnDef<CircleStudentRow>[] = [
         { header: 'اسم الطالب', accessorKey: 'studentName' },
         {
-            header: 'الحضور',
+            header: 'حالة الحضور',
+            cell: ({ row }) => {
+                if (!row.original.recordId) {
+                    return <span className='text-neutral-400'>غير مسجل</span>;
+                }
+                const isAbsent = row.original.attendanceStatus?.toLowerCase() === 'absent';
+                return isAbsent ? (
+                    <span className='inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800'>
+                        غائب
+                    </span>
+                ) : (
+                    <span className='inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-800'>
+                        حاضر
+                    </span>
+                );
+            },
+        },
+        {
+            header: 'التقييم',
+            cell: ({ row }) => {
+                if (row.original.attendanceStatus?.toLowerCase() === 'absent') {
+                    return <span className='text-neutral-400'>— (غائب)</span>;
+                }
+                const evalObj = evaluationOptions.find(
+                    (opt) => opt.value === row.original.evaluation?.toLowerCase(),
+                );
+                return evalObj ? (
+                    <span className='font-medium text-neutral-800'>{evalObj.label}</span>
+                ) : (
+                    <span className='text-neutral-400'>—</span>
+                );
+            },
+        },
+        {
+            header: 'الملاحظات',
             cell: ({ row }) => (
-                <Select
-                    dir='rtl'
-                    disabled={isReadOnly}
-                    value={row.original.attendanceStatus}
-                    onValueChange={(attendanceStatus: AttendanceStatusType) =>
-                        updateStudent(row.original.studentId, {
-                            attendanceStatus,
-                            ...(attendanceStatus === 'ABSENT' ? { evaluation: '', notes: 'غائب' } : {}),
-                        })
-                    }
-                >
-                    <SelectTrigger className='w-32 bg-white'>
-                        <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value='PRESENT'>حاضر</SelectItem>
-                        <SelectItem value='ABSENT'>غائب</SelectItem>
-                    </SelectContent>
-                </Select>
+                <span className='block max-w-xs truncate text-neutral-700'>
+                    {row.original.notes || '—'}
+                </span>
             ),
         },
         {
-            header: 'التقييم والملاحظات',
+            header: 'الإجراءات',
             cell: ({ row }) => (
                 <Button
                     type='button'
                     variant='outline'
-                    disabled={isReadOnly || row.original.attendanceStatus === 'ABSENT'}
+                    disabled={isReadOnly}
                     onClick={() => setSelectedStudentId(row.original.studentId)}
                 >
-                    {row.original.evaluation ? 'تعديل التتقرير' : 'إضافة تقرير'}
+                    {row.original.recordId ? 'تعديل' : 'تقييم'}
                 </Button>
             ),
         },
@@ -237,8 +292,8 @@ export default function CircleDetailsPage() {
                             <CustomCalendar
                                 control={dateForm.control}
                                 name='date'
-                                label='تاريخ التتقرير'
-                                placeholder='اختر تاريخ التتقرير'
+                                label='تاريخ التقرير'
+                                placeholder='اختر تاريخ التقرير'
                                 onValueChange={setReportDate}
                                 formatValue={formatDateForDisplay}
                                 toDate={today}
@@ -247,16 +302,6 @@ export default function CircleDetailsPage() {
                                 triggerClassName='w-full'
                             />
                         </div>
-                        {!isReadOnly && (
-                            <Button
-                                onClick={handleSaveRecords}
-                                disabled={isSaving || students.length === 0}
-                                className='flex items-center gap-1.5'
-                            >
-                                <Save className='size-4' />
-                                {isSaving ? 'جاري الحفظ...' : 'حفظ التقرير اليومي'}
-                            </Button>
-                        )}
                     </div>
                 </div>
                 {isReadOnly ? (
@@ -278,14 +323,9 @@ export default function CircleDetailsPage() {
                 <StudentEvaluationForm
                     student={selectedStudent}
                     isReadOnly={isReadOnly}
+                    isSubmitting={isUpdating || isCreating}
                     onClose={() => setSelectedStudentId(undefined)}
-                    onSubmit={(formValues) => {
-                        updateStudent(selectedStudent.studentId, {
-                            evaluation: formValues.evaluation,
-                            notes: formValues.notes,
-                        });
-                        setSelectedStudentId(undefined);
-                    }}
+                    onSubmit={handleModalSubmit}
                 />
             ) : null}
         </PageLayout>
